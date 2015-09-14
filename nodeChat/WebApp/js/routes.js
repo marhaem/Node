@@ -52,7 +52,7 @@ riot.tag(
       while (++i < len) {
         opts.items[i].active = (opts.items[i].href === hit);
       }
-      
+
       this.update();
 
       this.Routeable.next(route, index, params, routes, this.content);

@@ -1,0 +1,41 @@
+.chatMessage {
+    //background: red;
+    padding: 10px;
+    padding-bottom: 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 3px;
+}
+
+.upperLine {
+    font-size: 10px;
+    text-align: right;
+}
+
+.message {
+    font-size: 13px;
+}
+
+.chatMessage.pull-left {
+    background: blue;
+    color: #fff;
+}
+
+.chatMessage.pull-right {
+    background: green;
+}
+
+.navbar-default{
+    -webkit-box-shadow: 0px 2px 34px 8px rgba(0,0,0,0.41);
+-moz-box-shadow: 0px 2px 34px 8px rgba(0,0,0,0.41);
+box-shadow: 0px 2px 34px 8px rgba(0,0,0,0.41);
+}
+
+.messageIncome {
+    overflow: scroll;
+    position: absolute;
+    bottom: 110px;
+    top: 49px;
+}
