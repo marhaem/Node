@@ -2,20 +2,35 @@
 
 import riot from 'riot';
 
+/**
+ * Simplifies passing down routing events.
+ * No unneccessary re-mounting when same route part is hit, so only changes are done.
+ */
+//@TODO: Explore other possibilities instead of binding, like mixin.
 export let RouteableComponent = {
   bind: function bind(obj) {
     obj.Routeable = {
-      _target: null,
-      _tag: null,
+      _target: null,  // for remembering where we previously went so we do not unneccessary re-mounts
+      _tag: null,     // remember tag to pass route events to (needed if not re-mounted)
 
-      next: function next(parts, index, params, routes, node) {
+      /**
+       * Passes down the route to the next page.
+       * If there should be a 404 displayed, subroutes need to contain '/404/'.
+       *
+       * parts:     all route parts as array (e.g. #rooms/kitchen => ['rooms', 'kitchen'])
+       * index:     where we are / depth (e.g. 1 => 'kitchen')
+       * params:    all params that were given as object (e.g. #rooms/kitchen?variant=12&style=red => { variant: '12', style: 'red' })
+       * subroutes: all possible subsubroutes from where we currently are (e.g. rooms may have ['kitchen', 'bath', 'kidsroom'])
+       * node:      html dom node where the next page shall mount itself to
+       */
+      next: function next(parts, index, params, subroutes, node) {
         let target = parts[index];
         if (target) {
-          if (routes.hasOwnProperty(target) === false) {
+          if (subroutes.hasOwnProperty(target) === false) {
             target = '/404/';
           }
 
-          if (routes.hasOwnProperty(target)) {
+          if (subroutes.hasOwnProperty(target)) {
             if (this._target != target) {
               if (this._target !== null) {
                 if (this._tag.onRouteLeave) {
@@ -25,8 +40,8 @@ export let RouteableComponent = {
                 this._tag.unmount(true);
               }
 
-              if (node && routes[target].tagName) {
-                let tag = riot.mount(node, routes[target].tagName, { route: { parts: parts, index: index + 1, params: params } });
+              if (node && subroutes[target].tagName) {
+                let tag = riot.mount(node, subroutes[target].tagName, { route: { parts: parts, index: index + 1, params: params } });
                 if (tag) {
                   this._target = target;
                   this._tag = tag[0];

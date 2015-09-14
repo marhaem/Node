@@ -2,17 +2,24 @@
 
 import riot from 'riot';
 
-import {onRoute} from './internal/onRoute';
 import {parser} from './internal/parser';
 import {hash} from './hash';
 
-export function start(initial, receiver) {
+export function start(initial, root) {
+  // parser
   riot.route.parser(parser);
+
+  // listener
   riot.route(function() {
+    // receive route parts and params
     let route = [];
     Array.prototype.push.apply(route, arguments);
     let params = route.pop();
-    onRoute(receiver, route, params);
+
+    // pass down to root, route depth is zero
+    root.onRouteHit(route, 0, params);
   });
+
+  // set route to initial hash (also triggers listener)
   riot.route(hash(initial));
 }
