@@ -7,12 +7,12 @@ import riot from 'riot';
 riot.tag(
   'chat-input-submit',
   '<div class="sendBox">' +
-    '<div class="input-group">' +
-      '<textarea class="form-control" rows="3" style="resize: none; height: 100px;" name="messageArea" onkeypress="{ onKeyPress }"></textarea>' +
-      '<span class="input-group-btn">' +
-        '<button class="btn btn-default" type="button" onclick="{ onClick }" style="height: 100px;">Send</button>' +
-      '</span>' +
-    '</div>' +
+  '<div class="input-group">' +
+  '<textarea class="form-control" rows="3" style="resize: none; height: 100px;" name="messageArea" onkeypress="{ onKeyPress }" autofocus></textarea>' +
+  '<span class="input-group-btn">' +
+  '<button class="btn btn-default" type="button" onclick="{ onClick }" style="height: 100px;">Send</button>' +
+  '</span>' +
+  '</div>' +
   '</div>',
   function (opts) {
     let send = function send() {
@@ -23,7 +23,7 @@ riot.tag(
       }
     }.bind(this);
 
-  // event handlers
+    // event handlers
     this.onClick = function onClick(event) {
       event.preventDefault();
       event.stopPropagation();
@@ -41,8 +41,7 @@ riot.tag(
         send();
 
         return false;
-      }
-      else {
+      } else {
         return true;
       }
     };
