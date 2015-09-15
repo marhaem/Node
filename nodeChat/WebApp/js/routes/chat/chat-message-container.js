@@ -6,31 +6,52 @@ import riot from 'riot';
 import moment from 'moment';
 
 /**
+ */
+function parseItems(items) {
+  let len = items.length;
+  let i = -1;
+  let item;
+
+  while (++i < len) {
+    item = items[i];
+    item.time = moment.unix(item.timestamp).format('hh:mm');
+  }
+
+  return items;
+}
+
+/**
  * timestamp is in seconds
  */
 function splitByDate(items) {
   let lists = [];
   let i = items.length;
-  let currentIndex = --i;
-  let currentDay = moment.unix(items[currentIndex].timestamp).startOf('day').unix();
-  console.log(currentDay);
+  let index = --i;
+  let timestamp = moment.unix(items[index].timestamp).startOf('day').unix();
+  let today = moment().startOf('day');
+  let daysInThePast = today.diff(moment.unix(timestamp), 'days');
 
   while (--i >= 0) {
-    if (currentDay - items[i].timestamp > 86400) {
-      console.log(items[i].timestamp, currentDay - items[i].timestamp);
-      lists.push({
-        timestamp: currentDay,
-        items: items.slice(i + 2, currentIndex + 1)
-      });
-
-      if (lists.length >= 3) {
-        lists.push({
-          timestamp: currentDay,
-          items: items.slice(0, i)
+    if (items[i].timestamp < timestamp) {
+      if (daysInThePast >= 3) {
+        lists.unshift({
+          daysInThePast: daysInThePast,
+          timestamp: timestamp,
+          items: items.slice(0, i + 1)
         });
-      } else {
-        currentIndex = i;
-        currentDay = moment.unix(items[currentIndex].timestamp).startOf('day').unix();
+
+        break;
+      }
+      else {
+        lists.unshift({
+          daysInThePast: daysInThePast,
+          timestamp: timestamp,
+          items: items.slice(i + 1, index + 1)
+        });
+
+        index = i;
+        timestamp = moment.unix(items[index].timestamp).startOf('day').unix();
+        daysInThePast = today.diff(moment.unix(timestamp), 'days');
       }
     }
   }
@@ -38,36 +59,73 @@ function splitByDate(items) {
   return lists;
 }
 
+function labelLists(lists) {
+  let len = lists.length;
+  let i = -1;
+  let list;
+
+  while (++i < len) {
+    list = lists[i];
+    if (list.daysInThePast === 0) {
+      list.label = 'Today';
+    }
+    else if(list.daysInThePast === 1) {
+      list.label = 'Yesterday';
+    }
+    else if(list.daysInThePast === 2) {
+      list.label = '2 days ago';
+    }
+    else {
+      list.label = 'Older';
+    }
+
+    list.label += ' - ' + moment.unix(list.timestamp).format('DD.MM.YYYY');
+  }
+
+  return lists;
+}
+
+
+//@TODO: pull-left just floats away?
 riot.tag(
   'chat-message-container',
-  '<div each="{ item in opts.items }" class="col-lg-8 col-md-9 col-xs-10 chatMessage { item.mine ? \'pull-right\' : \'pull-left\' }">' +
-  '<div class="message">{ item.message }</div>' +
-  '<div class="upperLine">{ item.sender } - { item.timestamp }</div>' +
+  '<div each="{ list in this.lists }">' +
+    '<div>{ list.label }</div>' +
+    '<div each="{ item in list.items }" class="col-lg-8 col-md-9 col-xs-10 chatMessage { item.mine ? \'pull-right\' : \'pull-left\' }">' +
+      '<div class="message">{ item.message }</div>' +
+      '<div class="upperLine">{ item.from.name } - { item.time }</div>' +
+    '</div>' +
   '</div>',
   function (opts) {
-    //let this.lists = splitByDate(opts.items);
-    this.lists = splitByDate([{
-      timestamp: moment('01/01/2000').unix(),
+    this.lists = labelLists(splitByDate(parseItems(opts.items)));
+
+    /*
+        // change timestamp from unix to actual time
+    msg.timestamp = this.getTime(msg.timestamp) + " - " + this.getDate(msg.timestamp, "DD/MM/YYYY");
+    */
+
+    /*let items = [{
+      timestamp: moment('12.09.2015', 'DD.MM.YYYY').startOf('day').unix(),      // 01.01.2000
+      c: 0
+    }, {
+      timestamp: moment('12.09.2015', 'DD.MM.YYYY').startOf('day').unix() - 1,  // 03.01.2000 23:59:59
       c: 1
     }, {
-      timestamp: moment('01/04/2000').unix() - 1,
+      timestamp: moment('12.09.2015', 'DD.MM.YYYY').startOf('day').unix(),      // 04.01.2000
       c: 2
     }, {
-      timestamp: moment('01/04/2000').unix(),
+      timestamp: moment('12.09.2015', 'DD.MM.YYYY').startOf('day').unix() + 1,  // 04.01.2000 00:00:01
       c: 3
     }, {
-      timestamp: moment('01/04/2000').unix() + 1,
+      timestamp: moment('13.09.2015', 'DD.MM.YYYY').startOf('day').unix(),      // 05.01.2000
       c: 4
     }, {
-      timestamp: moment('01/05/2000').unix(),
+      timestamp: moment('14.09.2015', 'DD.MM.YYYY').startOf('day').unix(),      // 06.01.2000
       c: 5
     }, {
-      timestamp: moment('01/06/2000').unix(),
+      timestamp: moment('15.09.2015', 'DD.MM.YYYY').startOf('day').unix(),      // 07.01.2000
       c: 6
-    }, {
-      timestamp: moment('01/07/2000').unix(),
-      c: 7
-    }]);
-    console.log(this.lists);
+    }];
+    this.lists = splitByDate(items);*/
   }
 );
