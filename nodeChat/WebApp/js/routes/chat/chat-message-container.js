@@ -58,6 +58,46 @@ function splitByDate(items) {
   return lists;
 }
 
+/*
+ * listOld = Container list
+ */
+function merge(listsNew, lists) {
+  console.info("merge");
+  console.log(listsNew, lists); // OK TILL HERE
+
+  var ts = lists[lists.length - 1].timestamp;
+
+  var len = listsNew.length;
+  var i = -1;
+
+  // find matching lists and get items
+  while (++i < len) {
+    if (listsNew[i].timestamp === ts) {
+      Array.prototype.push.apply(lists[lists.length - 1].items, listsNew[i].items);
+      listsNew.splice(i, 1);
+      break;
+    }
+  }
+
+  // consolidate
+  if (listsNew.length > 0) {
+    Array.prototype.push(lists, listsNew);
+    if (lists.length > 4) {
+      //@TODO: merge
+      len = lists.length - 3;
+      i = 0;
+
+      while (++i < len) {
+        Array.prototype.push.apply(lists[0].items, lists[i].items);
+      }
+
+      lists.splice(1, len - 1);
+    }
+  }
+
+  return lists;
+}
+
 function labelLists(lists) {
   let len = lists.length;
   let i = -1;
@@ -84,7 +124,7 @@ function labelLists(lists) {
 riot.tag(
   'chat-message-container',
   '<div each="{ list in this.lists }" class="clearfix">' +
-  '<div>{ list.label }</div>' +
+  '<div class="chat-message-container-label">{ list.label }</div>' +
   '<div each="{ item in list.items }" class="col-lg-8 col-md-9 col-xs-10 chatMessage { item.mine ? \'pull-right\' : \'pull-left\' }">' +
   '<div class="message">{ item.message }</div>' +
   '<div class="upperLine">{ item.from.name } - { item.time }</div>' +
@@ -93,6 +133,25 @@ riot.tag(
   function (opts) {
     this.lists = labelLists(splitByDate(parseItems(opts.items)));
 
+    this.add = function add(items) {
+      if (items.length > 0) {
+        let listsNew;
+        if (items.length > 1) {
+          listsNew = splitByDate(parseItems(items));
+        } else {
+          let timestamp = moment.unix(items[0].timestamp).startOf('day').unix();
+          listsNew = [{
+            daysInThePast: moment().startOf('day').diff(moment.unix(timestamp), 'days'),
+            timestamp: timestamp,
+            items: parseItems(items)
+          }];
+        }
+        console.info("container - chat -> add");
+        console.log(listsNew);
+        this.lists = merge(listsNew, this.lists);
+        //this.update();
+      }
+    };
     /*
         // change timestamp from unix to actual time
     msg.timestamp = this.getTime(msg.timestamp) + " - " + this.getDate(msg.timestamp, "DD/MM/YYYY");

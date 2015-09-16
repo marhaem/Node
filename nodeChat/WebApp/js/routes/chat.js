@@ -38,16 +38,20 @@ riot.tag(
     let tick = function tick() {};
 
     let addMessages = function addMessages(msgs) {
+      console.info("chat.js - routes -> addMessages");
+
+      let mes = [];
       let len = msgs.length;
       let i = -1;
 
       while (++i < len) {
-        messages.push(msgs[i]);
+        mes[i] = msgs[i];
       }
-
+      console.log(mes);
+      this.messageContainer.add(mes);
       this.messageContainer.update();
 
-      //@TODO if !scroll show little button to scroll down at touch (new messages)
+      //@TODO if its my own message ignore it
       if (scroll) {
         $(this.messages).scrollTop($(this.messages)[0].scrollHeight);
       } else {
@@ -69,6 +73,8 @@ riot.tag(
 
     this.send = function send(text) {
       let result = api.send(text);
+      console.info("send - chat.js routes");
+      console.info(result);
       addMessages(result);
     };
 

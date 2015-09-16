@@ -10,7 +10,9 @@ from '../api/cacheUserlist';
 
 export let Chat = function Chat() {
   this.lastConnect = null;
+  this.messages = [];
   this.cache = new CacheUserlist();
+  this.myId = '2';
   this.cache.add([{
     id: '1',
     name: 'wagnera'
@@ -24,7 +26,21 @@ export let Chat = function Chat() {
  * Flags messages coming from yourself by comparing the id in each message
  */
 Chat.prototype.processMessages = function processMessages(messages) {
-  messages[0].sender = 'neumaierm';
+  var len = messages.length;
+  var i = -1;
+  let message;
+  while (++i < len) {
+    message = messages[i];
+    //@TODO: get userid from userdata (current login)
+    // flag my own messages
+    if (message.from === this.myId) {
+      message.mine = true;
+    }
+
+    // expand sender with full information
+    message.from = this.cache.get(message.from);
+  }
+
   return messages;
 };
 
@@ -33,15 +49,22 @@ Chat.prototype.send = function send(text) {
   // "DD/MM/YYYY";
   var unix = moment().unix();
 
-  let messages = [];
-  messages.push({
+  let messages = [{
     mine: true,
     message: text,
-    sender: '1',
+    from: '1',
     timestamp: unix
-  });
+  }];
+
+  //  messages.push({
+  //    mine: true,
+  //    message: text,
+  //    from: '1',
+  //    timestamp: unix
+  //  });
 
   messages = this.processMessages(messages);
+  console.info("processMessages");
   return messages;
 };
 
@@ -69,7 +92,7 @@ Chat.prototype.fetch = function fetch() {
   }];
 
   // get all _unique_ ids form all messages
-  let ids = _.uniq(_.pluck(messages, 'from'));
+  let ids = _.uniq(_.pluck(this.messages, 'from'));
 
   // contains missing ids
   let missing = this.cache.getUnknown(ids);
@@ -77,20 +100,7 @@ Chat.prototype.fetch = function fetch() {
   // @TODO: get data for missing ids
 
   // parse messages
-  var len = messages.length;
-  var i = -1;
-  let message;
-  while (++i < len) {
-    message = messages[i];
-    //@TODO: get userid from userdata (current login)
-    // flag my own messages
-    if (message.from === '2') {
-      message.mine = true;
-    }
-
-    // expand sender with full information
-    message.from = this.cache.get(message.from);
-  }
+  this.processMessages(messages);
 
   return messages;
 };
