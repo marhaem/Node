@@ -41,8 +41,7 @@ function splitByDate(items) {
         });
 
         break;
-      }
-      else {
+      } else {
         lists.unshift({
           daysInThePast: daysInThePast,
           timestamp: timestamp,
@@ -68,14 +67,11 @@ function labelLists(lists) {
     list = lists[i];
     if (list.daysInThePast === 0) {
       list.label = 'Today';
-    }
-    else if(list.daysInThePast === 1) {
+    } else if (list.daysInThePast === 1) {
       list.label = 'Yesterday';
-    }
-    else if(list.daysInThePast === 2) {
+    } else if (list.daysInThePast === 2) {
       list.label = '2 days ago';
-    }
-    else {
+    } else {
       list.label = 'Older';
     }
 
@@ -85,16 +81,14 @@ function labelLists(lists) {
   return lists;
 }
 
-
-//@TODO: pull-left just floats away?
 riot.tag(
   'chat-message-container',
-  '<div each="{ list in this.lists }">' +
-    '<div>{ list.label }</div>' +
-    '<div each="{ item in list.items }" class="col-lg-8 col-md-9 col-xs-10 chatMessage { item.mine ? \'pull-right\' : \'pull-left\' }">' +
-      '<div class="message">{ item.message }</div>' +
-      '<div class="upperLine">{ item.from.name } - { item.time }</div>' +
-    '</div>' +
+  '<div each="{ list in this.lists }" class="clearfix">' +
+  '<div>{ list.label }</div>' +
+  '<div each="{ item in list.items }" class="col-lg-8 col-md-9 col-xs-10 chatMessage { item.mine ? \'pull-right\' : \'pull-left\' }">' +
+  '<div class="message">{ item.message }</div>' +
+  '<div class="upperLine">{ item.from.name } - { item.time }</div>' +
+  '</div>' +
   '</div>',
   function (opts) {
     this.lists = labelLists(splitByDate(parseItems(opts.items)));
