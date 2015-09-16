@@ -16,6 +16,7 @@ riot.tag(
   '</div>',
   function (opts) {
     let send = function send() {
+      console.info("container send");
       let text = $(this.messageArea).val();
       if (/^\s*$/.test(text) === false) {
         opts.master.send(text.replace(/^\s+|\s+$/g, ''));
