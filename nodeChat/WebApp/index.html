@@ -4,32 +4,41 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
     <title>Node Chat</title>
-
-    <!-- Bootstrap -->
-    <link href="jspm_packages/github/twbs/bootstrap@3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="jspm_packages/github/components/jquery@2.1.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="jspm_packages/github/twbs/bootstrap@3.3.5/js/bootstrap.min.js"></script>
 
     <script src="jspm_packages/system.js" type="text/javascript"></script>
     <script src="config.js" type="text/javascript"></script>
     <script>
-      System.import('js/app.js').catch(function(e) {
-        setTimeout(function() {
-          throw e.stack || e;
+      var files = [
+        'bootstrap/css/bootstrap.min.css!',
+        './css/index.css!',
+        'jquery/jquery.min',
+        'bootstrap/js/bootstrap.min'
+      ];
+
+      function check(file) {console.log(file.substring(0, file.indexOf('!')));
+        return System.has(file.substring(0, file.indexOf('!')));
+      }
+
+      files.reduce(function(prev, current) {
+        return prev.then(function() {
+          return System.import(current);
         });
+      }, Promise.resolve()).then(function() {
+        //@todo: fixme
+        //if (files.every(check) === false) {
+        if (false) {
+          //@todo: show in browser by adding to body
+          throw new Error('Missing files, aborting...');
+        }
+        else {
+          System.import('js/app.js').catch(function(error) {
+            setTimeout(function() {
+              throw error.stack || error;
+            });
+          });
+        }
       });
     </script>
   </head>
