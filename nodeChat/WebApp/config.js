@@ -10,19 +10,20 @@ System.config({
   map: {
     "bootstrap": "github:twbs/bootstrap@3.3.5",
     "css": "github:systemjs/plugin-css@0.1.16",
+    "font-hack": "github:chrissimpkins/Hack@1.0.1",
     "i18next-client": "npm:i18next-client@1.10.2",
     "jquery": "github:components/jquery@2.1.4",
     "lodash": "npm:lodash@3.10.1",
     "moment": "github:moment/moment@2.10.6",
-    "riot": "npm:riot@2.2.3",
-    "riotjs": "github:riot/riot@2.2.3",
+    "riot": "npm:riot@2.2.4",
+    "riotjs": "github:riot/riot@2.2.4",
     "traceur": "github:jmcriffey/bower-traceur@0.0.91",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.91",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.4.3"
+      "buffer": "npm:buffer@3.5.0"
     },
     "github:jspm/nodelibs-constants@0.1.0": {
       "constants-browserify": "npm:constants-browserify@0.0.1"
@@ -83,7 +84,7 @@ System.config({
       "preserve": "npm:preserve@0.2.0",
       "repeat-element": "npm:repeat-element@1.1.2"
     },
-    "npm:buffer@3.4.3": {
+    "npm:buffer@3.5.0": {
       "base64-js": "npm:base64-js@0.0.8",
       "ieee754": "npm:ieee754@1.1.6",
       "is-array": "npm:is-array@1.0.1"
@@ -194,7 +195,7 @@ System.config({
       "regex-cache": "npm:regex-cache@0.4.2"
     },
     "npm:minimatch@0.2.14": {
-      "lru-cache": "npm:lru-cache@2.6.5",
+      "lru-cache": "npm:lru-cache@2.7.0",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1",
       "sigmund": "npm:sigmund@1.0.1"
@@ -254,7 +255,7 @@ System.config({
       "is-equal-shallow": "npm:is-equal-shallow@0.1.3",
       "is-primitive": "npm:is-primitive@2.0.0"
     },
-    "npm:riot@2.2.3": {
+    "npm:riot@2.2.4": {
       "chalk": "npm:chalk@1.1.1",
       "chokidar": "npm:chokidar@1.0.5",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -262,7 +263,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.1",
       "shelljs": "npm:shelljs@0.5.3",
-      "simple-dom": "npm:simple-dom@0.2.4",
+      "simple-dom": "npm:simple-dom@0.2.7",
       "simple-html-tokenizer": "npm:simple-html-tokenizer@0.1.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },

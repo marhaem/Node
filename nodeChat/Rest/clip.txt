@@ -1,0 +1,64 @@
+var Hapi = require('hapi');
+var Joi = require('joi');
+var path = require('path');
+var Inert = require('inert');
+
+var messages = [{
+  from: 1,
+  message: "Anyone here?",
+  timestamp: 1442385259
+}, {
+  from: 1,
+  message: "Anyone here?",
+  timestamp: 1442298859
+}];
+
+var server = new Hapi.Server();
+server.connection({
+  port: 3000
+});
+
+server.start(function () {
+  console.log('Server running at:', server.info.uri);
+});
+
+//init
+server.route({
+  method: 'GET',
+  path: '/{param*}',
+  handler: {
+    directory: {
+      path: '.',
+      redirectToSlash: true,
+      index: true
+    }
+  }
+});
+
+// ROUTES FOR:
+// GET
+// - getMessages
+// - getUser
+// POST
+// - sendMessage
+curl -X POST -H "Content-Type: application/json" -d '{ "from": "1", "message": "Hapi is amazingly useful for building APIs.", "timestamp": 1442298859 }' -i http://Moritzs-MacBook-Pro.local:3000/chat/v1/post
+
+/**
+server.route({
+  method: ['PUT', 'POST'],
+  path: '/chat/v1/post',
+  handler: function (req, reply) {
+    console.log(req.payload);
+    var newMessage = req.payload;
+    messages.push(newMessage);
+  },
+  config: {
+    validate: {
+      payload: {
+        from: Joi.string().min(1).max(10),
+        message: Joi.string().min(1).max(500),
+        timestamp: Joi.number().integer()
+      }
+    }
+  }
+});

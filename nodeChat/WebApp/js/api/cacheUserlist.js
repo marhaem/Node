@@ -29,7 +29,7 @@ CacheUserlist.prototype.get = function get(id) {
 
 CacheUserlist.prototype.getUnknown = function getUnknown(ids) {
   return _.difference(ids, _.keys(this.list));
-}
+};
 
 /*
 let list = {
