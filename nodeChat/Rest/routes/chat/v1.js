@@ -5,6 +5,6 @@
 
   module.exports.get = function get() {
     return []
-      .concat(require('./chat/v1').get());
+      .concat(require('./v1/send').get());
   };
 })();

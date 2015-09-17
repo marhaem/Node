@@ -10,7 +10,6 @@ System.config({
   map: {
     "bootstrap": "github:twbs/bootstrap@3.3.5",
     "css": "github:systemjs/plugin-css@0.1.16",
-    "font-hack": "github:chrissimpkins/Hack@1.0.1",
     "i18next-client": "npm:i18next-client@1.10.2",
     "jquery": "github:components/jquery@2.1.4",
     "lodash": "npm:lodash@3.10.1",

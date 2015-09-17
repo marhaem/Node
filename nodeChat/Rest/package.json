@@ -13,10 +13,13 @@
   "author": "Neumaier Moritz",
   "license": "ISC",
   "dependencies": {
+    "bunyan": "^1.5.1",
     "forever": "^0.15.1",
+    "handlebars": "^4.0.2",
     "hapi": "^9.3.1",
     "inert": "^3.0.1",
     "joi": "^6.7.1",
-    "sequelize": "^3.8.0"
+    "sequelize": "^3.8.0",
+    "vision": "^3.0.0"
   }
 }
