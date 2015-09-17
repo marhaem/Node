@@ -1,0 +1,110 @@
+#!/usr/bin/env node
+
+(function () {
+  'use strict';
+
+  /**
+   * Tries to find `key` in `obj`, also tries upper and lower case.
+   */
+  function getFromObject(obj, key) {
+    if (obj.hasOwnProperty(key)) {
+      return obj[key];
+    }
+    else {
+      key = key.toUpperCase();
+      if (obj.hasOwnProperty(key)) {
+        return obj[key];
+      }
+      else {
+        key = key.toLowerCase();
+        if (obj.hasOwnProperty(key)) {
+          return obj[key];
+        }
+        else {
+          return undefined;
+        }
+      }
+    }
+  }
+
+  /**
+   *
+   */
+  function loadConfig(argv, cb) {
+    var path = require('path');
+    var fs = require('fs');
+    var configFile = getFromObject(argv, 'Config') || path.join('config', 'config.json');
+
+    fs.exists(configFile, function existsCB(exists) {
+      if (!exists) {
+        cb(new Error('Configuration file not found: `' + configFile.toString() + '`'));
+      }
+      else {
+        fs.readFile(configFile, function readFileCB(error, data) {
+          if (error) {
+            cb(error);
+          }
+          else {
+            data = JSON.parse(data);
+            cb(undefined, data);
+          }
+        });
+      }
+    });
+  }
+
+  /**
+   * Copies/Ovverrides any available config setting with settings from argv.
+   */
+  function argvToConfig(config, argv) {
+    if (argv) {
+      var available = [{
+        name: 'env',
+        obj: config
+      }, {
+        name: 'port',
+        obj: config.service
+      }];
+      var copy = function copy(element, index, array) {
+        var value = getFromObject(argv, element.name);
+        if (value) {
+          element.obj[element.name] = value;
+        }
+      };
+
+      available.forEach(copy);
+      return config;
+    }
+  }
+
+  /**
+   * Check for any bad config settings.
+   */
+  function fixConfig() {
+    //
+  }
+
+
+// start
+  var argv = require('yargs').argv;
+
+  loadConfig(argv, function loadConfigCB(error, config) {
+    if (error) {
+      console.error(error);
+    }
+    else {
+      config = argvToConfig(config, argv);
+      fixConfig();
+
+      process.env.NODE_ENV = config.env || 'productive';
+      
+      var globals = require('../lib/globals');
+      globals.config = config;
+
+      var app = require('../app');
+      var instance = new app();
+
+      instance.start();
+    }
+  });
+})();

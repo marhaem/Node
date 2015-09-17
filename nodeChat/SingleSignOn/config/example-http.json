@@ -1,0 +1,23 @@
+{
+  "service": {
+    "host": "localhost",
+    "port": 8040
+  },
+  "sql": {
+    "host": "localhost",
+    "port": 5432,
+    "dialect": "postgres",
+    "database": "SingleSignOn",
+    "username": "john",
+    "password": "secret",
+    "schema": "sso"
+  },
+  "mail": {
+    "auth": {
+      "api_key": "key-{{your-api-key}}",
+      "domain": "{{your-domain}}",
+      "user": "bill",
+      "pass": "you-will-never-know"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "SingleSignOn",
+  "description": "Central SingleSignOn Service",
+  "repository": "https://bitbucket.org/andreas-wagner/singlesignon.git",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node ./bin/start"
+  },
+  "author": {
+    "name": "Andreas Wagner",
+    "email": "andy@stanwa.org"
+  },
+  "maintainers": [
+    {
+      "name": "Andreas Wagner",
+      "email": "andy@stanwa.org"
+    }
+  ],
+  "dependencies": {
+    "bcrypt": "^0.8.1",
+    "debug": "^2.1.2",
+    "good": "^5.1.2",
+    "good-console": "^4.1.0",
+    "handlebars": "^3.0.0",
+    "hapi": "^8.2.0",
+    "hapi-auth-hawk": "^2.0.0",
+    "hawk": "^2.3.1",
+    "joi": "^6.0.4",
+    "lodash": "^3.4.0",
+    "moment": "^2.9.0",
+    "nodemailer": "^1.3.2",
+    "nodemailer-mailgun-transport": "^1.0.0",
+    "pg": "^4.3.0",
+    "pg-hstore": "^2.3.1",
+    "sequelize": "^2.0.4",
+    "yargs": "^3.4.5"
+  },
+  "devDependencies": {
+    "hapi-stylus": "^1.0.1",
+    "jade": "^1.9.2",
+    "stylus": "^0.50.0"
+  },
+  "homepage": "https://stanwa.org"
+}
