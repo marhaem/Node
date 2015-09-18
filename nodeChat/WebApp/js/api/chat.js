@@ -1,7 +1,8 @@
-/*jshint esnext:true */
+/*jshint esnext:true, -W069 */
 
 import _ from 'lodash';
 import moment from 'moment';
+import $ from 'jquery';
 
 import {
   CacheUserlist
@@ -45,27 +46,38 @@ Chat.prototype.processMessages = function processMessages(messages) {
 };
 
 Chat.prototype.send = function send(text) {
-  var url = "";
   // "DD/MM/YYYY";
   var unix = moment().unix();
 
-  let messages = [{
-    mine: true,
+  let message = {
+    from: this.myId,
     message: text,
-    from: '1',
     timestamp: unix
-  }];
+  };
 
-  //  messages.push({
-  //    mine: true,
-  //    message: text,
-  //    from: '1',
-  //    timestamp: unix
-  //  });
-
-  messages = this.processMessages(messages);
-  console.info("processMessages");
-  return messages;
+  //send message to server (v1)
+  var self = this;
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+        method: "POST",
+        url: "http://moritzs-macbook-pro.local:3000/chat/v1/send",
+        data: message
+      })
+      .done(function (response) {
+        //
+      })
+      .success(function (response) {
+        console.log('reply: ' + response);
+        console.log('success');
+        let messages = self.processMessages([message]);
+        Array.prototype.push.apply(messages, self.processMessages(response['payload']));
+        console.log(messages);
+        resolve(messages);
+      })
+      .fail(function (response) {
+        reject(response);
+      });
+  });
 };
 
 Chat.prototype.fetch = function fetch() {

@@ -38,8 +38,6 @@ riot.tag(
     let tick = function tick() {};
 
     let addMessages = function addMessages(msgs) {
-      console.info("chat.js - routes -> addMessages");
-
       let mes = [];
       let len = msgs.length;
       let i = -1;
@@ -47,7 +45,6 @@ riot.tag(
       while (++i < len) {
         mes[i] = msgs[i];
       }
-      console.log(mes);
       this.messageContainer.add(mes);
       this.messageContainer.update();
 
@@ -60,8 +57,6 @@ riot.tag(
 
     }.bind(this);
 
-
-
     $(this.messages).scroll(function () {
       if ($(this)[0].scrollHeight - $(this).scrollTop() == $(this).outerHeight()) {
         scroll = true;
@@ -72,10 +67,14 @@ riot.tag(
     });
 
     this.send = function send(text) {
-      let result = api.send(text);
-      console.info("send - chat.js routes");
-      console.info(result);
-      addMessages(result);
+      api.send(text).then(
+        function (messages) {
+          addMessages(messages);
+        },
+        function (error) {
+          //alert(error);
+        }
+      );
     };
 
     // riot events

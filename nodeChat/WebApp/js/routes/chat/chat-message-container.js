@@ -1,4 +1,4 @@
-/*jshint esnext:true */
+/*jshint esnext:true*/
 
 import $ from 'jquery';
 import 'bootstrap';
@@ -62,8 +62,6 @@ function splitByDate(items) {
  * listOld = Container list
  */
 function merge(listsNew, lists) {
-  console.info("merge");
-  console.log(listsNew, lists); // OK TILL HERE
 
   var ts = lists[lists.length - 1].timestamp;
 
@@ -134,20 +132,23 @@ riot.tag(
     this.lists = labelLists(splitByDate(parseItems(opts.items)));
 
     this.add = function add(items) {
+      let timestamp = moment.unix(items[0].timestamp).startOf('day').unix();
       if (items.length > 0) {
         let listsNew;
         if (items.length > 1) {
-          listsNew = splitByDate(parseItems(items));
+
+          listsNew = [{
+            daysInThePast: moment().startOf('day').diff(moment.unix(timestamp), 'days'),
+            timestamp: timestamp,
+            items: parseItems(items)
+          }];
         } else {
-          let timestamp = moment.unix(items[0].timestamp).startOf('day').unix();
           listsNew = [{
             daysInThePast: moment().startOf('day').diff(moment.unix(timestamp), 'days'),
             timestamp: timestamp,
             items: parseItems(items)
           }];
         }
-        console.info("container - chat -> add");
-        console.log(listsNew);
         this.lists = merge(listsNew, this.lists);
         //this.update();
       }

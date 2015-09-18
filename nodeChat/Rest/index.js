@@ -14,7 +14,9 @@ var hapiPlugins = [
 ];
 
 var hapiViews = {
-  engines: { 'html': hapiHtmlViewEngine },
+  engines: {
+    'html': hapiHtmlViewEngine
+  },
   relativeTo: PATH_WEBAPP,
   path: './'
 };
@@ -24,7 +26,9 @@ var hapiRoutes = []
   .concat(require('./routes/chat').get());
 
 var server = new Hapi.Server({
-  debug: { request: ['error', 'uncaught'] },
+  debug: {
+    request: ['error', 'uncaught']
+  },
   mime: { // this does not work somehow...
     override: {
       'text/html': {
@@ -44,16 +48,14 @@ server.connection({
 server.register(hapiPlugins, function registerCB(error) {
   if (error) {
     throw error;
-  }
-  else {
+  } else {
     server.views(hapiViews);
     server.route(hapiRoutes);
 
     server.start(function startCB(error) {
       if (error) {
         throw error;
-      }
-      else {
+      } else {
         console.log('info', 'Server running at: ' + server.info.uri);
       }
     });
