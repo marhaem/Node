@@ -1,4 +1,4 @@
-/*jshint esnext:true, -W069 */
+/*jshint esnext:true, -W069 , -W117*/
 
 import _ from 'lodash';
 import moment from 'moment';
@@ -13,13 +13,13 @@ export let Chat = function Chat() {
   this.lastConnect = null;
   this.messages = [];
   this.cache = new CacheUserlist();
-  this.myId = '2';
+  this.myId = '2'; //@TODO: get userid from userdata (current login)
   this.cache.add([{
-    id: '1',
+    id: '1', //change id into alphanumeric string
     name: 'wagnera'
     }, {
     id: '2',
-    name: 'neumaierm'
+    name: 'neumaierm' //change id into alphanumeric string
   }]);
 };
 
@@ -32,12 +32,11 @@ Chat.prototype.processMessages = function processMessages(messages) {
   let message;
   while (++i < len) {
     message = messages[i];
-    //@TODO: get userid from userdata (current login)
+
     // flag my own messages
     if (message.from === this.myId) {
       message.mine = true;
     }
-
     // expand sender with full information
     message.from = this.cache.get(message.from);
   }
@@ -58,6 +57,7 @@ Chat.prototype.send = function send(text) {
   //send message to server (v1)
   var self = this;
   return new Promise(function (resolve, reject) {
+    //@TODO: add authentification for api service
     $.ajax({
         method: "POST",
         url: "http://moritzs-macbook-pro.local:3000/chat/v1/send",

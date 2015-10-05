@@ -30,17 +30,3 @@ CacheUserlist.prototype.get = function get(id) {
 CacheUserlist.prototype.getUnknown = function getUnknown(ids) {
   return _.difference(ids, _.keys(this.list));
 };
-
-/*
-let list = {
-  '234324-23dfgfdg-324234-sdf-34234': {
-    id: '234324-23dfgfdg-324234-sdf-34234',
-    name: 'Hans Doof'
-  },
-  '134324-23dfgfdg-324234-sdf-34234': {
-    id: '134324-23dfgfdg-324234-sdf-34234',
-    name: 'Hans Doof'
-  },
-
-};
-*/

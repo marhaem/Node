@@ -84,11 +84,9 @@ function merge(listsNew, lists) {
       //@TODO: merge
       len = lists.length - 3;
       i = 0;
-
       while (++i < len) {
         Array.prototype.push.apply(lists[0].items, lists[i].items);
       }
-
       lists.splice(1, len - 1);
     }
   }
@@ -115,7 +113,6 @@ function labelLists(lists) {
 
     list.label += ' - ' + moment.unix(list.timestamp).format('DD.MM.YYYY');
   }
-
   return lists;
 }
 
@@ -150,36 +147,7 @@ riot.tag(
           }];
         }
         this.lists = merge(listsNew, this.lists);
-        //this.update();
       }
     };
-    /*
-        // change timestamp from unix to actual time
-    msg.timestamp = this.getTime(msg.timestamp) + " - " + this.getDate(msg.timestamp, "DD/MM/YYYY");
-    */
-
-    /*let items = [{
-      timestamp: moment('12.09.2015', 'DD.MM.YYYY').startOf('day').unix(),      // 01.01.2000
-      c: 0
-    }, {
-      timestamp: moment('12.09.2015', 'DD.MM.YYYY').startOf('day').unix() - 1,  // 03.01.2000 23:59:59
-      c: 1
-    }, {
-      timestamp: moment('12.09.2015', 'DD.MM.YYYY').startOf('day').unix(),      // 04.01.2000
-      c: 2
-    }, {
-      timestamp: moment('12.09.2015', 'DD.MM.YYYY').startOf('day').unix() + 1,  // 04.01.2000 00:00:01
-      c: 3
-    }, {
-      timestamp: moment('13.09.2015', 'DD.MM.YYYY').startOf('day').unix(),      // 05.01.2000
-      c: 4
-    }, {
-      timestamp: moment('14.09.2015', 'DD.MM.YYYY').startOf('day').unix(),      // 06.01.2000
-      c: 5
-    }, {
-      timestamp: moment('15.09.2015', 'DD.MM.YYYY').startOf('day').unix(),      // 07.01.2000
-      c: 6
-    }];
-    this.lists = splitByDate(items);*/
   }
 );
