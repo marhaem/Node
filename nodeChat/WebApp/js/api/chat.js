@@ -69,8 +69,9 @@ Chat.prototype.send = function send(text) {
       .success(function (response) {
         console.log('reply: ' + response);
         console.log('success');
-        let messages = self.processMessages([message]);
-        Array.prototype.push.apply(messages, self.processMessages(response['payload']));
+        let messages = self.processMessages(response['payload']);
+        // Appends the message a second time
+        // Array.prototype.push.apply(messages, self.processMessages(response['payload']));
         console.log(messages);
         resolve(messages);
       })

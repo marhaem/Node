@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+var main = require('../index');
+
+/*var System = require('systemjs');
+require('config');
+System.import('../index').then(function fulfill(main) {
+  main = main.main;
+  main.start();
+  //
+}, function reject(error){
+  setTimeout(function(){
+    console.log(error);
+  });
+});*/
