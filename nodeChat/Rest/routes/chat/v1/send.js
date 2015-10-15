@@ -1,14 +1,17 @@
 /* global module */
-/* global require */
-var Joi = require('joi');
-var Sequelize = require('./../../../lib/db');
-var messageTable = require('./../../../lib/db/message');
 
-(function () {
-  'use strict';
-  var sequelize = Sequelize.init();
+import Joi from 'joi';
+import {db} from './../../../lib/db';
+import {messageTable} from './../../../lib/db/message';
 
-  module.exports.get = function get() {
+var sequelize = db.init().then(
+  function dbInitSuccess(sequelize){console.log('ok');}
+).catch(
+  function dbInitFailed(error){console.log('nicht ok', error);}
+);
+
+export let send = {
+  get: function () {
     return [{
       method: 'POST',
       path: '/chat/v1/send',
@@ -16,12 +19,9 @@ var messageTable = require('./../../../lib/db/message');
         var unix = request.payload.timestamp;
         var messages = [request.payload];
         console.log('Post message: ' + messages[0].message);
-        // check db for new entries since last check
-        var Message = messageTable.define(sequelize);
+        // check db for new entries since last checks
+        var Message = messageTable.index(sequelize);
 
-        /*
-          for reload :
-        */
         Message.create({
           message: messages[0].message,
           from: messages[0].from,
@@ -74,6 +74,6 @@ var messageTable = require('./../../../lib/db/message');
           }
         }
       }
-        }];
-  };
-})();
+    }];
+  }
+};

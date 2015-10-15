@@ -1,6 +1,6 @@
-var Sequelize = require('sequelize');
+import Sequelize from 'sequelize'; 
 
-module.exports = {
+export let user = {
   define: function (sequelize) {
     return sequelize.define('User', {
       firstName: {

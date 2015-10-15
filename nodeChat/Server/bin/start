@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+(function () {
+  'use strict';
+
+  let System = require('systemjs');
+  let cfg = require('./../config');
+  console.log(cfg);
+
+  function onReject(error) {
+    setTimeout(function errorTime() {
+      //throw error;
+      console.log('start failed!' + error);
+    });
+  }
+
+  System.import('./index').then(
+    function onResolve(module) {
+      module = module.index;
+
+      let server = new module();
+      server.start().then(
+        function serverStartResolved() {
+          // do stuff
+          console.log('info', 'Server running at: ' + server.info.uri);
+        },
+        onReject
+      );
+    },
+    onReject
+  );
+})();

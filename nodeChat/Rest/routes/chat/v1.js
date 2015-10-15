@@ -1,10 +1,8 @@
-/*global module, require */
+import {send} from './v1/send';
 
-(function () {
-  'use strict';
-
-  module.exports.get = function get() {
+export let v1 = {
+  get: function () {
     return []
-      .concat(require('./v1/send').get());
-  };
-})();
+      .concat(send.get());
+  }
+};

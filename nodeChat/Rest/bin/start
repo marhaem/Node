@@ -1,15 +1,38 @@
 #!/usr/bin/env node
 
-var main = require('../index');
+(function () {
+  'use strict';
 
-/*var System = require('systemjs');
-require('config');
-System.import('../index').then(function fulfill(main) {
-  main = main.main;
-  main.start();
-  //
-}, function reject(error){
-  setTimeout(function(){
-    console.log(error);
-  });
-});*/
+  let System = require('systemjs');
+  require('./../config');
+
+  function onReject(error) {
+    setTimeout(function errorTime() {
+      //throw error;
+      console.log('start failed!' + error);
+    });
+  }
+
+  System.import('./index').then(
+    function onResolve(module) {
+      //module = module.index;
+
+      let server = module.index;
+
+      server.start().then(
+        function serverStartResolved() {
+          // @FIX: get the value from server 
+          console.log('info', 'Server running at: ', 'http://moritzs-macbook-pro.local:3000/#chat');
+        }
+      ).catch(
+        function (val) {
+          console.log(val);
+        }
+      );
+    }
+  ).catch(
+    function (val) {
+      console.log(val);
+    }
+  );
+})();

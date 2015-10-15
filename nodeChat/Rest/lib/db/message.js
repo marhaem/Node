@@ -1,7 +1,7 @@
-var Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
 
-module.exports = {
-  define: function (sequelize) {
+export let messageTable = {
+  index: function (sequelize) {
     return sequelize.define('Messages', {
       message: {
         type: Sequelize.STRING

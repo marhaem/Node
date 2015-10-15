@@ -1,12 +1,11 @@
 /* global module */
 /* global require */
-var Joi = require('joi');
-var Sequelize = require('sequelize');
+import Sequelize from 'sequelize';
+import Joi from 'joi';
 
-(function () {
-  'use strict';
 
-  module.exports.get = function get() {
+export let get = {
+  get: function () {
     return [{
       method: 'GET',
       path: '/chat/v1/get',
@@ -30,5 +29,5 @@ var Sequelize = require('sequelize');
         }
       }
     }];
-  };
-})();
+  }
+};

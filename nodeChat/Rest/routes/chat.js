@@ -1,10 +1,10 @@
-/*global module, require */
+/*global module */
 
-(function () {
-  'use strict';
+import {v1} from './chat/v1';
 
-  module.exports.get = function get() {
+export let chatRoute = {
+  get: function() {
     return []
-      .concat(require('./chat/v1').get());
-  };
-})();
+      .concat(v1.get());
+  }
+};

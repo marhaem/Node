@@ -1,17 +1,28 @@
-var Sequelize = require('sequelize');
+import pg from 'pg';
+import pgHstore from 'pg-hstore';
+import Sequelize from 'sequelize';
 
-module.exports = {
-    init: function(cb) {
-        var sequelize = new Sequelize('nodeChat', 'wAppUser', 'work', {
-            host: 'localhost',
-            dialect: 'postgres'
+export let db = {
+  init: function () {
+    return new Promise(function (resolved, rejected) {
+      var sequelize = new Sequelize('nodeChat', 'wAppUser', 'work', {
+        host: 'localhost',
+        dialect: 'postgres',
+        native: false
+      });
+      sequelize.sync({
+        force: true
+      }).then(
+        function() {
+          console.log('presence');
+          resolved(sequelize);
+        }).catch(
+        function(error) {
+          rejected(error);
+          console.log('fucked up');
         });
-        sequelize.sync({ force: true }).then(function syncFulfilled() {
-          return cb(sequelize);
-        }, function syncRejected(error){
-          //
-        });
-    }
+    });
+  }
 };
 
 /*(function(){
@@ -19,7 +30,7 @@ module.exports = {
     host: 'localhost',
     dialect: 'postgres'
   });
-
+as
   var user = tableUser.define(sequelize);
   var message = tableMessage.define(sequelize);
 
