@@ -15,14 +15,6 @@ var hapiPlugins = [
   Vision
 ];
 
-var hapiViews = {
-  engines: {
-    'html': hapiHtmlViewEngine
-  },
-  relativeTo: PATH_WEBAPP,
-  path: './'
-};
-
 import {
   publicRoute
 }
@@ -32,12 +24,8 @@ import {
 }
 from './routes/chat';
 
-var hapiRoutes = []
-  .concat(publicRoute.get(PATH_WEBAPP))
-  .concat(chatRoute.get());
-
 export let index = {
-  start: function () {
+  start: function (db) {
     return new Promise(function (resolve, reject) {
       var server = new Hapi.Server({
         debug: {
@@ -54,7 +42,19 @@ export let index = {
           }
         }
       });
-      
+
+      var hapiRoutes = []
+        .concat(publicRoute.get(PATH_WEBAPP))
+        .concat(chatRoute.get(db));
+
+      var hapiViews = {
+        engines: {
+          'html': hapiHtmlViewEngine
+        },
+        relativeTo: PATH_WEBAPP,
+        path: './'
+      };
+
       server.connection({
         port: 3000
       });
@@ -65,7 +65,6 @@ export let index = {
         } else {
           server.views(hapiViews);
           server.route(hapiRoutes);
-
           server.start(function startCB(error) {
             if (error) {
               reject(new Error("An Error occured! -- " + error));

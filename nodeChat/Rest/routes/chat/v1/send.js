@@ -1,17 +1,28 @@
 /* global module */
 
 import Joi from 'joi';
-import {db} from './../../../lib/db';
-import {messageTable} from './../../../lib/db/message';
-
-var sequelize = db.init().then(
-  function dbInitSuccess(sequelize){console.log('ok');}
-).catch(
-  function dbInitFailed(error){console.log('nicht ok', error);}
-);
+import {
+  db
+}
+from './../../../lib/db';
+import {
+  messageTable
+}
+from './../../../lib/db/message';
 
 export let send = {
-  get: function () {
+  get: function (dbc) {
+
+    var sequelize = db.init(dbc).then(
+      function dbInitSuccess(sequelize) {
+        console.log('ok');
+      }
+    ).catch(
+      function dbInitFailed(error) {
+        console.log('nicht ok', error);
+      }
+    );
+
     return [{
       method: 'POST',
       path: '/chat/v1/send',
@@ -20,13 +31,33 @@ export let send = {
         var messages = [request.payload];
         console.log('Post message: ' + messages[0].message);
         // check db for new entries since last checks
-        var Message = messageTable.index(sequelize);
+        var Message = messageTable.index(dbc);
 
-        Message.create({
-          message: messages[0].message,
-          from: messages[0].from,
-          timestamp: unix
-        }).then(function () {
+        Message.sync().then(function () {
+          Message.create({
+            message: messages[0].message,
+            from: messages[0].from
+          })/*.then(function(){
+            Message.findAll({
+              attributes: [
+                'from',
+                'message',
+                'timestamp'
+              ],
+              where: [
+                timestamp: {
+                  $and: {
+                    $lte: ,
+                    $gte: messages[0].timestamp
+                  } 
+                }
+              ]
+            })
+          });*/
+          
+        });
+
+        /*.then(function () {
           Message.findAll({
             attributes: [
               'from',
@@ -62,7 +93,7 @@ export let send = {
           });
         }).catch(function (error) {
           console.log(error);
-        });
+        });*/
 
       },
       config: {
@@ -70,7 +101,7 @@ export let send = {
           payload: {
             from: Joi.string().min(1).max(10),
             message: Joi.string().min(1).max(1000),
-            timestamp: Joi.number().integer()
+            timestamp: Joi.date(),
           }
         }
       }

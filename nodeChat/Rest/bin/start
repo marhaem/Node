@@ -3,23 +3,32 @@
 (function () {
   'use strict';
 
+  let Sequelize = require('sequelize');
+
+  let db = new Sequelize('nodeChat', 'wAppUser', 'work', {
+    dialect: 'postgres',
+    pool: {
+      maxConnections: 5,
+      maxIdleTime: 30
+    },
+    timezone: '+00:00'
+  });
+
   let System = require('systemjs');
   require('./../config');
-
+  //lets see hm
   function onReject(error) {
     setTimeout(function errorTime() {
       //throw error;
       console.log('start failed!' + error);
     });
-  }
+  };
 
   System.import('./index').then(
     function onResolve(module) {
-      //module = module.index;
-
       let server = module.index;
 
-      server.start().then(
+      server.start(db).then(
         function serverStartResolved() {
           // @FIX: get the value from server 
           console.log('info', 'Server running at: ', 'http://moritzs-macbook-pro.local:3000/#chat');

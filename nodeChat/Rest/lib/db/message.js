@@ -2,7 +2,7 @@ import Sequelize from 'sequelize';
 
 export let messageTable = {
   index: function (sequelize) {
-    return sequelize.define('Messages', {
+    var Messages = sequelize.define('Messages', {
       message: {
         type: Sequelize.STRING
       },
@@ -16,5 +16,7 @@ export let messageTable = {
       createdAt: 'timestamp',
       updatedAt: false
     });
+
+    return Messages;
   }
 };

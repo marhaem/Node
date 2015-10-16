@@ -3,8 +3,8 @@
 import {v1} from './chat/v1';
 
 export let chatRoute = {
-  get: function() {
+  get: function(db) {
     return []
-      .concat(v1.get());
+      .concat(v1.get(db));
   }
 };
