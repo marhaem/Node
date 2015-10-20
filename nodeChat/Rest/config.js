@@ -16,18 +16,18 @@ System.config({
     "babel": "npm:babel-core@5.8.25",
     "babel-core": "npm:babel-core@5.8.25",
     "babel-runtime": "npm:babel-runtime@5.8.25",
-    "core-js": "npm:core-js@1.2.1",
+    "core-js": "npm:core-js@1.2.2",
     "fs": "npm:fs@0.0.2",
     "handlebars": "github:components/handlebars.js@4.0.3",
-    "hapi": "npm:hapi@10.4.1",
+    "hapi": "npm:hapi@10.5.0",
     "inert": "npm:inert@3.1.0",
     "joi": "github:capaj/joi-browser@5.2.0",
     "moment": "npm:moment@2.10.6",
     "moment-timezone": "npm:moment-timezone@0.4.1",
     "path": "npm:path@0.12.7",
-    "pg": "npm:pg@4.4.2",
+    "pg": "npm:pg@4.4.3",
     "pg-hstore": "npm:pg-hstore@2.3.2",
-    "sequelize": "npm:sequelize@3.12.0",
+    "sequelize": "npm:sequelize@3.12.2",
     "vision": "npm:vision@3.0.0",
     "github:capaj/joi-browser@5.2.0": {
       "hoek": "github:capaj/hoek-browser@2.12.0",
@@ -223,7 +223,7 @@ System.config({
       "boom": "npm:boom@2.9.0",
       "hoek": "npm:hoek@2.16.3",
       "http": "github:jspm/nodelibs-http@1.7.1",
-      "joi": "npm:joi@6.9.0",
+      "joi": "npm:joi@6.9.1",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:cipher-base@1.0.1": {
@@ -232,7 +232,7 @@ System.config({
       "stream": "github:jspm/nodelibs-stream@0.1.0",
       "string_decoder": "github:jspm/nodelibs-string_decoder@0.1.0"
     },
-    "npm:concat-stream@1.5.0": {
+    "npm:concat-stream@1.5.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "inherits": "npm:inherits@2.0.1",
       "readable-stream": "npm:readable-stream@2.0.2",
@@ -245,8 +245,9 @@ System.config({
       "boom": "npm:boom@2.9.0",
       "hoek": "npm:hoek@2.16.3"
     },
-    "npm:core-js@1.2.1": {
+    "npm:core-js@1.2.2": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
@@ -331,7 +332,7 @@ System.config({
     "npm:generic-pool@2.2.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:hapi@10.4.1": {
+    "npm:hapi@10.5.0": {
       "accept": "npm:accept@1.1.0",
       "ammo": "npm:ammo@1.0.1",
       "boom": "npm:boom@2.9.0",
@@ -348,7 +349,7 @@ System.config({
       "https": "github:jspm/nodelibs-https@0.1.0",
       "iron": "npm:iron@2.1.3",
       "items": "npm:items@1.1.1",
-      "joi": "npm:joi@6.9.0",
+      "joi": "npm:joi@6.9.1",
       "kilt": "npm:kilt@1.1.1",
       "mimos": "npm:mimos@2.0.2",
       "os": "github:jspm/nodelibs-os@0.1.0",
@@ -371,7 +372,7 @@ System.config({
     "npm:heavy@3.0.1": {
       "boom": "npm:boom@2.9.0",
       "hoek": "npm:hoek@2.16.3",
-      "joi": "npm:joi@6.9.0",
+      "joi": "npm:joi@6.9.1",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:hoek@2.16.3": {
@@ -391,7 +392,7 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "hoek": "npm:hoek@2.16.3",
       "items": "npm:items@1.1.1",
-      "joi": "npm:joi@6.9.0",
+      "joi": "npm:joi@6.9.1",
       "lru-cache": "npm:lru-cache@2.7.0",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
@@ -413,7 +414,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
-    "npm:joi@6.9.0": {
+    "npm:joi@6.9.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "hoek": "npm:hoek@2.16.3",
@@ -522,10 +523,14 @@ System.config({
     "npm:pg-hstore@2.3.2": {
       "underscore": "npm:underscore@1.8.3"
     },
-    "npm:pg-types@1.6.0": {
-      "buffer": "github:jspm/nodelibs-buffer@0.1.0"
+    "npm:pg-types@1.10.0": {
+      "ap": "npm:ap@0.2.0",
+      "postgres-array": "npm:postgres-array@1.0.0",
+      "postgres-bytea": "npm:postgres-bytea@1.0.0",
+      "postgres-date": "npm:postgres-date@1.0.0",
+      "postgres-interval": "npm:postgres-interval@1.0.0"
     },
-    "npm:pg@4.4.2": {
+    "npm:pg@4.4.3": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "buffer-writer": "npm:buffer-writer@1.0.0",
@@ -536,7 +541,7 @@ System.config({
       "net": "github:jspm/nodelibs-net@0.1.2",
       "packet-reader": "npm:packet-reader@0.2.0",
       "pg-connection-string": "npm:pg-connection-string@0.1.3",
-      "pg-types": "npm:pg-types@1.6.0",
+      "pg-types": "npm:pg-types@1.10.0",
       "pgpass": "npm:pgpass@0.0.3",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "semver": "npm:semver@4.3.6",
@@ -552,6 +557,12 @@ System.config({
       "split": "npm:split@0.3.3",
       "stream": "github:jspm/nodelibs-stream@0.1.0",
       "util": "github:jspm/nodelibs-util@0.1.0"
+    },
+    "npm:postgres-bytea@1.0.0": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0"
+    },
+    "npm:postgres-interval@1.0.0": {
+      "xtend": "npm:xtend@4.0.0"
     },
     "npm:process-nextick-args@1.0.3": {
       "process": "github:jspm/nodelibs-process@0.1.2"
@@ -607,7 +618,7 @@ System.config({
     "npm:semver@5.0.3": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
-    "npm:sequelize@3.12.0": {
+    "npm:sequelize@3.12.2": {
       "bluebird": "npm:bluebird@2.10.2",
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "depd": "npm:depd@1.1.0",
@@ -658,7 +669,7 @@ System.config({
       "hoek": "npm:hoek@2.16.3",
       "iron": "npm:iron@2.1.3",
       "items": "npm:items@1.1.1",
-      "joi": "npm:joi@6.9.0",
+      "joi": "npm:joi@6.9.1",
       "querystring": "github:jspm/nodelibs-querystring@0.1.0"
     },
     "npm:stream-browserify@1.0.0": {
@@ -716,7 +727,7 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "hoek": "npm:hoek@2.16.3",
       "items": "npm:items@1.1.1",
-      "joi": "npm:joi@6.9.0",
+      "joi": "npm:joi@6.9.1",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
@@ -725,7 +736,7 @@ System.config({
       "indexof": "npm:indexof@0.0.1"
     },
     "npm:wellknown@0.4.0": {
-      "concat-stream": "npm:concat-stream@1.5.0",
+      "concat-stream": "npm:concat-stream@1.5.1",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "minimist": "npm:minimist@1.1.3",
       "process": "github:jspm/nodelibs-process@0.1.2"
