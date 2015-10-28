@@ -1,4 +1,4 @@
-/* global module */
+/*jshint esnext:true */
 
 import Joi from 'joi';
 import {
@@ -11,33 +11,22 @@ import {
 from './../../../lib/db/message';
 
 export let send = {
-  get: function (dbc) {
-
-    var sequelize = db.init(dbc).then(
-      function dbInitSuccess(sequelize) {
-        console.log('ok');
-      }
-    ).catch(
-      function dbInitFailed(error) {
-        console.log('nicht ok', error);
-      }
-    );
-
+  get: function () {
     return [{
       method: 'POST',
       path: '/chat/v1/send',
       handler: function (request, reply) {
-        var unix = request.payload.timestamp;
-        var messages = [request.payload];
+        let unix = request.payload.timestamp;
+        let messages = [request.payload];
         console.log('Post message: ' + messages[0].message);
         // check db for new entries since last checks
-        var Message = messageTable.index(dbc);
+        let Message = messageTable.index();
 
         Message.sync().then(function () {
           Message.create({
             message: messages[0].message,
             from: messages[0].from
-          })/*.then(function(){
+          });/*.then(function(){
             Message.findAll({
               attributes: [
                 'from',
@@ -49,12 +38,12 @@ export let send = {
                   $and: {
                     $lte: ,
                     $gte: messages[0].timestamp
-                  } 
+                  }
                 }
               ]
             })
           });*/
-          
+
         });
 
         /*.then(function () {

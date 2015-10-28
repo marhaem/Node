@@ -1,8 +1,11 @@
+/*jshint esnext:true */
+
 import Sequelize from 'sequelize';
+import {db} from '../db';
 
 export let messageTable = {
-  index: function (sequelize) {
-    var Messages = sequelize.define('Messages', {
+  index: function index() {
+    return db.sequelize.define('Messages', {
       message: {
         type: Sequelize.STRING
       },
@@ -16,7 +19,5 @@ export let messageTable = {
       createdAt: 'timestamp',
       updatedAt: false
     });
-
-    return Messages;
   }
 };

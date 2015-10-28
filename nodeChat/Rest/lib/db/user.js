@@ -1,8 +1,11 @@
-import Sequelize from 'sequelize'; 
+/*jshint esnext:true */
+
+import Sequelize from 'sequelize';
+import {db} from '../db';
 
 export let user = {
-  define: function (sequelize) {
-    return sequelize.define('User', {
+  define: function () {
+    return db.sequelize.define('User', {
       firstName: {
         type: Sequelize.STRING
       },
@@ -18,15 +21,3 @@ export let user = {
     });
   }
 };
-
-/*function define(sequelize) {
-  return sequelize.define('user', {
-    firstName: {
-      type: Sequelize.STRING
-    },
-    lastName: {
-      type: Sequelize.STRING
-    }
-  });
-};
-*/

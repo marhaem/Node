@@ -5,7 +5,7 @@
 
   let Sequelize = require('sequelize');
 
-  let db = new Sequelize('nodeChat', 'wAppUser', 'work', {
+  let sequelize = new Sequelize('nodeChat', 'wAppUser', 'work', {
     dialect: 'postgres',
     pool: {
       maxConnections: 5,
@@ -16,32 +16,60 @@
 
   let System = require('systemjs');
   require('./../config');
-  //lets see hm
+
   function onReject(error) {
     setTimeout(function errorTime() {
       //throw error;
       console.log('start failed!' + error);
     });
-  };
+  }
+
+  function resolveHost() {
+    return new Promise(function(resolve, reject) {
+      System.import('os').then(
+        function importOsResolved(os) {
+          System.import('dns').then(
+            function importDnsResolved(dns) {
+              let hostname = os.hostname();
+              dns.lookup(hostname, function (error, address, family) {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve({ name: hostname, ip: address });
+                }
+              });
+            },
+            reject
+          );
+        },
+        reject
+      );
+    });
+  }
+
+  function start(_server) {
+    _server.start(sequelize).then(
+      function serverStartResolved(server) {
+        //
+      },
+      onReject
+    );
+  }
 
   System.import('./index').then(
-    function onResolve(module) {
-      let server = module.index;
+    function importIndexResolved(_server) {
+      _server = _server.index;
 
-      server.start(db).then(
-        function serverStartResolved() {
-          // @FIX: get the value from server 
-          console.log('info', 'Server running at: ', 'http://moritzs-macbook-pro.local:3000/#chat');
-        }
-      ).catch(
-        function (val) {
-          console.log(val);
+      resolveHost().then(
+        function hostResolved(host) {
+          console.log('Local IP for `' + host.name + '`: ' + host.ip);
+          start(_server);
+        },
+        function hostRejected() {
+          start(_server);
         }
       );
-    }
-  ).catch(
-    function (val) {
-      console.log(val);
-    }
+    },
+    onReject
   );
 })();
