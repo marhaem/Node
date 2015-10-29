@@ -1,14 +1,21 @@
-/*jshint esnext:true*/
+/*global System*/
+/*jshint esnext:true, -W069*/
 
-import {db} from './lib/db';
-import {WebServer} from './lib/webserver';
+import {Database} from './lib/Database';
 
 export let index = {
   start: function (sequelize) {
     return new Promise(function (resolve, reject) {
-      db.init(sequelize).then(
+      Database.init(sequelize).then(
         function dbInitResolved(_sequelize) {
-          WebServer.init().then(resolve, reject);
+          System.import('./lib/WebServer').then(
+            function importResolved(WebServer) {
+              WebServer = WebServer.WebServer;
+
+              WebServer.init().then(resolve, reject);
+            },
+            reject
+          );
         },
         reject
       );

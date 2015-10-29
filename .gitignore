@@ -3,3 +3,4 @@ nodeChat/WebApp/jspm_packages/
 nodeChat/WebApp/node_modules/
 nodeChat/WebApp/npm-debug.log
 nodeChat/Rest/jspm_packages/
+nodeChat/Rest/config/config.json

@@ -5,14 +5,18 @@
 
   let Sequelize = require('sequelize');
 
-  let sequelize = new Sequelize('nodeChat', 'wAppUser', 'work', {
-    dialect: 'postgres',
-    pool: {
-      maxConnections: 5,
-      maxIdleTime: 30
-    },
-    timezone: '+00:00'
-  });
+  function sequelizeInit(config) {
+    return new Sequelize(config['database'], config['username'], config['password'], {
+      host: config['host'],
+      port: config['port'],
+      dialect: config['dialect'],
+      pool: {
+        maxConnections: 5,
+        maxIdleTime: 30
+      },
+      timezone: '+00:00'
+    });
+  }
 
   let System = require('systemjs');
   require('./../config');
@@ -21,6 +25,17 @@
     setTimeout(function errorTime() {
       //throw error;
       console.log('start failed!' + error);
+    });
+  }
+
+  function loadConfig() {
+    return new Promise(function(resolve, reject) {
+      System.import('./config/config.json!').then(
+        function importConfigResolved(config) {
+          resolve(config);
+        },
+        reject
+      );
     });
   }
 
@@ -47,7 +62,7 @@
     });
   }
 
-  function start(_server) {
+  function start(_server, sequelize) {
     _server.start(sequelize).then(
       function serverStartResolved(server) {
         //
@@ -56,18 +71,25 @@
     );
   }
 
-  System.import('./index').then(
-    function importIndexResolved(_server) {
-      _server = _server.index;
+  loadConfig().then(
+    function loadConfigResolved(config) {
+      let sequelize = sequelizeInit(config['database']);
 
-      resolveHost().then(
-        function hostResolved(host) {
-          console.log('Local IP for `' + host.name + '`: ' + host.ip);
-          start(_server);
+      System.import('./index').then(
+        function importIndexResolved(_server) {
+          _server = _server.index;
+
+          resolveHost().then(
+            function hostResolved(host) {
+              console.log('Local IP for `' + host.name + '`: ' + host.ip);
+              start(_server, sequelize);
+            },
+            function hostRejected() {
+              start(_server, sequelize);
+            }
+          );
         },
-        function hostRejected() {
-          start(_server);
-        }
+        onReject
       );
     },
     onReject

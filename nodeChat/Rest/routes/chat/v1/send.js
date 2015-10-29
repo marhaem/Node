@@ -1,14 +1,9 @@
-/*jshint esnext:true */
+/*jshint esnext:true*/
 
 import Joi from 'joi';
-import {
-  db
-}
-from './../../../lib/db';
-import {
-  messageTable
-}
-from './../../../lib/db/message';
+import {Database} from '../../../lib/Database';
+
+let TableMessages = Database.tables.messages;
 
 export let send = {
   get: function () {
@@ -22,8 +17,7 @@ export let send = {
         // check db for new entries since last checks
         let Message = messageTable.index();
 
-        Message.sync().then(function () {
-          Message.create({
+          TableMessages.create({
             message: messages[0].message,
             from: messages[0].from
           });/*.then(function(){
@@ -43,8 +37,6 @@ export let send = {
               ]
             })
           });*/
-
-        });
 
         /*.then(function () {
           Message.findAll({

@@ -1,8 +1,7 @@
-/* global module */
-/* global require */
+/*jshint esnext:true*/
+
 import Sequelize from 'sequelize';
 import Joi from 'joi';
-
 
 export let get = {
   get: function () {

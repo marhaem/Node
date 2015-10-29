@@ -51,6 +51,7 @@
       "hapi": "npm:hapi@^10.4.0",
       "inert": "npm:inert@^3.1.0",
       "joi": "github:capaj/joi-browser@^5.2.0",
+      "json": "github:systemjs/plugin-json@^0.1.0",
       "moment": "npm:moment@^2.10.6",
       "moment-timezone": "npm:moment-timezone@^0.4.1",
       "os": "github:jspm/nodelibs-os@^0.1.0",
