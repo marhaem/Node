@@ -3,18 +3,22 @@
 (function () {
   'use strict';
 
+  let Bunyan = require('bunyan');
+
   let Sequelize = require('sequelize');
 
   function sequelizeInit(config) {
     return new Sequelize(config['database'], config['username'], config['password'], {
       host: config['host'],
       port: config['port'],
+      protocol: config['protocol'],
       dialect: config['dialect'],
       pool: {
         maxConnections: 5,
         maxIdleTime: 30
       },
-      timezone: '+00:00'
+      timezone: '+00:00',
+      logging: false
     });
   }
 
@@ -63,7 +67,7 @@
   }
 
   function start(_server, sequelize) {
-    _server.start(sequelize).then(
+    _server.start(Bunyan, sequelize).then(
       function serverStartResolved(server) {
         //
       },

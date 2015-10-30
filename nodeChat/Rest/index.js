@@ -4,7 +4,7 @@
 import {Database} from './lib/Database';
 
 export let index = {
-  start: function (sequelize) {
+  start: function (Bunyan, sequelize) {
     return new Promise(function (resolve, reject) {
       Database.init(sequelize).then(
         function dbInitResolved(_sequelize) {
@@ -12,7 +12,7 @@ export let index = {
             function importResolved(WebServer) {
               WebServer = WebServer.WebServer;
 
-              WebServer.init().then(resolve, reject);
+              WebServer.init(Bunyan).then(resolve, reject);
             },
             reject
           );
