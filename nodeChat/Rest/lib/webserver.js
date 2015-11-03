@@ -1,6 +1,7 @@
 /*global System, __moduleName, console*/
 /*jshint esnext:true*/
 
+import Process from 'process';
 import Fs from 'fs';
 import Path from 'path';
 import Hapi from 'hapi';
@@ -9,8 +10,7 @@ import Vision from 'vision';
 import HapiBunyan from 'hapi-bunyan';
 import hapiHtmlViewEngine from 'handlebars';
 
-//@TODO: try process.cwd() === path.resolve('')
-const __root = Path.normalize(Path.dirname(System.normalizeSync('index', __moduleName).replace(/^[^:]*:\/*/g, '')));
+const __root = Process.cwd().replace(/\\|\//g, Path.sep);
 const PATH_LOGFILES = Path.join(__root, 'logs');
 const PATH_WEBAPP = Path.join(__root, '..', 'WebApp');
 

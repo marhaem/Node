@@ -33,6 +33,7 @@ System.config({
     "path": "npm:path@0.12.7",
     "pg": "npm:pg@4.4.3",
     "pg-hstore": "npm:pg-hstore@2.3.2",
+    "process": "github:jspm/nodelibs-process@0.1.2",
     "sequelize": "npm:sequelize@3.12.2",
     "vision": "npm:vision@3.0.0",
     "github:capaj/joi-browser@5.2.0": {
