@@ -4,11 +4,22 @@
 This is ...
 
 ## Installation
-git clone blubb
-cd <nodeChatRestDir>
-npm install
+install nodejs >= 4.2.1
+install postgres
 
-This will also install PM2 (http://pm2.keymetrics.io/)
+@TODO: setup github credentials within jspm/npm (or you will be asked mid-ways)
+
+git clone http://192.168.1.73:8080/tfs/mows/_git/Node
+cd Node/nodeChat/Rest
+npm install (This will also install PM2 (http://pm2.keymetrics.io/))
+jspm install
+
+cp config/example.json config/config.json
+nano config/config.json
+- complete postgres configuration
+
+Create Database within postgres
+
 
 ### TODO here
 - also install the WebApp along
