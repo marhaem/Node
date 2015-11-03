@@ -21,10 +21,9 @@ export let WebServer = {
     return new Promise(function (resolve, reject) {
       // make sure log path exists
       Fs.mkdir(PATH_LOGFILES, 0x777, function mkdirCB(error) {
-        if (error) {
-          if (error.code !== 'EEXIST') {  // ignore the error if the folder already exists
-            reject(error);
-          }
+        if (error && error.code !== 'EEXIST') {
+          // only reject errors other than folder already exists
+          reject(error);
         }
         else {
           // start server
@@ -51,7 +50,7 @@ export let WebServer = {
             register: Vision,
             options: {}
           }, {
-            register: HapiBunyan,
+            register: HapiBunyan, //@TODO take a look at hapi-bunyan/lib/index.js and fix the on every request initialization as well as on request-error to contain url and parameter information
             options: {
               logger: Bunyan.createLogger({
                 name: 'WebServer',
@@ -90,6 +89,21 @@ export let WebServer = {
             } else {
               server.views(hapiViews);
               server.route(hapiRoutes);
+
+              // little plugin to log the request url along with the error, to get some sense out of the log
+              // @TODO should also be used to deliver special error pages without disclosing any information to the client (prettier than {"statusCode":404,"error":"Not Found"} and such...)
+              server.ext('onPostHandler', function (request, reply) {
+                let response = request.response;
+                if (response.isBoom && response.output.statusCode === 404) {
+                  console.log(request.raw.req.url);
+                  return reply.continue();
+                  //return reply.file('404.html').code(404);
+                }
+                else {
+                  return reply.continue();
+                }
+              });
+
               server.start(function startCB(error) {
                 if (error) {
                   console.log('Webserver Initialization: ERROR');
