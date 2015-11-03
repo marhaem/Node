@@ -3,36 +3,50 @@
 ## Introduction
 This is ...
 
+## Requirements
+- GitHub Credentials
+- A server running Linux (preferred), Unix, Max or Windows (doh!)
+
 ## Installation
-install nodejs >= 4.2.1
-install postgres
 
-@TODO: setup github credentials within jspm/npm (or you will be asked mid-ways)
+### PostgreSQL
+1. Install [PostgreSQL][postgresql]
+2. Harden [PostgreSQL][postgresql]
+4. Create Database
+5. Create Database User
 
-git clone http://192.168.1.73:8080/tfs/mows/_git/Node
-cd Node/nodeChat/Rest
-npm install (This will also install PM2 (http://pm2.keymetrics.io/))
-jspm install
+### NodeJS
+1. Install [NodeJS][nodejs] >= 4.2.1
+   This will automatically include [npm][npm].
 
-cp config/example.json config/config.json
-nano config/config.json
-- complete postgres configuration
+### NodeChat
+1. Create directory for NodeChat
+2. Change into that directory
+3. `git clone http://192.168.1.73:8080/tfs/mows/_git/Node`
+4. `cd Node/nodeChat/Rest`
+5. `npm install`
+   This will install [JSPM][jspm] and [PM2][pm2] globally before running the 'npm install' command.
+   After 'npm install' finishes ist does a `jspm install` for you.
+   Note: you may be prompted for your github credentials.
+6. `cp config/example.json config/config.json`
+7. Edit `config/config.json`
+   Set Database Name, User, Password and Port (and mybe the connection type as you could use Unix Domain Sockets)
+8. `cd ../WebApp`
+9. `npm install`
 
-Create Database within postgres
-
+- **Set a PM2_HOME environment variable and create that folder**
 
 ### TODO here
-- also install the WebApp along
-- keep WebApp up to date
-- use pm2 to deploy
-- use pm2 to provide 0s updates
+- use [PM2][pm2] to deploy
+- use [PM2][pm2] to provide 0s updates
 
 ## Usage
+```bash
 cd <nodeChatRestDir>
 npm start
+```
 
-This will set PM2's Home dir (PM2_HOME), but this has to be fixed somewhere else in the future!!!
-After that it will use PM2 to start the server (pm2 start bin/nodeChatRest -i 0) in cluster mode with as amyn processes as the server has CPU cores.
+It will use [PM2][pm2] to start the server (pm2 start bin/nodeChatRest -i 0) in cluster mode with as many processes as the server has CPU cores.
 
 The logs folder will automatically be created on startup.
 
@@ -42,10 +56,20 @@ The logs folder will automatically be created on startup.
 ## Testing
 TBD!!!
 
+Use workers to simulate load then test cluster balancing on one machine and after that load balancing over multiple servers.
+
 Automatic tests using a lib and npm test
 
 ## Useful debugging commands
-- bunyan Dtrace support
-- PM2 Dtrace support
+- [Bunyan][bunyan] Dtrace support
+- [PM2][pm2] Dtrace support
 - various curl commands (@TODO: provide them here)
 - curl -X POST -H "Content-Type: application/json" -d '{ "from": "1", "message": "Hapi is amazingly useful for building APIs.", "timestamp": 1442298859 }' -i http://127.0.0.1:3000/chat/v1/post
+
+
+[postgresql]: http://www.postgresql.org/
+[nodejs]: http://nodejs.org/
+[npm]: https://www.npmjs.com/
+[jspm]: http://jspm.io/
+[bunyan]: https://github.com/trentm/node-bunyan
+[pm2]: http://pm2.keymetrics.io/

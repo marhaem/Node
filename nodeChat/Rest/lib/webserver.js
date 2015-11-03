@@ -9,6 +9,7 @@ import Vision from 'vision';
 import HapiBunyan from 'hapi-bunyan';
 import hapiHtmlViewEngine from 'handlebars';
 
+//@TODO: try process.cwd() === path.resolve('')
 const __root = Path.normalize(Path.dirname(System.normalizeSync('index', __moduleName).replace(/^[^:]*:\/*/g, '')));
 const PATH_LOGFILES = Path.join(__root, 'logs');
 const PATH_WEBAPP = Path.join(__root, '..', 'WebApp');

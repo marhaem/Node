@@ -4,8 +4,8 @@
   "description": "Rest service for nodeChat",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "npm install pm2 -g",
-    "prestart": "set PM2_HOME=./.pm2",
+    "preinstall": "npm install jspm -g && npm install pm2 -g",
+    "postinstall": "pm2 -v && jspm install",
     "start": "pm2 start bin/nodeChatRest -i 0",
     "stop": "pm2 stop nodeChatRest"
   },
