@@ -14,7 +14,9 @@ export let Database = {
       self.tables.users = sequelize.define(Users.name, Users.attributes, Users.options);
 
       sequelize.sync({
+        /*
         force: true
+        */
       }).then(
         function() {
           console.log('Database Initialization: OK');

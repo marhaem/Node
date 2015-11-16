@@ -8,7 +8,7 @@ export let index = {
     return new Promise(function (resolve, reject) {
       Database.init(sequelize).then(
         function dbInitResolved(_sequelize) {
-          System.import('./lib/WebServer').then(
+          System.import('./lib/webserver').then(
             function importResolved(WebServer) {
               WebServer = WebServer.WebServer;
 

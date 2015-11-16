@@ -15,11 +15,19 @@ export let send = {
         let messages = [request.payload];
         console.log('Post message: ' + messages[0].message);
         // check db for new entries since last checks
-        let Message = messageTable.index();
+        // let Message = Database.tables.messages.index();
 
           TableMessages.create({
             message: messages[0].message,
             from: messages[0].from
+          }).then(function(){
+            // @TODO SEARCH FOR NEW MESSAGES
+            var mes = TableMessages.findAll({
+              limit: 10
+            });
+            reply({
+              payload: mes
+            })
           });/*.then(function(){
             Message.findAll({
               attributes: [

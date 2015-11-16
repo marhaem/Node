@@ -9,7 +9,7 @@ import Inert from 'inert';
 import Vision from 'vision';
 import HapiBunyan from 'hapi-bunyan';
 import hapiHtmlViewEngine from 'handlebars';
-
+/**/
 const __root = Process.cwd().replace(/\\|\//g, Path.sep);
 const PATH_LOGFILES = Path.join(__root, 'logs');
 const PATH_WEBAPP = Path.join(__root, '..', 'WebApp');
