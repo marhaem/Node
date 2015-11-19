@@ -47,3 +47,7 @@ body {
   background: #919191;
   color: #fff;
 }
+.affix {
+    top:75px;
+    position:fixed;
+}

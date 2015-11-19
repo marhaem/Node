@@ -7,11 +7,10 @@ import $ from 'jquery';
 import {
   CacheUserlist
 }
-from '../api/cacheUserlist';
+from './cacheUserlist';
 
-export let Chat = function Chat() {
+export function Chat() {
   this.lastConnect = null;
-  this.messages = [];
   this.cache = new CacheUserlist();
   this.myId = '2'; //@TODO: get userid from userdata (current login)
   this.cache.add([{
@@ -22,6 +21,27 @@ export let Chat = function Chat() {
     name: 'neumaierm' //change id into alphanumeric string
   }]);
 };
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return "";
+}
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue.timestamp + "; " + expires;
+}
+
+Chat.prototype.getCache = function getCache() {
+  return this.cache;
+}
 
 /**
  * Flags messages coming from yourself by comparing the id in each message
@@ -37,25 +57,31 @@ Chat.prototype.processMessages = function processMessages(messages) {
     if (message.from === this.myId) {
       message.mine = true;
     }
-    // expand sender with full information
-    message.from = this.cache.get(message.from);
-  }
 
+    let cache = this.getCache();
+    // expand sender with full information
+    message.from = cache.get(message.from);
+    //moment-ify
+    message.timestamp = moment(message.timestamp);
+  }
   return messages;
 };
 
 Chat.prototype.send = function send(text) {
   // "DD/MM/YYYY";
-  var unix = moment().unix();
+  var unix = getCookie('lastUpdate');
+
+  if (unix == "") {
+    unix = moment();
+  }
 
   let message = {
     from: this.myId,
     message: text,
-    timestamp: unix
   };
 
   //send message to server (v1)
-  var self = this;
+  let self = this;
   return new Promise(function (resolve, reject) {
     //@TODO: add authentification for api service
     $.ajax({
@@ -67,12 +93,10 @@ Chat.prototype.send = function send(text) {
         //
       })
       .success(function (response) {
-        console.log('reply: ' + response);
-        console.log('success');
+        console.log('SUCCESS IN GETTING MESSAGE(S) BACK - chat.js 69 -');
+        console.log(response);
+
         let messages = self.processMessages(response['payload']);
-        // Appends the message a second time
-        // Array.prototype.push.apply(messages, self.processMessages(response['payload']));
-        console.log(messages);
         resolve(messages);
       })
       .fail(function (response) {
@@ -82,38 +106,73 @@ Chat.prototype.send = function send(text) {
 };
 
 Chat.prototype.fetch = function fetch() {
-  let messages = [{
+  let self = this;
+  let messages;
+  return new Promise(function(resolve, reject){
+    $.ajax({
+        method: "GET",
+        url: "http://moritzs-macbook-pro.local:3000/chat/v1/fetch",
+      })
+      .done(function (response) {
+        //
+      })
+      .success(function (response) {
+        console.log('SUCCESS IN GETTING MESSAGE(S) - chat.js 93 -');
+        console.log(response);
+
+        messages = self.processMessages(response['payload']);
+        // get all _unique_ ids form all messages
+        let ids = _.uniq(_.pluck(messages, 'from'));
+
+        var cache = self.getCache();
+        // contains missing ids
+        let missing = cache.getUnknown(ids);
+
+        // @TODO: get data for missing ids
+
+        // parse messages
+        //self.processMessages(messages);
+
+        resolve(messages);
+      })
+      .fail(function (response) {
+        reject(response);
+      });
+  });
+
+
+  /*let messages = [{
     from: '1',
     message: 'Hi',
-    timestamp: moment().subtract(3, 'days').unix()
+    timestamp: moment().subtract(3, 'days').utc().format()
   }, {
     from: '1',
     message: 'Anyone there',
-    timestamp: moment().subtract(2, 'days').unix()
+    timestamp: moment().subtract(2, 'days').utc().format()
   }, {
     from: '1',
     message: 'Hello-oh',
-    timestamp: moment().subtract(1, 'days').unix()
+    timestamp: moment().subtract(1, 'days').utc().format()
   }, {
     from: '2',
     message: 'Yeah, yeah hi and such...',
-    timestamp: moment().subtract(2, 'minutes').unix()
+    timestamp: moment().subtract(2, 'minutes').utc().format()
   }, {
     from: '1',
     message: 'Grumpy cat?',
-    timestamp: moment().subtract(1, 'minutes').unix()
-  }];
+    timestamp: moment().subtract(1, 'minutes').utc().format()
+  }];*/
 
   // get all _unique_ ids form all messages
-  let ids = _.uniq(_.pluck(this.messages, 'from'));
+  // let ids = _.uniq(_.pluck(this.messages, 'from'));
 
   // contains missing ids
-  let missing = this.cache.getUnknown(ids);
+  // let missing = this.cache.getUnknown(ids);
 
   // @TODO: get data for missing ids
 
   // parse messages
-  this.processMessages(messages);
+  // this.processMessages(messages);
 
-  return messages;
-};
+  // return messages;
+}

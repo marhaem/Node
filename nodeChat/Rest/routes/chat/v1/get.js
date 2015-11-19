@@ -12,6 +12,7 @@ export let get = {
         var unix = request.payload.timestamp;
         var messages = [request.payload];
         console.log('Get messages: ' + messages[0].message);
+
         // check db for new entries since last check
         // save message to database
         reply({

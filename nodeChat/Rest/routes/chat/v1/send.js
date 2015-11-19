@@ -20,80 +20,50 @@ export let send = {
           TableMessages.create({
             message: messages[0].message,
             from: messages[0].from
-          }).then(function(){
+          }).then(function(message){
             // @TODO SEARCH FOR NEW MESSAGES
             var mes = TableMessages.findAll({
-              limit: 10
-            });
-            reply({
-              payload: mes
-            })
-          });/*.then(function(){
-            Message.findAll({
-              attributes: [
-                'from',
-                'message',
-                'timestamp'
-              ],
-              where: [
-                timestamp: {
-                  $and: {
-                    $lte: ,
-                    $gte: messages[0].timestamp
+              where: {
+                $and: {
+                  timestamp: {
+                    $gt: request.payload.timestamp
+                  },
+                  timestamp: {
+                    $lt: message.timestamp
                   }
                 }
+              },
+              order: [
+                ['timestamp', 'ASC']
               ]
-            })
-          });*/
-
-        /*.then(function () {
-          Message.findAll({
-            attributes: [
-              'from',
-              'message',
-              'timestamp'
-            ],
-            where: {
-              timestamp: {
-                $lte: unix
+            }).then(function (mes) {
+              var len = mes.length;
+              var i = -1;
+              var obj;
+              while (++i < len) {
+                obj = mes[i];
+                //console.log("current element:  " + obj.message);
+                messages.unshift({
+                  from: obj.from,
+                  message: obj.message,
+                  timestamp: obj.timestamp
+                });
               }
-            },
-            order: 'timestamp ASC'
-          }).then(function (mes) {
-            var len = mes.length;
-            var i = -1;
-            var obj;
-            while (++i < len) {
-              obj = mes[i];
-              //console.log("current element:  " + obj.message);
-              var item = {
-                from: obj.from,
-                message: obj.message,
-                timestamp: obj.timestamp
-              };
-              messages.push.apply(messages, [obj]);
-            }
-            reply({
-              'payload': messages
-            });
-            //console.log(mes);
-          }).catch(function (error) {
-            console.log(error);
+              reply({
+                'payload': messages
+              })
           });
-        }).catch(function (error) {
-          console.log(error);
-        });*/
-
+        });
       },
-      config: {
-        validate: {
-          payload: {
-            from: Joi.string().min(1).max(10),
-            message: Joi.string().min(1).max(1000),
-            timestamp: Joi.date(),
+        config: {
+          validate: {
+            payload: {
+              from: Joi.string().min(1).max(10),
+              message: Joi.string().min(1).max(1000),
+              timestamp: Joi.date(),
+            }
           }
         }
-      }
     }];
   }
 };
