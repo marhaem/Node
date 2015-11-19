@@ -39,15 +39,15 @@ riot.tag(
     let tick = function tick() {};
 
     let addMessages = function addMessages(msgs) {
-      console.log(msgs);
-      let mes = [];
-      let len = msgs.length;
-      let i = -1;
-
-      while (++i < len) {
-        mes.unshift(msgs[i]);
-      }
-      self.messageContainer.add(mes);
+      // console.log(msgs);
+      // let mes = [];
+      // let len = msgs.length;
+      // let i = -1;
+      //
+      // while (++i < len) {
+      //   mes.unshift(msgs[i]);
+      // }
+      self.messageContainer.add(msgs);
 
       //this.messageContainer.update();
 

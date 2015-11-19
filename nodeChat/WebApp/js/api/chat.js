@@ -12,7 +12,7 @@ from './cacheUserlist';
 export function Chat() {
   this.lastConnect = null;
   this.cache = new CacheUserlist();
-  this.myId = '2'; //@TODO: get userid from userdata (current login)
+  this.myId = '1'; //@TODO: get userid from userdata (current login)
   this.cache.add([{
     id: '1', //change id into alphanumeric string
     name: 'wagnera'
@@ -93,11 +93,11 @@ Chat.prototype.send = function send(text) {
         //
       })
       .success(function (response) {
-        console.log('SUCCESS IN GETTING MESSAGE(S) BACK - chat.js 69 -');
-        console.log(response);
+        // console.log('SUCCESS IN GETTING MESSAGE(S) BACK - chat.js 69 -');
+        // console.log(response);
 
         let messages = self.processMessages(response['payload']);
-        resolve(messages);
+        resolve(response['payload']);
       })
       .fail(function (response) {
         reject(response);

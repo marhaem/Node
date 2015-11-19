@@ -142,13 +142,25 @@ riot.tag(
   '</div>' +
   '</div>',
   function (opts) {
-    this.lists = labelLists(splitByDate(parseItems(opts.items)));
+    this.items = opts.items;
+    this.lists = labelLists(splitByDate(parseItems(this.items)));
     this.update();
 
-    this.add = function add(items) {
+    this.add = function add(newItems) {
 
-      if (items.length > 0) {
-        this.lists = labelLists(splitByDate(parseItems(items)));
+      if (newItems.length > 0) {
+        //this.items.unshift(newItems);
+        // console.warn("test achtung");
+        // console.log(newItems);
+        console.log(parseItems(newItems));
+
+        var ind = newItems.length;
+
+        while (--ind >= 0) {
+          this.items.push(parseItems(newItems[ind]));
+        }
+        this.lists = labelLists(splitByDate(this.items));
+        // this.lists[2].items.push(parseItems(newItems)); // = labelLists(splitByDate(parseItems(this.items)));
         //this.lists = merge(listsNew, this.lists);
         this.update();
       }
