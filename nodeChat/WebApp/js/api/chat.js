@@ -12,7 +12,7 @@ from './cacheUserlist';
 export function Chat() {
   this.lastConnect = null;
   this.cache = new CacheUserlist();
-  this.myId = '1'; //TODO: get userid from userdata (current login)
+  this.myId = 1; //TODO: get userid from userdata (current login)
   this.cache.add([{
     id: '1', //TODO change id into alphanumeric string
     name: 'wagnera'
@@ -53,7 +53,6 @@ Chat.prototype.processMessages = function processMessages(messages) {
   while (++i < len) {
     message = messages[i];
 
-    // FIX: flag my own messages
     if (message.from === this.myId) {
       message.mine = true;
     }

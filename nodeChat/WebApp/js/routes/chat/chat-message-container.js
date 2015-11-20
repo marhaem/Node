@@ -81,7 +81,7 @@ riot.tag(
   '<div class="chat-message-container-label" data-spy="affix" data-offset-top="75">{ list.label }</div>' +
   '<div each="{ item in list.items }" class="col-lg-8 col-md-9 col-xs-10 chatMessage { item.mine ? \'pull-right\' : \'pull-left\' }">' +
   '<div class="message">{ item.message }</div>' +
-  '<div class="upperLine">{ item.from.name } - { item.time }</div>' +
+  '<div class="upperLine">{ item.mine ? \'\' : item.from.name + \' -\' } { item.time }</div>' +
   '</div>' +
   '</div>',
   function (opts) {
