@@ -12,7 +12,7 @@ from './cacheUserlist';
 export function Chat() {
   this.lastConnect = null;
   this.cache = new CacheUserlist();
-  this.myId = 1; //TODO: get userid from userdata (current login)
+  this.myId = parseInt(window.prompt("Your user id please")); //TODO: get userid from userdata (current login)
   this.cache.add([{
     id: '1', //TODO change id into alphanumeric string
     name: 'wagnera'
