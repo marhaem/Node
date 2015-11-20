@@ -71,13 +71,10 @@ Chat.prototype.send = function send(text) {
   // "DD/MM/YYYY";
   var unix = getCookie('lastUpdate');
 
-  if (unix == "") {
-    unix = moment();
-  }
-
   let message = {
     from: this.myId,
     message: text,
+    timestamp: unix
   };
 
   //send message to server (v1)
@@ -118,7 +115,7 @@ Chat.prototype.fetch = function fetch() {
       })
       .success(function (response) {
         console.log('SUCCESS IN GETTING MESSAGE(S) - chat.js 93 -');
-        console.log(response);
+        console.error(response);
 
         messages = self.processMessages(response['payload']);
         // get all _unique_ ids form all messages
@@ -139,40 +136,4 @@ Chat.prototype.fetch = function fetch() {
         reject(response);
       });
   });
-
-
-  /*let messages = [{
-    from: '1',
-    message: 'Hi',
-    timestamp: moment().subtract(3, 'days').utc().format()
-  }, {
-    from: '1',
-    message: 'Anyone there',
-    timestamp: moment().subtract(2, 'days').utc().format()
-  }, {
-    from: '1',
-    message: 'Hello-oh',
-    timestamp: moment().subtract(1, 'days').utc().format()
-  }, {
-    from: '2',
-    message: 'Yeah, yeah hi and such...',
-    timestamp: moment().subtract(2, 'minutes').utc().format()
-  }, {
-    from: '1',
-    message: 'Grumpy cat?',
-    timestamp: moment().subtract(1, 'minutes').utc().format()
-  }];*/
-
-  // get all _unique_ ids form all messages
-  // let ids = _.uniq(_.pluck(this.messages, 'from'));
-
-  // contains missing ids
-  // let missing = this.cache.getUnknown(ids);
-
-  // @TODO: get data for missing ids
-
-  // parse messages
-  // this.processMessages(messages);
-
-  // return messages;
 }

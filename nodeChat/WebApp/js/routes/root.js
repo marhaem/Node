@@ -51,7 +51,11 @@ riot.tag(
     }, {
       href: 'login',
       title: 'Login'
-    }];
+    },
+  {
+    href: 'profile',
+    title: 'Profil'
+  }];
 
   // routing events
     RouteableComponent.bind(this);

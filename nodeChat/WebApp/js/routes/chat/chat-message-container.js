@@ -9,7 +9,7 @@ function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue.timestamp + "; " + expires;
+    document.cookie = cname + "=" + cvalue + "; " + expires;
 }
 
 
@@ -58,7 +58,6 @@ function splitByDate(items) {
     }
     index--;
   }
-  setCookie('lastUpdate', splittedLists[2].items[splittedLists[2].items.length - 1], 365);
   return splittedLists;
 }
 
@@ -126,7 +125,7 @@ function labelLists(lists) {
   while (--i > 0) {
     list = lists[i];
 
-    list.label = moment(list.timestamp).utc().format('ddd') + ' | ' + moment(list.timestamp).format('YYYY-MM-DD');
+    list.label = moment(list.timestamp).utc().format('LL');
   }
   lists[0].label = "Older";
   return lists;
@@ -166,7 +165,7 @@ riot.tag(
       }
     };
     this.on('update', function(){
-      console.log('sollte update machen');
+      setCookie('lastUpdate', moment().utc().format('YYYY-MM-DDTHH:mm:ss.SSS') + 'Z', 365);
     })
   }
 );

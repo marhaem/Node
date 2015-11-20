@@ -51,7 +51,7 @@ export let WebServer = {
             register: Vision,
             options: {}
           }, {
-            register: HapiBunyan, //@TODO take a look at hapi-bunyan/lib/index.js and fix the on every request initialization as well as on request-error to contain url and parameter information
+            register: HapiBunyan, //@TODO:20 take a look at hapi-bunyan/lib/index.js and fix the on every request initialization as well as on request-error to contain url and parameter information
             options: {
               logger: Bunyan.createLogger({
                 name: 'WebServer',
@@ -92,7 +92,7 @@ export let WebServer = {
               server.route(hapiRoutes);
 
               // little plugin to log the request url along with the error, to get some sense out of the log
-              // @TODO should also be used to deliver special error pages without disclosing any information to the client (prettier than {"statusCode":404,"error":"Not Found"} and such...)
+              // @TODO:10 should also be used to deliver special error pages without disclosing any information to the client (prettier than {"statusCode":404,"error":"Not Found"} and such...)
               server.ext('onPostHandler', function (request, reply) {
                 let response = request.response;
                 if (response.isBoom && response.output.statusCode === 404) {

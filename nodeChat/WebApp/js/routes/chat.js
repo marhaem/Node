@@ -21,11 +21,11 @@ from '../api/chat';
 riot.tag(
   'content-chat',
   '<div class="row messageIncome">' +
-  '<div name="messagesCon" class="col-lg-8 col-lg-offset-2 messages"></div>' +
+  '<div name="messagesCon" class="messages"></div>' +
   '</div>' +
   '<div name="alert"></div>' +
   '<div class="chat-page">' +
-  '<div name="form" class="col-lg-8 col-lg-offset-2 chat-page-form"></div>' +
+  '<div name="form" class="chat-page-form"></div>' +
   '</div>',
   function (opts) {
     let api = null;
@@ -36,6 +36,7 @@ riot.tag(
     /**
      * fetch messages periodically
      */
+     // TODO Add function to check for new messages automatic every 5-10 seconds
     let tick = function tick() {};
 
     let addMessages = function addMessages(msgs) {
@@ -57,7 +58,7 @@ riot.tag(
       // } else {
       //   $('#messageAlert').css('display', 'block');
       // }
-
+      $(self.messagesCon).scrollTop(1E10);
     }
 
     $(this.messages).scroll(function () {
@@ -84,7 +85,8 @@ riot.tag(
     this.on('mount', function () {
       api = new ChatApi();
       api.fetch().then(
-        function onResolved(msgs) {console.log(msgs);
+        function onResolved(msgs) {
+          console.warn(msgs);
           //self.messages = msgs;
           self.messageContainer = riot.mount(self.messagesCon, 'chat-message-container', {
             master: self,
@@ -105,20 +107,6 @@ riot.tag(
           console.log("There was an error fetching the messages: " + error);
         }
       );
-
-
-      // this.messageContainer = riot.mount(this.messages, 'chat-message-container', {
-      //   master: this,
-      //   items: messages
-      // });
-      // this.messageContainer = this.messageContainer ? this.messageContainer[0] : null;
-      //
-      // this.inputSubmit = riot.mount(this.form, 'chat-input-submit', {
-      //   master: this
-      // });
-      // this.inputSubmit = this.inputSubmit ? this.inputSubmit[0] : null;
-      //
-      // riot.mount(this.alert, 'chat-message-alert', {});
     });
   }
 );
