@@ -12,13 +12,13 @@ from './cacheUserlist';
 export function Chat() {
   this.lastConnect = null;
   this.cache = new CacheUserlist();
-  this.myId = '1'; //@TODO: get userid from userdata (current login)
+  this.myId = '1'; //TODO: get userid from userdata (current login)
   this.cache.add([{
-    id: '1', //change id into alphanumeric string
+    id: '1', //TODO change id into alphanumeric string
     name: 'wagnera'
     }, {
     id: '2',
-    name: 'neumaierm' //change id into alphanumeric string
+    name: 'neumaierm'
   }]);
 };
 
@@ -53,22 +53,19 @@ Chat.prototype.processMessages = function processMessages(messages) {
   while (++i < len) {
     message = messages[i];
 
-    // flag my own messages
+    // FIX: flag my own messages
     if (message.from === this.myId) {
       message.mine = true;
     }
 
     let cache = this.getCache();
-    // expand sender with full information
     message.from = cache.get(message.from);
-    //moment-ify
     message.timestamp = moment(message.timestamp);
   }
   return messages;
 };
 
 Chat.prototype.send = function send(text) {
-  // "DD/MM/YYYY";
   var unix = getCookie('lastUpdate');
 
   let message = {
@@ -90,8 +87,6 @@ Chat.prototype.send = function send(text) {
         //
       })
       .success(function (response) {
-        // console.log('SUCCESS IN GETTING MESSAGE(S) BACK - chat.js 69 -');
-        // console.log(response);
 
         let messages = self.processMessages(response['payload']);
         resolve(response['payload']);
@@ -114,21 +109,14 @@ Chat.prototype.fetch = function fetch() {
         //
       })
       .success(function (response) {
-        console.log('SUCCESS IN GETTING MESSAGE(S) - chat.js 93 -');
-        console.error(response);
 
         messages = self.processMessages(response['payload']);
-        // get all _unique_ ids form all messages
         let ids = _.uniq(_.pluck(messages, 'from'));
 
         var cache = self.getCache();
-        // contains missing ids
         let missing = cache.getUnknown(ids);
 
         // @TODO: get data for missing ids
-
-        // parse messages
-        //self.processMessages(messages);
 
         resolve(messages);
       })

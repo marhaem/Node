@@ -23,7 +23,6 @@ riot.tag(
       }
     }.bind(this);
 
-    // event handlers
     this.onClick = function onClick(event) {
       event.preventDefault();
       event.stopPropagation();

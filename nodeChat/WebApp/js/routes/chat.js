@@ -40,19 +40,9 @@ riot.tag(
     let tick = function tick() {};
 
     let addMessages = function addMessages(msgs) {
-      // console.log(msgs);
-      // let mes = [];
-      // let len = msgs.length;
-      // let i = -1;
-      //
-      // while (++i < len) {
-      //   mes.unshift(msgs[i]);
-      // }
       self.messageContainer.add(msgs);
 
-      //this.messageContainer.update();
-
-      // //@TODO if its my own message ignore it
+      // //@TODO add message button at new message
       // if (scroll) {
       //   $(this.messages).scrollTop($(this.messages)[0].scrollHeight);
       // } else {
@@ -76,7 +66,7 @@ riot.tag(
           addMessages(msgs);
         },
         function onRejected(error) {
-          //alert(error);
+          console.error(error);
         }
       );
     };
@@ -87,7 +77,6 @@ riot.tag(
       api.fetch().then(
         function onResolved(msgs) {
           console.warn(msgs);
-          //self.messages = msgs;
           self.messageContainer = riot.mount(self.messagesCon, 'chat-message-container', {
             master: self,
             items: msgs

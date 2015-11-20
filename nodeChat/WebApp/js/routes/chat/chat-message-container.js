@@ -61,62 +61,6 @@ function splitByDate(items) {
   return splittedLists;
 }
 
-/*
- * listOld = Container list
- */
-function merge(listsNew, lists) {
-
-  let len = lists.length;
-  let i = -1;
-
-  while (++i < len) {
-    let lenNew = listsNew.length;
-    let x = -1;
-
-    while (++x < lenNew) {
-      if (lists[i].timestamp.diff(listsNew[x].timestamp, 'days') == 0) {
-        lists[i].items.unshift({
-          from: '1',
-          message: 'Grumpy cat?',
-          timestamp: moment().subtract(1, 'minutes').utc().format()
-        });
-      }
-    }
-  }
-  console.log(lists)
-
-  /*
-  var ts = lists[lists.length - 1].timestamp;
-
-  var len = listsNew.length;
-  var i = -1;
-
-  // find matching lists and get items
-  while (++i < len) {
-    if (listsNew[i].timestamp === ts) {
-      lists[lists.length - 1].items.push(listsNew[i].items);
-      listsNew.splice(i, 1);
-      break;
-    }
-  }
-
-  // consolidate
-  if (listsNew.length > 0) {
-    lists.push(lists);
-    if (lists.length > 4) {
-      //@TODO: merge
-      len = lists.length - 3;
-      i = 0;
-      while (++i < len) {
-        lists[0].items.push(lists[i].items);
-      }
-      lists.splice(1, len - 1);
-    }
-  }
-  */
-  return lists;
-}
-
 function labelLists(lists) {
   let len = lists.length;
   let i = len;
