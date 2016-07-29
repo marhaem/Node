@@ -705,7 +705,7 @@ function loadExistingRange(name, parent, inject) {
           if (depMap)
             return depMap;
 
-          return config.deps;
+          return config.deps[new PackageName(parent).exactName];
         }));
       });
     })

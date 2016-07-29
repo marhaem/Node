@@ -67,3 +67,25 @@ jspm -v
 jspm init
 ```
 
+#install several dependencies
++ hapi
++ bunyan
++ vision
++ handlebars
++ inert
+
+```bash
+jspm install npm:hapi
+jspm install npm:bunyan
+jspm install npm:vision
+jspm install npm:handlebars
+jspm install npm:inert
+```
+in webserver create directory src with an index.js file
+create another folder inside src called bin with a file called webserver.js this is the entry point for our npm-start-script
+to use `npm run start` modify the package.json in webserver add the following line under scripts:
+`"start": "node src/bin/webserver.js"`
+
+
+
+
