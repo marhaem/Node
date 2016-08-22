@@ -28,12 +28,12 @@ http://172.16.1.73:8080/tfs/mows/_git/Node
 
 ##install jspm via npm
 ```bash
-npm install jspm
+npm install jspm --save-dev
 #check version
 jspm -v
 #create symlink on local jspm installation
 #ln -s node_modules/.bin/jspm jspm
-jspm init
+./jspm init
 #rename config.js to jspm_config.js
 ```
 
@@ -61,31 +61,21 @@ npm init
 
 ##install jspm via npm
 ```bash
-npm install jspm
+npm install jspm --save-dev
 #check version
-jspm -v
-jspm init
+.\node_modules\.bin\jspm.cmd -v
+.\node_modules\.bin\jspm.cmd init
+.\node_modules\.bin\jspm.cmd install npm:hapi
 ```
 
-#install several dependencies
-+ hapi
-+ bunyan
-+ vision
-+ handlebars
-+ inert
-
+##install npm packages
 ```bash
-jspm install npm:hapi
-jspm install npm:bunyan
-jspm install npm:vision
-jspm install npm:handlebars
-jspm install npm:inert
+npm install --save-dev nodemon
+
 ```
-in webserver create directory src with an index.js file
-create another folder inside src called bin with a file called webserver.js this is the entry point for our npm-start-script
-to use `npm run start` modify the package.json in webserver add the following line under scripts:
-`"start": "node src/bin/webserver.js"`
 
+install jspm packages
+```bash
+jspm install --save-dev hapi
 
-
-
+```
