@@ -1,1 +1,0 @@
-module.exports = require("npm:isemail@2.2.0/lib/index.js");

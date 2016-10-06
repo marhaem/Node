@@ -1,0 +1,1 @@
+module.exports = require("npm:sprintf@0.1.5/lib/sprintf");

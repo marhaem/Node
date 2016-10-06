@@ -90,7 +90,11 @@ wipe -q -Q 1 -R /dev/zero -S r -r $PFAD
 
 echo "net.ipv6.conf.all.disable_ipv6 = 1
 
+<<<<<<< HEAD
 net.ipv6.conf.default.disable_ipv6 = 1 
+=======
+net.ipv6.conf.default.disable_ipv6 = 1
+>>>>>>> update
 
 net.ipv6.conf.lo.disable_ipv6 = 1 " >> /etc/sysctl.conf
 
@@ -156,4 +160,21 @@ nameserver 8.8.4.4" >> /etc/resolv.conf
 
 ```
 
+<<<<<<< HEAD
 test
+=======
+#uninstall a package
+```bash
+apt-get purge --auto-remove <package>
+apt-get --purge autoremove <package>
+apt-get autoremove
+#apt-get purge <package>
+```
+
+#Add user
+```bash
+adduser --no-create-home <username>
+```
+
+i just want to demonstrate git branches
+>>>>>>> update

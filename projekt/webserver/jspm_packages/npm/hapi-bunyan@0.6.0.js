@@ -1,0 +1,1 @@
+module.exports = require("npm:hapi-bunyan@0.6.0/lib");

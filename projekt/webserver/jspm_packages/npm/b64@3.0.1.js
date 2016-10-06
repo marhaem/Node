@@ -1,1 +1,0 @@
-module.exports = require("npm:b64@3.0.1/lib/index.js");

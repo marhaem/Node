@@ -1,0 +1,1 @@
+module.exports = require("npm:inflection@1.10.0/lib/inflection.js");

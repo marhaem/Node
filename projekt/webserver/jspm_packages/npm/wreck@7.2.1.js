@@ -1,1 +1,0 @@
-module.exports = require("npm:wreck@7.2.1/lib/index");

@@ -1,1 +1,0 @@
-module.exports = require("npm:nigel@2.0.1/lib/index.js");

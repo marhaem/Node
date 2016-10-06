@@ -1,0 +1,1 @@
+module.exports = require("npm:tedious@1.14.0/lib/tedious.js");

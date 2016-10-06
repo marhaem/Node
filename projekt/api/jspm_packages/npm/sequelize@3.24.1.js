@@ -1,0 +1,1 @@
+module.exports = require("npm:sequelize@3.24.1/index");
