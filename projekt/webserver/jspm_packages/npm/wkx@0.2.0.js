@@ -1,0 +1,1 @@
+module.exports = require("npm:wkx@0.2.0/lib/wkx.js");

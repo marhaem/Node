@@ -1,0 +1,1 @@
+module.exports = require("npm:hapi@14.2.0/lib/index.js");

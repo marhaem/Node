@@ -1,0 +1,34 @@
+{
+  "name": "hapi-bunyan",
+  "version": "0.6.0",
+  "main": "./lib",
+  "description": "Simple Bunyan logging in Hapi",
+  "dependencies": {
+    "lodash": "^3.0.0"
+  },
+  "devDependencies": {
+    "bunyan": "^1.0.0",
+    "code": "^1.3.0",
+    "hapi": "^8.0.0",
+    "jscs": "^1.5.9",
+    "jshint": "^2.5.3",
+    "lab": "^5.2.1"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/jshint lib test && ./node_modules/.bin/jscs lib test && ./node_modules/.bin/lab -c -t 100"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/silas/hapi-bunyan.git"
+  },
+  "keywords": [
+    "bunyan",
+    "hapi"
+  ],
+  "author": "Silas Sewell <silas@sewell.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/silas/hapi-bunyan/issues"
+  },
+  "homepage": "https://github.com/silas/hapi-bunyan"
+}

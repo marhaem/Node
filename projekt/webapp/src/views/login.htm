@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang ="en-US">
+	<head>
+		<title>login</title>
+		<meta charset="UTF-8">
+    <script src="./jspm_packages/system.js"></script>
+    <script src="./jspm_config.js"></script>
+		<script>
+			System.import("../js/login.js");
+		</script>
+	</head>
+	<body>
+    <div class="container">
+			<div class="main">
+				<form class="form" method="post" action="#">
+					<h2>Please enter your crendentials</h2>
+					<label>Email: </label>
+					<input type="text" name="demail" id="email">
+					<label>Password: </label>
+          <input type="password" name="password" id="password">
+          <input type="button" name="login" id="login" value="Login">
+					<div class="status"></div>
+				</form>
+			</div>
+		</div>
+  </body>
+</html>

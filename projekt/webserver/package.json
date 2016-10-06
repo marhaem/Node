@@ -16,10 +16,19 @@
   "jspm": {
     "configFile": "jspm_config.js",
     "dependencies": {
+      "crypto": "github:jspm/nodelibs-crypto@^0.1.0",
+      "fs": "github:jspm/nodelibs-fs@^0.1.2",
       "handlebars": "github:components/handlebars.js@^4.0.5",
-      "hapi": "npm:hapi@^13.5.0",
+      "hapi": "npm:hapi@^14.2.0",
+      "hapi-bunyan": "npm:hapi-bunyan@^0.6.0",
+      "hoek": "github:capaj/hoek-browser@^2.12.0",
       "inert": "npm:inert@^4.0.1",
-      "moment": "npm:moment@^2.14.1",
+      "json": "github:systemjs/plugin-json@^0.1.2",
+      "moment": "npm:moment@^2.15.0",
+      "mysql": "npm:mysql@^2.11.1",
+      "path": "github:jspm/nodelibs-path@^0.1.0",
+      "sequelize": "npm:sequelize@^3.24.1",
+      "tedious": "npm:tedious@^1.14.0",
       "vision": "npm:vision@^4.1.0"
     },
     "devDependencies": {
@@ -36,11 +45,15 @@
     "rimraf": "^2.5.4"
   },
   "devDependencies": {
-    "babel-cli": "^6.11.4",
+    "babel-cli": "^6.14.0",
     "chai": "^3.5.0",
-    "jshint": "^2.9.2",
+    "jshint": "^2.9.3",
+    "jspm": "^0.16.45",
     "mocha": "^2.5.3",
-    "nodemon": "^1.10.0",
-    "sinon": "^1.17.5"
+    "mysql": "^2.11.1",
+    "nodemon": "^1.10.2",
+    "sequelize": "^3.24.1",
+    "sinon": "^1.17.5",
+    "tedious": "^1.14.0"
   }
 }

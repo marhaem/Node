@@ -1,0 +1,1 @@
+module.exports = require("npm:subtext@4.2.1/lib/index.js");
