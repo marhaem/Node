@@ -28,13 +28,13 @@
   function onReject(error) {
     setTimeout(function errorTime() {
       //throw error;
-      console.log('start failed!' + error);
+      console.log('start failed! ' + error);
     });
   }
 
   function loadConfig() {
     return new Promise(function(resolve, reject) {
-      System.import('./config/config.json!').then(
+      System.import('./config/example.json!').then(
         function importConfigResolved(config) {
           resolve(config);
         },
@@ -67,17 +67,32 @@
   }
 
   function start(_server, sequelize) {
-    _server.start(Bunyan, sequelize).then(
-      function serverStartResolved(server) {
-        //
-      },
-      onReject
-    );
+    if(Bunyan) {
+      _server.start(Bunyan, sequelize).then(
+        function serverStartResolved(server) {
+          //
+        },
+        onReject
+      );
+    }
+    else {
+      console.log('Bunyan is not defined');
+    }
   }
 
   loadConfig().then(
     function loadConfigResolved(config) {
       let sequelize = sequelizeInit(config['database']);
+      sequelize.authenticate().then((val) => {
+        if(val) {
+          console.log(val);
+        }
+        else {
+          console.log('DataBase connection: OK');
+        }
+      }, (err) => {
+        console.log(err);
+      });
 
       System.import('./index').then(
         function importIndexResolved(_server) {

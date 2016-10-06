@@ -7,11 +7,11 @@ export function hash(initial) {
   }
   else {
     var loc = window.location.hash.slice(0, 1) === '#'
-      ? window.location.hash.slice(1)
+      ? window.location.hash.slice(1) //whatever comes after #
       : window.location.hash;
 
     if (/\/$/.test(loc)) {
-      loc = loc.slice(0, -1);
+      loc = loc.slice(0, -1); // cut off "/" at the end 
     }
 
     return loc.length === 0

@@ -5,7 +5,7 @@ import riot from 'riot';
 import {parser} from './internal/parser';
 import {hash} from './hash';
 
-export function start(initial, root) {
+export function start(initial, root) { // ('login', Routes)
   // parser
   riot.route.parser(parser);
 

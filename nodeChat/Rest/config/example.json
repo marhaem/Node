@@ -3,9 +3,9 @@
     "host": "localhost",
     "port": 5432,
     "protocol": "tcp",
-    "username": "",
-    "password": "",
+    "username": "node",
+    "password": "12Test1234",
     "dialect": "postgres",
-    "database": ""
+    "database": "NodeChat"
   }
 }

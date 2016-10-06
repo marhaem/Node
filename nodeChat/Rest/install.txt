@@ -1,0 +1,3 @@
+@echo off
+::jspm install handlebars && jspm install process && jspm install fs && jspm install path && jspm install npm:hapi && jspm install npm:inert && 
+jspm install npm:vision

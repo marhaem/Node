@@ -10,9 +10,9 @@ import Vision from 'vision';
 import HapiBunyan from 'hapi-bunyan';
 import hapiHtmlViewEngine from 'handlebars';
 /**/
-const __root = Process.cwd().replace(/\\|\//g, Path.sep);
-const PATH_LOGFILES = Path.join(__root, 'logs');
-const PATH_WEBAPP = Path.join(__root, '..', 'WebApp');
+const __root = Process.cwd().replace(/\\|\//g, Path.sep); // ./Rest
+const PATH_LOGFILES = Path.join(__root, 'logs'); // ./Rest/logs
+const PATH_WEBAPP = Path.join(__root, '..', 'WebApp'); // ../WebApp
 
 import {publicRoute} from '../routes/public';
 import {chatRoute} from '../routes/chat';
@@ -87,7 +87,8 @@ export let WebServer = {
               console.log('Webserver Initialization: ERROR');
               console.log('Could not register plugins');
               reject(error);
-            } else {
+            }
+            else {
               server.views(hapiViews);
               server.route(hapiRoutes);
 
