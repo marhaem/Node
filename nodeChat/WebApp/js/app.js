@@ -16,10 +16,10 @@ $(document).ready(function ready() {
     else {
       // start routing
       System.import('./js/router').then(function(Router) {
-        Router = Router.Router;
+        Router = Router.Router; //start, hash
 
         System.import('./js/routes').then(function(Routes) {
-          Routes = Routes.Routes;
+          Routes = Routes.Routes; //init, onRouteHit
 
           Routes.init(document.body);
           Router.start('login', Routes);

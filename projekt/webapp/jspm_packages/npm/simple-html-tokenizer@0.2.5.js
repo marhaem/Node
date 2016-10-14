@@ -1,0 +1,1 @@
+module.exports = require("npm:simple-html-tokenizer@0.2.5/dist/simple-html-tokenizer.js");

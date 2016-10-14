@@ -1,0 +1,41 @@
+{
+  "name": "riot-observable",
+  "version": "2.5.0",
+  "description": "Simple script to send and receive events",
+  "main": "dist/observable.js",
+  "jsnext:main": "dist/es6.observable.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "make test",
+    "prepublish": "make && make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riot/observable.git"
+  },
+  "keywords": [
+    "riot",
+    "observable",
+    "events"
+  ],
+  "devDependencies": {
+    "benchmark": "^2.1.1",
+    "coveralls": "^2.11.11",
+    "eslint": "^3.1.1",
+    "expect.js": "^0.3.1",
+    "karma": "^1.1.1",
+    "karma-coverage": "^1.1.1",
+    "karma-mocha": "^1.1.1",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "mocha": "^2.5.3",
+    "phantomjs-prebuilt": "^2.1.7"
+  },
+  "author": "Muut, Inc. and other contributors",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/riot/observable/issues"
+  },
+  "homepage": "https://github.com/riot/observable#readme"
+}

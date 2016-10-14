@@ -1,0 +1,50 @@
+MultipleErrors: C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:1:1: Unexpected reserved word export
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:1:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:1:8: Unexpected reserved word default
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:1:16: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:3:5: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:3:5: Unexpected token :
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:3:7: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:4:6: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:4:6: Unexpected token :
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:4:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:5:11: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:5:11: Unexpected token :
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:5:13: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:6:10: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:6:10: Unexpected token :
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:6:12: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:8:14: Unexpected reserved word function
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:8:41: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers-pug.js:9:9: Illegal return statement
+
+MultipleErrors: C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:1:1: Unexpected reserved word export
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:1:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:1:8: Unexpected reserved word default
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:1:16: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:3:5: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:3:5: Unexpected token :
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:3:7: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:4:11: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:4:11: Unexpected token :
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:4:13: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:5:7: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:5:7: Unexpected token :
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:5:9: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:6:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:6:8: Unexpected token :
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:6:10: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:7:10: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:7:10: Unexpected token :
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:7:12: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:9:12: Unexpected reserved word function
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:9:39: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:10:9: Illegal return statement
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:21:6: Unexpected token ,
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:23:12: Unexpected reserved word function
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:23:42: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:24:9: Illegal return statement
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:26:6: Unexpected token ,
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:28:12: Unexpected reserved word function
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:28:37: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-cli@2.6.2/test/fixtures/config-parsers.js:29:9: Illegal return statement

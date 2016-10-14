@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang ="en-US">
+	<head>
+		<title>register</title>
+		<meta charset="UTF-8">
+		<script src="./jspm_packages/system.js"></script>
+    <script src="./jspm_config.js"></script>
+		<script>
+			System.import("./src/js/register.js");
+		</script>
+	</head>
+	<body>
+    <div class="container">
+			<div class="main">
+				<form class="form" method="post" action="#">
+					<h2>Please enter your crendentials</h2>
+					<label>Email: </label>
+					<input type="text" name="demail" id="email">
+					<label>First Name: </label>
+					<input type="text" name="firstName" id="firstName">
+					<label>Last Name: </label>
+					<input type="text" name="lastName" id="lastName">
+					<label>Password: </label>
+          <input type="password" name="password" id="password">
+          <input type="button" name="register" id="register" value="Register">
+					<div class="status"></div>
+				</form>
+			</div>
+		</div>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+MultipleErrors: C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/browser/wrap/prefix.js:5:1: Unexpected token End of File
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/browser/wrap/prefix.js:5:1: Unexpected token End of File
+
+MultipleErrors: C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:2:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:2:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:3:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:3:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:6:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:6:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:8:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:8:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:10:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:10:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:12:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:12:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:13:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:13:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:14:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:14:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:15:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:15:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:16:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:16:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:17:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:17:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:18:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:18:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:19:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:19:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:20:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.csp.js:20:8: Semi-colon expected
+
+MultipleErrors: C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:1:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:1:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:2:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:2:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:4:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:4:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:6:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:6:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:8:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:8:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:9:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:9:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:10:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:10:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:11:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:11:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:12:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:12:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:13:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:13:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:14:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:14:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:15:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:15:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:16:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:16:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:17:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot.js:17:8: Semi-colon expected
+
+MultipleErrors: C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/browser/wrap/suffix.js:10:1: Unexpected token }
+
+MultipleErrors: C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:1:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:1:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:2:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:2:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:4:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:4:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:6:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:6:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:8:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:8:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:9:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:9:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:10:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:10:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:11:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:11:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:12:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:12:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:13:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:13:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:14:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:14:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:15:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:15:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:16:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:16:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:18:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:18:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:19:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:19:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:20:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot@2.6.3/lib/riot+compiler.js:20:8: Semi-colon expected

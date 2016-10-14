@@ -1,0 +1,1 @@
+module.exports = require("npm:form-data@2.0.0/lib/browser");

@@ -1,0 +1,1 @@
+module.exports = require("npm:riot-tmpl@2.4.1/dist/tmpl.js");

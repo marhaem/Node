@@ -20,7 +20,6 @@
     ]
   });
 
-  let Sequelize = require('sequelize');
   let System = require('jspm').Loader();
 
   let reject = function reject(err) {
@@ -34,7 +33,14 @@
     global.logger = logger;
     global.crypto = crypto;
 
-    System.import('./src/lib/WebServer/Sql.js').then((Sql) => {
+    System.import('./src/lib/WebServer/Sequelize/index.js').then( (sequelize) => {
+      sequelize = sequelize.default;
+      console.log(sequelize());/*.authenticate().then( () => {
+        console.log('seqeulize OK');
+      }, reject).catch(reject);*/
+
+      //console.log(sequelize);
+    /*System.import('./src/lib/WebServer/Sql.js').then((Sql) => {
       Sql = Sql.default;
       global.Sequelize = Sequelize;
       global.sql = new Sql(Sequelize);
@@ -43,7 +49,7 @@
         logger.info('successfully connected to database: ' + result);
       }, reject); // sequelize.sync();
       global.models = global.sql.initModels();
-/*
+
       global.Sql = new Sql(Sequelize);
       let models = global.Sql.initModels();  // get models from database via sequelize.define();
 

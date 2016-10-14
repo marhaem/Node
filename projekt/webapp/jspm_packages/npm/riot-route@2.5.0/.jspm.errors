@@ -1,0 +1,8 @@
+MultipleErrors: C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-route@2.5.0/dist/es6.route.js:1:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-route@2.5.0/dist/es6.route.js:1:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-route@2.5.0/dist/es6.route.js:1:19: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-route@2.5.0/dist/es6.route.js:1:24: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-route@2.5.0/dist/es6.route.js:331:1: Unexpected reserved word export
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-route@2.5.0/dist/es6.route.js:331:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-route@2.5.0/dist/es6.route.js:331:8: Unexpected reserved word default
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-route@2.5.0/dist/es6.route.js:331:16: Semi-colon expected

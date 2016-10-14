@@ -1,0 +1,1 @@
+module.exports = require("npm:fast-levenshtein@2.0.5/levenshtein.js");

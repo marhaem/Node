@@ -12,7 +12,8 @@
     "configFile": "jspm_config.js",
     "dependencies": {
       "jquery": "npm:jquery@^3.1.0",
-      "moment": "npm:moment@^2.14.1"
+      "moment": "npm:moment@^2.14.1",
+      "riot": "npm:riot@^2.6.3"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

@@ -1,0 +1,1 @@
+module.exports = require("npm:interpret@1.0.1/index.js");

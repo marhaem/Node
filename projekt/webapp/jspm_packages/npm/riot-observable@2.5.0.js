@@ -1,0 +1,1 @@
+module.exports = require("npm:riot-observable@2.5.0/dist/observable.js");

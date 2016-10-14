@@ -1,0 +1,9 @@
+MultipleErrors: C:/Users/marhaem/AppData/Local/.jspm/packages/npm/rollup@0.36.3/dist/rollup.es.js:11:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/rollup@0.36.3/dist/rollup.es.js:11:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/rollup@0.36.3/dist/rollup.es.js:11:63: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/rollup@0.36.3/dist/rollup.es.js:12:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/rollup@0.36.3/dist/rollup.es.js:12:13: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/rollup@0.36.3/dist/rollup.es.js:12:16: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/rollup@0.36.3/dist/rollup.es.js:12:21: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/rollup@0.36.3/dist/rollup.es.js:9242:1: Unexpected reserved word export
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/rollup@0.36.3/dist/rollup.es.js:9242:8: Semi-colon expected

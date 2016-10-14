@@ -1,0 +1,36 @@
+/* */ 
+(function(process) {
+  var common = require('./src/common');
+  require('./src/cd');
+  require('./src/pwd');
+  require('./src/ls');
+  require('./src/find');
+  require('./src/cp');
+  require('./src/rm');
+  require('./src/mv');
+  require('./src/mkdir');
+  require('./src/test');
+  require('./src/cat');
+  require('./src/head');
+  require('./src/tail');
+  require('./src/to');
+  require('./src/toEnd');
+  require('./src/sed');
+  require('./src/sort');
+  require('./src/uniq');
+  require('./src/grep');
+  require('./src/which');
+  require('./src/echo');
+  require('./src/dirs');
+  require('./src/ln');
+  exports.exit = process.exit;
+  exports.env = process.env;
+  require('./src/exec');
+  require('./src/chmod');
+  require('./src/touch');
+  require('./src/set');
+  require('./src/tempdir');
+  exports.error = require('./src/error');
+  exports.ShellString = common.ShellString;
+  exports.config = common.config;
+})(require('process'));

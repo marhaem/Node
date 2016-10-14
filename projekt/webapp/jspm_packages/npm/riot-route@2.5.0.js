@@ -1,0 +1,1 @@
+module.exports = require("npm:riot-route@2.5.0/lib/index.js");

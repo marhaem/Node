@@ -11,7 +11,7 @@ import global from './Global';
 
 import apiRoutes from '../../../../api/src/routes';
 
-const PATH_WEBAPP = '../webapp/src/views';
+const PATH_WEBAPP = '../webapp';
 
 export default class {
   constructor() {

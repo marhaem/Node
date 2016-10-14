@@ -1,5 +1,3 @@
-'use strict';
-
 import Riot from 'riot';
 
 Riot.tag('helloworld',

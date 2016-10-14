@@ -1,0 +1,7 @@
+MultipleErrors: C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-compiler@2.5.5/dist/es6.compiler.js:6:1: Unexpected reserved word import
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-compiler@2.5.5/dist/es6.compiler.js:6:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-compiler@2.5.5/dist/es6.compiler.js:6:26: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-compiler@2.5.5/dist/es6.compiler.js:721:1: Unexpected reserved word export
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-compiler@2.5.5/dist/es6.compiler.js:721:8: Semi-colon expected
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-compiler@2.5.5/dist/es6.compiler.js:721:8: Unexpected reserved word default
+C:/Users/marhaem/AppData/Local/.jspm/packages/npm/riot-compiler@2.5.5/dist/es6.compiler.js:721:16: Semi-colon expected

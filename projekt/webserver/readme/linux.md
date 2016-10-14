@@ -160,9 +160,6 @@ nameserver 8.8.4.4" >> /etc/resolv.conf
 
 ```
 
-<<<<<<< HEAD
-test
-=======
 #uninstall a package
 ```bash
 apt-get purge --auto-remove <package>
@@ -177,4 +174,3 @@ adduser --no-create-home <username>
 ```
 
 i just want to demonstrate git branches
->>>>>>> update
