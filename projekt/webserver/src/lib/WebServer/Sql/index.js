@@ -1,7 +1,10 @@
 /*jshint -W061*/
-
+import sequelizeOptions from './config/options.json!';
 import User from './User';
 
+function reject(err) {
+  console.log(err);
+}
 
 /**
  */
@@ -28,20 +31,7 @@ export default class Sql {
    */
   constructor(Sequelize) {
     this.Sequelize = Sequelize;
-    this.sequelize = new Sequelize('Chat', 'derez', '12Test1234', {
-      dialect: 'mssql',
-      host: 'localhost',
-      server: 'localhost',
-      port: 1433,
-      dialectOptions: {
-        instanceName: 'MSSQLSERVER'
-      },
-      pool: {
-        max: 5,
-        min: 1,
-        idle: 10000
-      }
-    });
+    this.sequelize = new Sequelize('Chat', 'derez', '12Test1234', sequelizeOptions);
   }
 
   /**
@@ -68,6 +58,7 @@ export default class Sql {
      */
     return {
       User: new User(this.sequelize.define(userModel.name, userModel.columns, userModel.options || {}))
+      //@TODO: add models
       /*User: new User(this.sequelize.define(userModel.name, {
         "userID": {
           "type": Sequelize.INTEGER,
@@ -98,6 +89,17 @@ export default class Sql {
         }
       }, userModel.options || {}))*/
     };
+  }
+
+  testSequelize() {
+    this.sequelize.authenticate().then(() => {
+      console.log('sequelize OK');
+      this.sequelize.sync().then(() => {
+        console.log('sync was good');
+      }, () => {});
+    }, (err) => {
+      console.log(err);
+    });
   }
 }
 

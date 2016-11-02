@@ -4,6 +4,7 @@
 (function (){
   'use strict';
 
+  let Sequelize = require('sequelize');
   let bunyan = require('bunyan');
   let crypto = require('crypto');
   let logger = bunyan.createLogger({
@@ -33,23 +34,19 @@
     global.logger = logger;
     global.crypto = crypto;
 
-    System.import('./src/lib/WebServer/Sequelize/index.js').then( (sequelize) => {
-      sequelize = sequelize.default;
-      console.log(sequelize());/*.authenticate().then( () => {
-        console.log('seqeulize OK');
-      }, reject).catch(reject);*/
-
       //console.log(sequelize);
-    /*System.import('./src/lib/WebServer/Sql.js').then((Sql) => {
+    System.import('./src/lib/WebServer/Sql.js').then((Sql) => {
       Sql = Sql.default;
-      global.Sequelize = Sequelize;
-      global.sql = new Sql(Sequelize);
-
-      global.sql.connect().then((result) => { // {force: true}
+      global.sql = new Sql(Sequelize); // Sequelize is passed down all the way
+      global.sql.connect();
+      global.models = global.sql.initModels();
+      /*global.sql.connect().then((result) => { // {force: true}
         logger.info('successfully connected to database: ' + result);
       }, reject); // sequelize.sync();
-      global.models = global.sql.initModels();
+      global.models = global.sql.initModels();*/
+    }, reject).catch(reject);
 
+      /*
       global.Sql = new Sql(Sequelize);
       let models = global.Sql.initModels();  // get models from database via sequelize.define();
 
@@ -65,11 +62,10 @@
         })
         //.then((result) => {logger.info('User registered: ' + result);}, reject)
         .catch(reject);*/
-    }, reject).catch(reject);
+    //}, reject).catch(reject);
 
     System.import('./src/index.js').then((index) => {
       index = index.default;
-
       index.start();
     }, reject).catch(reject);
   }, reject).catch(reject);

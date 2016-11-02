@@ -1,0 +1,20 @@
+{
+  "main": "dist/index.js",
+  "format": "cjs",
+  "meta": {
+    "*": {
+      "globals": {
+        "process": "process"
+      }
+    },
+    "*.json": {
+      "format": "json"
+    },
+    "src/*": {
+      "format": "esm"
+    }
+  },
+  "map": {
+    "./dist": "./dist/index.js"
+  }
+}

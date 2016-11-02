@@ -1,0 +1,14 @@
+{
+  "main": "lib/generic-pool.js",
+  "format": "cjs",
+  "meta": {
+    "*": {
+      "globals": {
+        "process": "process"
+      }
+    },
+    "*.json": {
+      "format": "json"
+    }
+  }
+}

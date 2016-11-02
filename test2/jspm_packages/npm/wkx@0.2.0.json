@@ -1,0 +1,42 @@
+{
+  "main": "lib/wkx.js",
+  "format": "cjs",
+  "meta": {
+    "*.json": {
+      "format": "json"
+    },
+    "dist/wkx.js": {
+      "cjsRequireDetection": false
+    },
+    "lib/binaryreader.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/binarywriter.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/geometry.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "test/binaryreader.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "test/twkb.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "test/wkx.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    }
+  }
+}

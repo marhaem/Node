@@ -1,0 +1,63 @@
+{
+  "main": "index.js",
+  "format": "cjs",
+  "meta": {
+    "*": {
+      "globals": {
+        "process": "process"
+      }
+    },
+    "*.json": {
+      "format": "json"
+    },
+    "lib/data-types.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/dialects/abstract/query-generator.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/dialects/postgres/data-types.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/instance-validator.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/instance.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/model.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/sql-string.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/utils.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    }
+  },
+  "map": {
+    "./lib/associations": "./lib/associations/index.js",
+    "./lib/dialects/abstract": "./lib/dialects/abstract/index.js",
+    "./lib/dialects/mariadb": "./lib/dialects/mariadb/index.js",
+    "./lib/dialects/mssql": "./lib/dialects/mssql/index.js",
+    "./lib/dialects/mysql": "./lib/dialects/mysql/index.js",
+    "./lib/dialects/postgres": "./lib/dialects/postgres/index.js",
+    "./lib/dialects/sqlite": "./lib/dialects/sqlite/index.js"
+  }
+}

@@ -2,14 +2,94 @@
   "name": "test",
   "version": "1.0.0",
   "description": "",
-  "main": "cwd.js",
+  "main": "index.js",
   "scripts": {
-	"start": "nodemon --watch src --exec node src/cwd.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "path": "^0.12.7"
+    "jspm": "^0.17.0-beta.29"
+  },
+  "jspm": {
+    "name": "test",
+    "main": "test.js",
+    "dependencies": {
+      "json": "github:systemjs/plugin-json@^0.2.0",
+      "sequelize": "npm:sequelize@^3.24.4",
+      "tedious": "npm:tedious@^1.14.0"
+    },
+    "devDependencies": {
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.16"
+    },
+    "peerDependencies": {
+      "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
+      "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
+      "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
+      "constants": "github:jspm/nodelibs-constants@^0.2.0-alpha",
+      "core-js": "npm:core-js@^1.2.0",
+      "crypto": "github:jspm/nodelibs-crypto@^0.2.0-alpha",
+      "dgram": "github:jspm/nodelibs-dgram@^0.2.0-alpha",
+      "events": "github:jspm/nodelibs-events@^0.2.0-alpha",
+      "fs": "github:jspm/nodelibs-fs@^0.2.0-alpha",
+      "net": "github:jspm/nodelibs-net@^0.2.0-alpha",
+      "os": "github:jspm/nodelibs-os@^0.2.0-alpha",
+      "path": "github:jspm/nodelibs-path@^0.2.0-alpha",
+      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
+      "stream": "github:jspm/nodelibs-stream@^0.2.0-alpha",
+      "string_decoder": "github:jspm/nodelibs-string_decoder@^0.2.0-alpha",
+      "tls": "github:jspm/nodelibs-tls@^0.2.0-alpha",
+      "url": "github:jspm/nodelibs-url@^0.2.0-alpha",
+      "util": "github:jspm/nodelibs-util@^0.2.0-alpha",
+      "vm": "github:jspm/nodelibs-vm@^0.2.0-alpha"
+    },
+    "overrides": {
+      "npm:babel-runtime@5.8.38": {
+        "main": false,
+        "dependencies": {},
+        "optionalDependencies": {
+          "core-js": "^1.2.0"
+        }
+      },
+      "npm:bluebird@3.4.6": {
+        "meta": {
+          "js/browser/bluebird.js": {
+            "format": "global"
+          },
+          "js/browser/bluebird.min.js": {
+            "format": "global"
+          }
+        }
+      },
+      "npm:debug@2.2.0": {
+        "main": "browser.js",
+        "jspmNodeConversion": false,
+        "format": "cjs",
+        "map": {
+          "./browser.js": {
+            "node": "./node.js"
+          },
+          "./node.js": {
+            "browser": "./browser.js"
+          },
+          "fs": "@node/fs",
+          "net": "@node/net",
+          "tty": "@node/tty",
+          "util": "@node/util"
+        }
+      },
+      "npm:inherits@2.0.3": {
+        "ignore": [
+          "test.js"
+        ]
+      },
+      "npm:moment@2.15.1": {
+        "jspmNodeConversion": false
+      },
+      "npm:ms@0.7.1": {
+        "jspmNodeConversion": false,
+        "format": "cjs"
+      }
+    }
   }
 }

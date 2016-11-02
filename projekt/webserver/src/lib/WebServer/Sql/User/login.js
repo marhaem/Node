@@ -7,7 +7,7 @@ export default function login(userData) {
     })
     .then((user) => {
       if(!user) {
-        this.global.logger.error('someone tried to login using ' + userData.email + ' which is an unexisting user');
+        this.global.logger.error('someone tried to login as ' + userData.email + ' which is an unexisting user');
         reject(new Error('authentication failed, user doesn\'t exist'));
       }
       else if(user.failedLoginAttempts >= 3) {// user is locked

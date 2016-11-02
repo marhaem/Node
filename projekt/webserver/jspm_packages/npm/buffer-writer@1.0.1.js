@@ -1,0 +1,1 @@
+module.exports = require("npm:buffer-writer@1.0.1/index.js");

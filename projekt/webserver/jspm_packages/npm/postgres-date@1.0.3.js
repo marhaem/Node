@@ -1,0 +1,1 @@
+module.exports = require("npm:postgres-date@1.0.3/index.js");

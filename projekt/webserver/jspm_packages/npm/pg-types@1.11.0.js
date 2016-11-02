@@ -1,0 +1,1 @@
+module.exports = require("npm:pg-types@1.11.0/index.js");

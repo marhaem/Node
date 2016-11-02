@@ -37,13 +37,13 @@ $(document).ready(function() {
         $status.append('<p>' + response.data + '</p>'); // success
       })
       .fail((response) => {
-        let message;
+        let message = response.status;
 
         if(response.responseJSON && response.responseJSON.error) {
           message += response.responseJSON.error;
         }
         else {
-          message += 'Unknown error';
+          message += ' Unknown error';
         }
 
         $status.empty();

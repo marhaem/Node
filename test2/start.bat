@@ -1,0 +1,1 @@
+jspm uninstall npm:sequelize npm:tedious npm:mysql

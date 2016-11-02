@@ -29,7 +29,7 @@ export default class {
       method: 'GET',
       path: '/ping',
       handler: function(request, reply) {
-        return reply.view('index.htm');
+        return reply.view('ping.htm');
       }
     }, {
       method: 'GET',

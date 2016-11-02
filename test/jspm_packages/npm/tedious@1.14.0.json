@@ -1,0 +1,112 @@
+{
+  "main": "lib/tedious.js",
+  "format": "cjs",
+  "meta": {
+    "*": {
+      "globals": {
+        "process": "process"
+      }
+    },
+    "*.json": {
+      "format": "json"
+    },
+    "benchmarks/query/varbinary-4.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "benchmarks/query/varbinary-huge.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "benchmarks/query/varbinary-large.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "benchmarks/query/varbinary-small.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "benchmarks/token-parser/*": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/buffertools.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/connection.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/data-type.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/instance-lookup.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/login7-payload.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/message-io.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/ntlm-payload.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/packet.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/prelogin-payload.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/token/stream-parser.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/tracking-buffer/bigint.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/tracking-buffer/readable-tracking-buffer.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/tracking-buffer/writable-tracking-buffer.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/value-parser.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    }
+  },
+  "map": {
+    "./benchmarks": "./benchmarks/index.js"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "main": "dottie.js",
+  "format": "cjs",
+  "meta": {
+    "*.json": {
+      "format": "json"
+    }
+  }
+}

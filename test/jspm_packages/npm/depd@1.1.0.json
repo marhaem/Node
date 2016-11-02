@@ -1,0 +1,31 @@
+{
+  "main": "index.js",
+  "format": "cjs",
+  "meta": {
+    "*": {
+      "globals": {
+        "process": "process"
+      }
+    },
+    "*.json": {
+      "format": "json"
+    },
+    "lib/compat/buffer-concat.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    },
+    "lib/compat/index.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    }
+  },
+  "map": {
+    "./index.js": {
+      "browser": "./lib/browser/index.js"
+    },
+    "./lib/browser": "./lib/browser/index.js",
+    "./lib/compat": "./lib/compat/index.js"
+  }
+}

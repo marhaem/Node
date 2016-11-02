@@ -6,6 +6,7 @@
   "dialectOptions": {
     "instanceName": "MSSQLSERVER"
   },
+  "native": "false",
   "pool": {
     "max": 5,
     "min": 1,

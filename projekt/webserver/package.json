@@ -27,7 +27,9 @@
       "moment": "npm:moment@^2.15.0",
       "mysql": "npm:mysql@^2.11.1",
       "path": "github:jspm/nodelibs-path@^0.1.0",
-      "sequelize": "npm:sequelize@^3.24.1",
+      "pg": "npm:pg@^6.1.0",
+      "pg-hstore": "npm:pg-hstore@^2.3.2",
+      "sequelize": "npm:sequelize@^3.24.4",
       "tedious": "npm:tedious@^1.14.0",
       "vision": "npm:vision@^4.1.0"
     },
@@ -35,6 +37,29 @@
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "core-js": "npm:core-js@^1.1.4"
+    },
+    "overrides": {
+      "npm:pg@6.1.0": {
+        "map": {
+          "./lib": "./lib/index.js",
+          "./lib/native": "@empty"
+        },
+        "deps": [
+          "npm:pg-types"
+        ]
+      },
+      "npm:sequelize@3.24.4": {
+        "map": {
+          "./lib/associations": "./lib/associations/index.js",
+          "./lib/dialects/abstract": "./lib/dialects/abstract/index.js",
+          "./lib/dialects/mariadb": "./lib/dialects/mariadb/index.js",
+          "./lib/dialects/mssql": "./lib/dialects/mssql/index.js",
+          "./lib/dialects/mysql": "./lib/dialects/mysql/index.js",
+          "./lib/dialects/postgres": "./lib/dialects/postgres/index.js",
+          "./lib/dialects/sqlite": "./lib/dialects/sqlite/index.js",
+          "mysql": "@empty"
+        }
+      }
     }
   },
   "dependencies": {

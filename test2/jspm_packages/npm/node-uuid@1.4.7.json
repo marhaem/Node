@@ -1,0 +1,14 @@
+{
+  "main": "uuid.js",
+  "format": "cjs",
+  "meta": {
+    "*.json": {
+      "format": "json"
+    },
+    "uuid.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    }
+  }
+}

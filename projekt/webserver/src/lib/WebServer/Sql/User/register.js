@@ -5,7 +5,7 @@ export default function register(userData) {
     })
     .then((user) => {
       if (user) {
-        this.global.logger.info('user ' + user.email + 'already existing');
+        this.global.logger.info('user ' + user.email + ' already existing');
         reject(new Error('register user failed, already existing'));
       }
       else {

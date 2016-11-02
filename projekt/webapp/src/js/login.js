@@ -29,13 +29,13 @@ $(document).ready(function() {
     let $password = $('#password').val();
 
     $status.empty();
-    $status.append('<p>Please wait...</p>');
 
     if($email === '' || $password === '') {
       $('input[type=text],input[type="password"]').css('border','2px solid red');
       $('input[type=text],input[type="password"]').css('box-shadow','0 0 3px red');
     }
     else {
+      $status.append('<p>Please wait...</p>');
       $.ajax({
         method: 'POST',
         url: window.location.origin + '/api/v1/login',
@@ -47,20 +47,41 @@ $(document).ready(function() {
       .done((response) => {
         //check if ok else reroute
         $status.empty();
-        $status.append('<p>' + response.data + '</p>');
+        $status.append('<p>' + response + '</p>');
+        console.log(response);
       })
       .fail((response) => {//if error reply doesn't transact data given
         let message;
-        console.log(objectKeysToString(response));
+        //console.log(objectKeysToString(response));
+        //console.log(response.status);
+        //console.log(response.responseText);
+        //console.log(response.responseJSON);
 
-        if(response.responseJSON && response.responseJSON.error) {
-          message = response.responseJSON.error;
+        if(response.status !== 302)
+        {
+          if(response.responseJSON && response.responseJSON.error) {
+            message = response.responseJSON.error;
+          }
+          else {
+            message = 'wrong credentials or locked account!';
+          }
+          $status.empty();
+          $status.append('<p>' + message + '</p>');
+        }//@TODO: make it more modular
+        else if(!window.location.origin) {//every browser should be able to do this
+          $status.empty();
+          $status.append('<p>' + 'successfully logged in!' + '</p>');
+          let urlSplit = window.location.href.split('/');
+          window.location.href = urlSplit[0] + '//' + urlSplit[2] + response.responseJSON.data;
+          //window.location.href = window.location.protocol + '//' + window.location.host + response.responseJSON.data;
+          //window.location.replace(urlSplit[0] + '//' + urlSplit[2] + response.responseJSON.data);
         }
         else {
-          message = 'wrong email or password';
+          $status.empty();
+          $status.append('<p>' + 'successfully logged in!' + '</p>');
+          //@TODO: create a cookie or seission id/token for the user and send it
+          window.location.replace(window.location.origin + response.responseJSON.data);
         }
-        $status.empty();
-        $status.append('<p>' + response.data + '</p>');
       })
       .always(function() {
         //

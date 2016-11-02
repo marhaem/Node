@@ -1,0 +1,20 @@
+{
+  "main": "terraformer.js",
+  "format": "cjs",
+  "meta": {
+    "*": {
+      "globals": {
+        "process": "process"
+      }
+    },
+    "*.json": {
+      "format": "json"
+    },
+    ".grunt/grunt-gh-pages/gh-pages/src/assets/javascripts/classie-b6db1f70.js": {
+      "format": "amd"
+    },
+    "docs-build/assets/javascripts/classie-b6db1f70.js": {
+      "format": "amd"
+    }
+  }
+}

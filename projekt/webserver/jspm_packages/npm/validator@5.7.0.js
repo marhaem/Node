@@ -1,0 +1,1 @@
+module.exports = require("npm:validator@5.7.0/index.js");

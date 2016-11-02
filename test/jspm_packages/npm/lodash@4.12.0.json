@@ -1,0 +1,14 @@
+{
+  "main": "lodash.js",
+  "format": "cjs",
+  "meta": {
+    "*.json": {
+      "format": "json"
+    },
+    "isBuffer.js": {
+      "globals": {
+        "Buffer": "buffer/global"
+      }
+    }
+  }
+}

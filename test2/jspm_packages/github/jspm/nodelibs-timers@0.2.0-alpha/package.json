@@ -1,0 +1,13 @@
+{
+  "main": "./timers.js",
+  "registry": "github",
+  "map": {
+    "./timers.js": {
+      "node": "@node/timers",
+      "browser": "timers-browserify"
+    }
+  },
+  "dependencies": {
+    "timers-browserify": "npm:timers-browserify@^1.4.2"
+  }
+}

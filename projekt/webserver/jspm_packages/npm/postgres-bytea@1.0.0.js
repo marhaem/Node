@@ -1,0 +1,1 @@
+module.exports = require("npm:postgres-bytea@1.0.0/index.js");

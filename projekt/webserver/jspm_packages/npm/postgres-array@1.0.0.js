@@ -1,0 +1,1 @@
+module.exports = require("npm:postgres-array@1.0.0/index.js");

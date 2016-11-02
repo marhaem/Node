@@ -1,0 +1,1 @@
+module.exports = require("npm:postgres-interval@1.0.2/index.js");

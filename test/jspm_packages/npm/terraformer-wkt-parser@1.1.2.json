@@ -1,0 +1,14 @@
+{
+  "main": "terraformer-wkt-parser.js",
+  "format": "cjs",
+  "meta": {
+    "*": {
+      "globals": {
+        "process": "process"
+      }
+    },
+    "*.json": {
+      "format": "json"
+    }
+  }
+}
