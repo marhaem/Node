@@ -1,1 +1,0 @@
-module.exports = require("npm:retry-as-promised@2.0.1/index.js");
