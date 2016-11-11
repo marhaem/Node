@@ -1,1 +1,0 @@
-module.exports = require("npm:catbox-memory@2.0.3/lib/index.js");
