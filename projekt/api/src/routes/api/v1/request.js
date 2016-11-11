@@ -1,11 +1,22 @@
 /*global console*/
 import moment from 'moment';
 import global from '../../../../../webserver/src/lib/WebServer/Global';
+let Hawk = global.Hawk;
 
 let reject = function reject(err) {
   if(err) {
     global.logger.error('request.js: ' + err);
   }
+};
+
+const credentialsFunc = function (id, callback) {
+  const credentials = {
+    key: 'efargae',
+    algorithm: 'sha256',
+    user: 'Steve'
+  };
+
+  return callback(null, credentials);
 };
 
 export default {
@@ -66,6 +77,7 @@ export default {
       method: 'POST',
       path: '/api/v1/login',
       handler: function(request, reply) {
+        //console.log(request);
         if(!request.payload || !request.payload.email || !request.payload.password) {
           request.log.info('login user failed: no email or password given');
           return reply({
@@ -77,8 +89,7 @@ export default {
           global.models.User.login({
             "email": request.payload.email,
             "password": request.payload.password
-          }).then((val) => {
-            console.log(val);
+          }).then((user) => { // => { user }
             //console.log('request: ' + request);
             //console.log('reply: ' + reply);
             //return reply.redirect('/chat').code(302);
@@ -87,11 +98,12 @@ export default {
             //request.setUrl('http://localhost:3000/chat');
             return reply({
               data: '/chat'
-            }).code(302);// will enter .fail in jquery -_-, meh.
+            })
+            .state('data', {firstVisit: 'false'} )
+            .code(302);//anything else than 200 OK will enter .fail in jquery -_-, meh.
           }, (error) => {
             //@TODO: implement correct http-status-codes. wrong credentials: 401, user locked: do not differentiate or else existence of users could be hacked
             //http://stackoverflow.com/questions/1959947/whats-an-appropriate-http-status-code-to-return-by-a-rest-api-service-for-a-val
-            console.log(error);
             reject(error);
             reply({
               data: error

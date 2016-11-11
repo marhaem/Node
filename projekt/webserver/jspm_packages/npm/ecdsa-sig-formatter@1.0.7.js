@@ -1,0 +1,1 @@
+module.exports = require("npm:ecdsa-sig-formatter@1.0.7/src/ecdsa-sig-formatter.js");

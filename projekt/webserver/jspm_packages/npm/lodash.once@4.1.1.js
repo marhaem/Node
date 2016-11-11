@@ -1,0 +1,1 @@
+module.exports = require("npm:lodash.once@4.1.1/index");

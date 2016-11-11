@@ -2,6 +2,7 @@
 
 import Hapi from 'hapi';
 import hapiBunyan from 'hapi-bunyan';
+import hapiJWT from 'hapi-auth-jwt2';
 import vision from 'vision';
 import handlebars from 'handlebars';
 import inert from 'inert';
@@ -45,6 +46,7 @@ export default class {
       }
     }, {
       method: 'GET',
+      config: {auth: 'jwt'},
       path: '/chat',
       handler: function(request, reply) {
         return reply.view('chat.htm');
@@ -78,7 +80,19 @@ export default class {
       options: {
         logger: global.logger
       }
+    }, {
+      register: hapiJWT,
+      options: {}
     }];
+
+    let validate = function(decoded, request, callback) {
+      let now = Date().getTime();
+      if(now > decoded.exp) {
+        callback(null, false);
+      }
+      else {
+        callback(null, true, decoded);
+      }
 
     let hapiViews = {
       engines: {
@@ -100,6 +114,11 @@ export default class {
       else {
         server.views(hapiViews);
         server.route(hapiRoutes);
+        server.auth.strategy('jwt', 'jwt', {
+          key: 'secret',
+          validateFunc: validate,
+          verifyOptions: {algorithms: [ 'HS256' ]}
+        });
         server.start((err) => {
         	if(err) {
         		throw err;

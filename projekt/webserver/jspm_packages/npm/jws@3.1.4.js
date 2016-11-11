@@ -1,0 +1,1 @@
+module.exports = require("npm:jws@3.1.4/index.js");

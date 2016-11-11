@@ -17,6 +17,7 @@
   "jspm": {
     "configFile": "jspm_config.js",
     "dependencies": {
+      "hawk": "npm:hawk@^6.0.0",
       "mysql": "npm:mysql@^2.11.1",
       "sequelize": "npm:sequelize@^3.24.1",
       "tedious": "npm:tedious@^1.14.0"

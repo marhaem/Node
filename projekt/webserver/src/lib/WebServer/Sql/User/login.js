@@ -1,5 +1,8 @@
 import moment from 'moment';
 
+//@TODO: design login so that it will return the credentials which can then be used by Hawk to authenticate
+//@TODO: implement a consistent error interface like reject({ error: boolean data: string})
+//@TODO: on each siteload check for valid JWT 
 export default function login(userData) {
   return new Promise((resolve, reject) => {
     this.sqlTable.findOne({
@@ -7,13 +10,13 @@ export default function login(userData) {
     })
     .then((user) => {
       if(!user) {
-        this.global.logger.error('someone tried to login as ' + userData.email + ' which is an unexisting user');
+        this.global.logger.error('someone tried to login as ' + userData.email + ' which is an inexistent user');
         reject(new Error('authentication failed, user doesn\'t exist'));
       }
       else if(user.failedLoginAttempts >= 3) {// user is locked
         reject('User is locked');
       }
-      else {
+      else { //User exists and is not locked
         this.crypto.validate(userData.password, user.passwordSalt, user.passwordHash, (error, isEqual) => {
           if(error) {
             this.global.logger.error(error);
@@ -26,7 +29,8 @@ export default function login(userData) {
             }, {
               where: {userID: user.userID}
             }).then(() => {
-              resolve('user ' + user.email + ' logged in successfully');
+              //@TODO: return a JWT
+              resolve('User logged in successfully');
             });
           }
           else { // login failed, wrong password

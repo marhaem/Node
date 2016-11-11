@@ -1,0 +1,1 @@
+module.exports = require("npm:mysql@2.12.0/index");

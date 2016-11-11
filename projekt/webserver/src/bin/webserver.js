@@ -3,7 +3,7 @@
 
 (function (){
   'use strict';
-
+  let Hawk = require('hawk');
   let Sequelize = require('sequelize');
   let bunyan = require('bunyan');
   let crypto = require('crypto');
@@ -33,7 +33,7 @@
     global = global.default;
     global.logger = logger;
     global.crypto = crypto;
-
+    global.Hawk = Hawk;
       //console.log(sequelize);
     System.import('./src/lib/WebServer/Sql.js').then((Sql) => {
       Sql = Sql.default;
