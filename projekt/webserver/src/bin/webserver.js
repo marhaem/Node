@@ -29,7 +29,7 @@
     }
   };
 
-  System.import('./src/lib/WebServer/Global.js').then((global) => {
+  System.import('./src/lib/Global.js').then((global) => {
     global = global.default;
     global.logger = logger;
     global.crypto = crypto;

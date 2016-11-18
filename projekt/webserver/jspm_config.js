@@ -27,6 +27,7 @@ System.config({
     "hoek": "github:capaj/hoek-browser@2.12.0",
     "inert": "npm:inert@4.0.2",
     "json": "github:systemjs/plugin-json@0.1.2",
+    "jsonwebtoken": "npm:jsonwebtoken@7.1.9",
     "moment": "npm:moment@2.16.0",
     "mysql": "npm:mysql@2.12.0",
     "oz": "npm:oz@4.0.4",

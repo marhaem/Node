@@ -56,9 +56,9 @@ function listFilesRecursive(dir, cb) {
 				cb(err);
 			}
 			else {
-				let ret = paths.map((file) => {
+				let ret = paths.map((file) => { // returns a new Array
 					return path.join(dir, file);
-				}).forEach((file) => {
+				}).forEach((file) => { // returns same array with processed elements
 					let stats = fs.statSync(file);
 					
 					if(stats.isDirectory()) {
