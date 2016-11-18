@@ -1,8 +1,8 @@
 import model from './TableDefinitions/model.json!';
 import register from './register';
 import login from './login';
-import global from '../../Global';
-import Crypto from '../Crypto';
+import global from '../../../Global';
+import Crypto from '../../../Crypto';
 
 /**
  */
@@ -20,13 +20,20 @@ export default class User {
   }
 
   /**
+   *
    */
   constructor(sqlTable) {
     this.sqlTable = sqlTable;
     this.global = global;
-    this.crypto = new Crypto();
-    this.crypto.initialize((msg, error) => {
-      global.logger.error(msg + error);
+    this.crypto = new Crypto('./secret.txt');
+    this.crypto.initialize((error, secret) => {
+      if(error) {
+        global.logger.error(error);
+        throw error;
+      }
+      else {
+        global.logger.info('successfully retrieved secret for ');
+      }
     });
 
   // class methods

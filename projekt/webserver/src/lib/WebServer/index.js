@@ -7,12 +7,14 @@ import vision from 'vision';
 import handlebars from 'handlebars';
 import inert from 'inert';
 
-
-import global from './Global';
-
+import global from '../Global';
+import jwt from './JWT';
 import apiRoutes from '../../../../api/src/routes';
-
 const PATH_WEBAPP = '../webapp';
+
+let log = function log(info) {
+  global.logger.info(info);
+};
 
 export default class {
   constructor() {
@@ -22,37 +24,43 @@ export default class {
   start() {
     let webappRoutes = [{
       method: 'GET',
+      config: {auth: false},
       path: '/',
       handler: function(request, reply) {
         reply('Hello world!');
       }
     }, {
       method: 'GET',
+      config: {auth: false},
       path: '/ping',
       handler: function(request, reply) {
         return reply.view('ping.htm');
       }
     }, {
       method: 'GET',
+      config: {auth: false},
       path: '/register',
       handler: function(request, reply) {
         return reply.view('register.htm');
       }
     }, {
       method: 'GET',
+      config: {auth: false},
       path: '/login',
       handler: function(request, reply) {
         return reply.view('login.htm');
       }
     }, {
       method: 'GET',
-      config: {auth: 'jwt'},
+      config: {auth: 'authenticate'},
       path: '/chat',
       handler: function(request, reply) {
         return reply.view('chat.htm');
       }
     }, {
       method: 'GET',
+      //@TODO: implement auto-authorization via API-key
+      config: {auth: false},
       path: '/{param*}',
       handler: {
         directory: {
@@ -85,7 +93,18 @@ export default class {
       options: {}
     }];
 
-    let validate = function(decoded, request, callback) {
+    //@TODO: implement function to validate session-token issued by JWT. Also export this function
+    let validate = function (decoded, request, callback) {
+
+      let credentials = {
+        email: decoded.email,
+        password: decoded.password
+      };
+      //return credentials via callback
+      return callback(null, true, credentials);
+    };
+
+    /*let validate = function(decoded, request, callback) {
       let now = Date().getTime();
       if(now > decoded.exp) {
         callback(null, false);
@@ -93,6 +112,7 @@ export default class {
       else {
         callback(null, true, decoded);
       }
+    };*/
 
     let hapiViews = {
       engines: {
@@ -103,7 +123,7 @@ export default class {
       path: './'
     };
 
-    global.logger.info('webserver starting');
+    console.log('webserver starting...');
     const server = new Hapi.Server();
     server.connection({ port: 3000 });
 
@@ -113,12 +133,19 @@ export default class {
       }
       else {
         server.views(hapiViews);
-        server.route(hapiRoutes);
-        server.auth.strategy('jwt', 'jwt', {
-          key: 'secret',
+
+        //server.auth.scheme('jwt', scheme);
+        server.auth.strategy('authenticate', 'jwt', { // JWT2 registered a scheme as 'jwt' this sets the strategy for it: 'authenticate'
+          key: 'NeverShareYourSecret',
           validateFunc: validate,
-          verifyOptions: {algorithms: [ 'HS256' ]}
+          verifyOptions: {algorithms: [ 'HS256' ]},
+
         });
+
+        server.route(hapiRoutes);
+
+        server.auth.default('authenticate'); // set 'authenticate' as default strategy
+
         server.start((err) => {
         	if(err) {
         		throw err;

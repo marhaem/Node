@@ -2,7 +2,7 @@ import moment from 'moment';
 
 //@TODO: design login so that it will return the credentials which can then be used by Hawk to authenticate
 //@TODO: implement a consistent error interface like reject({ error: boolean data: string})
-//@TODO: on each siteload check for valid JWT 
+//@TODO: on each siteload check for valid JWT
 export default function login(userData) {
   return new Promise((resolve, reject) => {
     this.sqlTable.findOne({
@@ -29,8 +29,7 @@ export default function login(userData) {
             }, {
               where: {userID: user.userID}
             }).then(() => {
-              //@TODO: return a JWT
-              resolve('User logged in successfully');
+              resolve(user);
             });
           }
           else { // login failed, wrong password

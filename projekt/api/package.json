@@ -17,6 +17,7 @@
   "jspm": {
     "configFile": "jspm_config.js",
     "dependencies": {
+      "crypto": "github:jspm/nodelibs-crypto@^0.1.0",
       "hawk": "npm:hawk@^6.0.0",
       "mysql": "npm:mysql@^2.11.1",
       "sequelize": "npm:sequelize@^3.24.1",

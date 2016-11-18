@@ -286,12 +286,6 @@
     "bn.js": "npm:bn.js@^4.0.0",
     "brorand": "npm:brorand@^1.0.1"
   },
-  "npm:sha.js@2.4.5": {
-    "inherits": "npm:inherits@^2.0.1",
-    "fs": "github:jspm/nodelibs-fs@^0.1.0",
-    "process": "github:jspm/nodelibs-process@^0.1.0",
-    "buffer": "github:jspm/nodelibs-buffer@^0.1.0"
-  },
   "npm:buffer-xor@1.0.3": {
     "buffer": "github:jspm/nodelibs-buffer@^0.1.0",
     "systemjs-json": "github:systemjs/plugin-json@^0.1.0"
@@ -512,5 +506,11 @@
     "hash.js": "npm:hash.js@^1.0.0",
     "inherits": "npm:inherits@^2.0.1",
     "systemjs-json": "github:systemjs/plugin-json@^0.1.0"
+  },
+  "npm:sha.js@2.4.8": {
+    "inherits": "npm:inherits@^2.0.1",
+    "fs": "github:jspm/nodelibs-fs@^0.1.0",
+    "process": "github:jspm/nodelibs-process@^0.1.0",
+    "buffer": "github:jspm/nodelibs-buffer@^0.1.0"
   }
 }
