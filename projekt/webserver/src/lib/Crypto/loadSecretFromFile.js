@@ -1,3 +1,4 @@
+import fs from 'fs';
 /**
  * cb from readFile takes two arguments (error, data)
  */

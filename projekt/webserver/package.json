@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./src/index.js",
   "scripts": {
-    "test": "nodemon --watch test --exec node start.js",
+    "test": "nodemon --watch src --exec node start.js",
     "start": "nodemon --watch src --exec node src/bin/webserver.js"
   },
   "repository": {
@@ -34,6 +34,7 @@
       "pg": "npm:pg@^6.1.0",
       "pg-hstore": "npm:pg-hstore@^2.3.2",
       "sequelize": "npm:sequelize@^3.24.4",
+      "systemjs": "npm:systemjs@^0.19.41",
       "tedious": "npm:tedious@^1.14.0",
       "vision": "npm:vision@^4.1.0"
     },

@@ -1,4 +1,4 @@
-import JWT from './JWT';
+import JWT from '../JWT';
 
 let log = function log(info) {
   this.global.logger.info(info);

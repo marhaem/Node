@@ -1,8 +1,7 @@
-/*global Buffer*/
 //modules:
-import fs from 'fs';
+
 //utilities:
-import global from './Global';
+import global from '../Global';
 // methods:
 import generateSalt from './generateSalt';
 import generateSecret from './generateSecret';
@@ -46,3 +45,24 @@ export default class Crypto{
     this.validate = validate;
   }
 }
+
+/*
+function Crypto(file) {
+  this.crypto = global.crypto;
+
+  this.goodCiphers = ['aes-256-cbc-hmac-sha1', 'aes-256-cbc'];
+  this.availableCiphers = this.crypto.getCiphers();
+  this.CIPHER = global.CIPHER;
+
+  this.goodHashAlgoritms = ['sha512WithRSAEncryption', 'rsa-sha512', 'sha512', 'sha256WithRSAEncryption', 'rsa-sha256', 'sha256'];
+  this.availableHashAlgorithms = this.crypto.getHashes();
+  this.HASH_ALGORITHM = global.HASH_ALGORITHM;
+
+  this.secret = undefined;
+  this.file = file;
+}
+
+Crypto.prototype = {
+  generateSalt, xy, ab,
+};
+*/

@@ -1,3 +1,27 @@
+let System = require('jspm').Loader();
+
+function log(a) {
+	console.log(a);
+}
+
+System.import('./test/new 1.js').then((a) => {
+	log(a.default.get);
+}, log).catch(log);
+
+
+/*let path = './src/lib/Crypto/methods/index.js';
+//let start = require(path);
+let System = require('jspm').Loader();
+
+function reject(info) {
+	console.log(info)
+}
+
+// so that we may enter jspm in index.js
+System.import(path).then((start) => {
+	start.default.get();
+}, reject).catch(reject);*/
+
 /*let path = './test/testClass/module';
 let System = require('jspm').Loader();
 
@@ -12,10 +36,6 @@ System.import(path).then( (Test) => {
 	console.log('success');
 }, reject).catch(reject);
 */
-
-var val = (function() {
-	console.log(42);
-})();
 
 /*
 let path = './test/testClass/module';

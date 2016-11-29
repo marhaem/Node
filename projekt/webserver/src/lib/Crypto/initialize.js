@@ -1,3 +1,5 @@
+/*global global, console*/
+import fs from 'fs';
 /**
  *
  */

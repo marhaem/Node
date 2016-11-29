@@ -26,6 +26,7 @@ export default class User {
     this.sqlTable = sqlTable;
     this.global = global;
     this.crypto = new Crypto('./secret.txt');
+
     this.crypto.initialize((error, secret) => {
       if(error) {
         global.logger.error(error);

@@ -1,1 +1,3 @@
-var c = 0;
+export default {
+	get: __moduleName
+};
