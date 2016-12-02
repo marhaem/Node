@@ -1,0 +1,31 @@
+	content-type application/x-www-form-urlencoded; charset=UTF-8
+	x-requested-with XMLHttpRequest
+	
+	HTTP/1.1 200 OK
+	
+	{
+		"access_token": "xyz...",
+		"exp": 123456
+	}
+	
+	-----------------------------
+	
+	HTTP/1.1 200 OK
+	
+	Set-Cookie: access_token=xyz...
+	
+	GET /api/v1/chat
+	host: localhost
+	
+	Cookie: access_token=xyz...
+	HttpOnly
+	
+	
+	Webstorage is accessible through Javascript on the same domain.
+	Cookies with the HttpOnly flag aren't accessible through Javascript, these are immune to XSS.
+	Cookies are stateless, when you are storing an JWT inside them.
+	
+	Da HTTP requests die an die Domain gebundenen Cookies automatisch mitsendet, ist es möglich, dass eine Seite HTTP requests für Fremde Domains ausführt und dazu die evtl. vorhandenen session Cookies mitsendet. 
+	Javascript kann nur Cookies auslesen, welche sich auf derselben domain befinden, auf der das Script ausgeführt wird.
+	Gegen CSRF: token mithilfe von javascript aus Cookie auslesen und in HTTP header setzen
+	localhost:3000/api/v1/login?email=marc@hammer.de&password=123
