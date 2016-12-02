@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "./src/index.js",
   "scripts": {
-    "test": "nodemon --watch src --exec node start.js",
-    "start": "nodemon --watch . --exec node src/bin/webserver.js"
+    "test": "nodemon --watch test --exec node test/testHapiAuth/index.js",
+    "start": "nodemon --watch src --exec node src/bin/webserver.js"
   },
   "repository": {
     "type": "git",
@@ -68,6 +68,7 @@
     }
   },
   "dependencies": {
+    "bcryptjs": "^2.3.0",
     "bunyan": "^1.8.1",
     "jspm": "^0.16.41",
     "mkdirp": "^0.5.1",
@@ -79,6 +80,7 @@
     "chai": "^3.5.0",
     "crypto": "0.0.3",
     "hapi": "^16.0.0",
+    "hapi-auth-basic": "^4.2.0",
     "hapi-auth-jwt2": "^7.2.0",
     "hawk": "^6.0.0",
     "jshint": "^2.9.3",

@@ -1,13 +1,21 @@
-let System = require('jspm').Loader();
-
-function log(a) {
-	console.log(a);
+function scheme(server, options) {
+	return {
+		authenticate: function authenticate(request, reply) {
+			if(!req.headers.authorization) {
+				return reply{
+					error: true,
+					message: 'Unauthorized'
+				};
+			}
+			else {
+				//do something with req.headers.authorization
+				return reply.continue('success');
+			}
+		},
+		payload: '',
+		response: ''
 }
-
-System.import('./test/new 1.js').then((a) => {
-	log(a.default.get);
-}, log).catch(log);
-
+server.auth.scheme('name', scheme)
 
 /*let path = './src/lib/Crypto/methods/index.js';
 //let start = require(path);

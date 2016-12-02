@@ -32,7 +32,7 @@ export default {
         //return reply.redirect('/chat').send();
         //request.setUrl('http://localhost:3000/chat');
         log('retrieving token');
-        let token = jwt.sign({user: user.userID}, request.server.app.jwt_secret, {algorithm: 'HS256', expiresIn: expiry});
+        let token = jwt.sign({userID: user.userID}, request.server.app.jwt_secret, {algorithm: 'HS256', expiresIn: expiry});
         log('token retrieved');
         return reply({
           data: '/chat'

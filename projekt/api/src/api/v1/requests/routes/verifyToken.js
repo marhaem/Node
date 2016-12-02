@@ -7,7 +7,7 @@ function log(info) {
 export default {
   method: 'POST',
   path: '/api/v1/verifyToken',
-  //config: {auth: false},
+  config: {auth: false},
   handler: function(request, reply) {
     log(request.headers);
     if(!request.headers.authorization) {
