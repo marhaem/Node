@@ -9,7 +9,7 @@ server.connection({port: 3000});
 
 const validate = function (request, cb) {
 	console.log('validate');
-	cb('success');
+	cb('john');
 }
 
 const scheme = function scheme(server, options) {
@@ -21,9 +21,8 @@ const scheme = function scheme(server, options) {
 			else {
 				//do something with req.headers.authorization
 				options.validateFunc(request, (a) => {
-					return reply.continue(a);
+				return reply.continue({credentials: {user: a}});
 				});
-				
 			}
 		}
 	}
@@ -38,7 +37,7 @@ server.route({
 	path: '/',
 	config: {auth: 'auth'},//strategy
 	handler: function(req, rep) {
-		rep('hello');
+		rep('hello, ' + req.auth.credentials.user);
 	}
 });
 
