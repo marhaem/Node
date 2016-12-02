@@ -1,59 +1,78 @@
-/*global global, console*/
+/*global*/
 import fs from 'fs';
+import global from '../Global';
 /**
  *
  */
+//@TODO: Why the fuck isn't this.global defined??? It works with Requests.login though -_-
+/*let log = function log(info) {
+  this.global.logger.info(info);
+};*/
+
+function log(info) {
+  global.logger.info(info);
+}
+
+function reject(error) {
+  global.logger.error(error);
+}
+
 export default function initialize(cb) {
-  if(!cb) {
+    if(!cb) {
     try {
-      // @TODO: use helper methods to catch errors
-      this.secret = fs.readFileSync(this.file, {encoding: 'utf8'});
+      //@TODO: use helper methods to catch errors
+      this.secret = fs.readFileSync(this.file, {encoding: this.ENCODING});
     }
     catch(error) {
-      global.logger.error('loading secret from file failed: ' + error);
+      reject('loading secret from file failed: ' + error);
       try {
         this.setBestAvailableCipher();
       }
       catch(error) {
-        global.logger(error);
+        reject(error);
         throw new Error(error);
         //@TODO throw error, would be necessary, server is not able to perform properly
       }
       try {
         this.secret = this.generateSecret();
-        console.log(this.secret);
-        fs.writeFileSync(this.file, this.secret, {encoding: 'utf8'});
+        log(this.secret);
+        fs.writeFileSync(this.file, this.secret, {encoding: this.ENCODING});
         return this.secret;
       }
       catch(error) {
-        global.logger.error('saving secret to file failed: ' + error);
+        reject('saving secret to file failed: ' + error);
         throw new Error(error);
         //@TODO throw error, would be necessary, server is not able to perform properly
       }
     }
   }
   else {
-    fs.readFile(this.file, {encoding: 'utf8'}, (error, data) => {
+    fs.readFile(this.file, {encoding: this.ENCODING}, (error, data) => {
       if(error) {
-        global.logger.info('no secret found. Trying to create new secret\n');
+        log('no secret found. Trying to create new secret\n');
         try {
           this.setBestAvailableCipher();
         }
         catch(err) { // give up
+          reject(err);
           cb(err);
         }
         this.secret = this.generateSecret();
-        fs.writeFile(this.file, this.secret, {encoding: 'utf8'}, (error) => {
+        log('successfully generated secret');
+        fs.writeFile(this.file, this.secret, {encoding: this.ENCODING}, (error) => {
           if(error) {
-            cb(error)
+            cb(error);
           }
           else {
+            log('successfully wrote secret to file');
             cb(null, this.secret);
           }
         });
       }
       else {
+        log('successfully retrieved secret from file');
         this.secret = data;
+        cb(null, data);
       }
     });
   }

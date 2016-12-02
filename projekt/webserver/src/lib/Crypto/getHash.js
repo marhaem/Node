@@ -11,7 +11,7 @@ export default function getHash(password, salt, cb) {
         cb(error, null, null);
       }
       else {
-        cb(undefined, key.toString('utf8'));
+        cb(undefined, key.toString(this.ENCODING));
       }
     });
   }

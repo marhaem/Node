@@ -1,5 +1,4 @@
 /* */ 
-"format cjs";
 define( [
 	"./hasOwn"
 ], function( hasOwn ) {

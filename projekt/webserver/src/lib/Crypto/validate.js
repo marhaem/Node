@@ -7,13 +7,13 @@ export default function validate(password, userSalt, userHash, cb) {
   }
   this.getHash(password, userSalt, (error, newHash) => {
     if(error) {
-      global.logger.error(error);
+      this.logger.error(error);
       cb(new Error('user authentication failed'));
     }
     else {
       this.slowEquals(userHash, newHash, (error, isEqual) => {
         if(error) {
-          global.logger.error(error);
+          this.logger.error(error);
           cb(new Error('user authentication failed'));
         }
           cb(null, isEqual);

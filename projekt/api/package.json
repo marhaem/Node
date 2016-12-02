@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jspm": "^0.16.45",
+    "jspm": "^0.16.48",
     "mysql": "^2.11.1",
     "sequelize": "^3.24.1",
     "tedious": "^1.14.0"
@@ -17,11 +17,7 @@
   "jspm": {
     "configFile": "jspm_config.js",
     "dependencies": {
-      "crypto": "github:jspm/nodelibs-crypto@^0.1.0",
-      "hawk": "npm:hawk@^6.0.0",
-      "mysql": "npm:mysql@^2.11.1",
-      "sequelize": "npm:sequelize@^3.24.1",
-      "tedious": "npm:tedious@^1.14.0"
+      "crypto": "github:jspm/nodelibs-crypto@^0.1.0"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

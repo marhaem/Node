@@ -1,1 +1,0 @@
-module.exports = require("npm:big-number@0.3.1/index");

@@ -1,5 +1,4 @@
 /* */ 
-"format cjs";
 define( [
 	"../data/var/dataPriv"
 ], function( dataPriv ) {

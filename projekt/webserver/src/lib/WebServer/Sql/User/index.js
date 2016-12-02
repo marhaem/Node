@@ -33,7 +33,7 @@ export default class User {
         throw error;
       }
       else {
-        global.logger.info('successfully retrieved secret for ');
+        global.logger.info('successfully retrieved secret to sign user passwords');
       }
     });
 

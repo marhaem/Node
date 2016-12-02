@@ -1,5 +1,4 @@
 /* */ 
-"format cjs";
 define( [
 	"../core",
 	"../var/document",

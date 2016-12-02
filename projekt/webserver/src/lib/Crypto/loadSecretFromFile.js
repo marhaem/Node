@@ -4,9 +4,9 @@ import fs from 'fs';
  */
 export default function loadSecretFromFile(fileName, cb) {
   if(!cb) {
-    return fs.readFileSync(fileName, {encoding: 'utf8'});
+    return fs.readFileSync(fileName, {encoding: this.ENCODING});
   }
   else {
-    fs.readFile(fileName, {encoding: 'utf8'}, cb);
+    fs.readFile(fileName, {encoding: this.ENCODING}, cb);
   }
 }

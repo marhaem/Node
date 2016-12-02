@@ -11,8 +11,8 @@ export default function generateSecret() {
     let ret = cipher.update(
       new Buffer(this.crypto.randomBytes(256),
       null,
-      'utf8'
-    )).toString() + cipher.final('utf8').toString();
+      this.ENCODING
+    )).toString() + cipher.final(this.ENCODING).toString();
     return ret;
   }
 }

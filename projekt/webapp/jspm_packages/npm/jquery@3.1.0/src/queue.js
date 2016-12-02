@@ -1,5 +1,4 @@
 /* */ 
-"format cjs";
 define( [
 	"./core",
 	"./data/var/dataPriv",

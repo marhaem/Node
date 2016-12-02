@@ -1,1 +1,0 @@
-module.exports = require("npm:shimmer@1.1.0/index.js");

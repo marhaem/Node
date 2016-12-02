@@ -1,5 +1,3 @@
-/* */ 
-"format cjs";
 // Initialize a jQuery object
 define( [
 	"../core",

@@ -1,1 +1,0 @@
-module.exports = require("npm:pez@2.1.3/lib/index.js");

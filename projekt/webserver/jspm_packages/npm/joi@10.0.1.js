@@ -1,0 +1,1 @@
+module.exports = require("npm:joi@10.0.1/lib/index.js");

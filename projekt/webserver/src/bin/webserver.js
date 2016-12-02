@@ -1,9 +1,9 @@
 /*jshint -W034*/
 /*global require, global console, process*/
 
-(function (){
+(function () {
   'use strict';
-  let Hawk = require('hawk');
+  //let Hawk = require('hawk');
   let Sequelize = require('sequelize');
   let bunyan = require('bunyan');
   let crypto = require('crypto');
@@ -33,8 +33,7 @@
     global = global.default;
     global.logger = logger;
     global.crypto = crypto;
-    global.Hawk = Hawk;
-      //console.log(sequelize);
+    //global.Hawk = Hawk;
     System.import('./src/lib/WebServer/Sql.js').then((Sql) => {
       Sql = Sql.default;
       global.sql = new Sql(Sequelize); // Sequelize is passed down all the way

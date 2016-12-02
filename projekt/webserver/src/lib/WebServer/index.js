@@ -8,13 +8,18 @@ import handlebars from 'handlebars';
 import inert from 'inert';
 
 import global from '../Global';
-import jwt from './JWT';
-import apiRoutes from '../../../../api/src/routes';
+import Crypto from '../Crypto';
+import api from '../../../../api/src/index';
 const PATH_WEBAPP = '../webapp';
 
 let log = function log(info) {
   global.logger.info(info);
 };
+
+let reject = function reject(error) {
+  global.logger.error(error);
+};
+
 
 export default class {
   constructor() {
@@ -75,7 +80,7 @@ export default class {
     let hapiRoutes = [];
 
     Array.prototype.push.apply(hapiRoutes, webappRoutes);
-    Array.prototype.push.apply(hapiRoutes, apiRoutes.get());
+    Array.prototype.push.apply(hapiRoutes, api.routes());
 
     let hapiPlugins = [{
       register: vision,
@@ -95,13 +100,8 @@ export default class {
 
     //@TODO: implement function to validate session-token issued by JWT. Also export this function
     let validate = function (decoded, request, callback) {
-
-      let credentials = {
-        email: decoded.email,
-        password: decoded.password
-      };
       //return credentials via callback
-      return callback(null, true, credentials);
+      return callback(null, true);
     };
 
     /*let validate = function(decoded, request, callback) {
@@ -134,18 +134,26 @@ export default class {
       else {
         server.views(hapiViews);
 
-        //server.auth.scheme('jwt', scheme);
-        server.auth.strategy('authenticate', 'jwt', { // JWT2 registered a scheme as 'jwt' this sets the strategy for it: 'authenticate'
-          key: 'NeverShareYourSecret',
-          validateFunc: validate,
-          verifyOptions: {algorithms: [ 'HS256' ]},
-
+        let crypto = new Crypto('jwt_secret.txt');
+        crypto.initialize((error, secret) => {
+          if(error) {
+            reject(error);
+          }
+          else {
+            log('jwt_secret retrieved');
+            server.app.jwt_secret = secret;
+          }
         });
 
+        server.auth.strategy('authenticate', 'jwt', { // JWT2 registered a scheme as 'jwt' this sets the strategy for it: 'authenticate'
+          key: server.app.jwt_secret,
+          validateFunc: validate,
+          verifyOptions: {algorithm: ['HS256']}
+        });
+        server.auth.default('authenticate'); // set 'authenticate' as default strategy
         server.route(hapiRoutes);
 
-        server.auth.default('authenticate'); // set 'authenticate' as default strategy
-
+        server.state('Authorization');
         server.start((err) => {
         	if(err) {
         		throw err;
@@ -154,6 +162,7 @@ export default class {
             console.log('Server running at:', server.info.uri);
           }
         });
+        //server.auth.scheme('jwt', scheme);
       }
     });
   }

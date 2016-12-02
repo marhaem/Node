@@ -1,1 +1,0 @@
-module.exports = require("npm:dottie@1.1.1/dottie.js");

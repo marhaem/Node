@@ -16,18 +16,21 @@ import validate from './validate';
 
 export default class Crypto{
   constructor(file) {
+    this.logger = global.logger;
     this.crypto = global.crypto;
 
     this.goodCiphers = ['aes-256-cbc-hmac-sha1', 'aes-256-cbc'];
     this.availableCiphers = this.crypto.getCiphers();
-    this.CIPHER = global.CIPHER;
+    this.CIPHER = undefined;
 
     this.goodHashAlgoritms = ['sha512WithRSAEncryption', 'rsa-sha512', 'sha512', 'sha256WithRSAEncryption', 'rsa-sha256', 'sha256'];
     this.availableHashAlgorithms = this.crypto.getHashes();
-    this.HASH_ALGORITHM = global.HASH_ALGORITHM;
+    this.HASH_ALGORITHM = undefined;
 
     this.secret = undefined;
     this.file = file;
+
+    this.ENCODING = 'utf8';
 
     /**
      * class methods

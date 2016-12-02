@@ -1,5 +1,4 @@
 /* */ 
-"format cjs";
 define( [
 	"../ajax"
 ], function( jQuery ) {

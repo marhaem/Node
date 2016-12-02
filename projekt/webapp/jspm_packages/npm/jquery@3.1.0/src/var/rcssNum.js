@@ -1,5 +1,4 @@
 /* */ 
-"format cjs";
 define( [
 	"../var/pnum"
 ], function( pnum ) {

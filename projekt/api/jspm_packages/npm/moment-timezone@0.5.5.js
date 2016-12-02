@@ -1,1 +1,0 @@
-module.exports = require("npm:moment-timezone@0.5.5/builds/moment-timezone-with-data");

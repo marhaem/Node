@@ -1,5 +1,5 @@
 /* */ 
-"format cjs";
+"format amd";
 /* ExcludeStart */
 
 // This file is included in a different way from all the others

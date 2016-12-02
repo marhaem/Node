@@ -1,1 +1,0 @@
-module.exports = require("npm:terraformer-wkt-parser@1.1.2/terraformer-wkt-parser.js");

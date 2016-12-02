@@ -60,9 +60,7 @@
   "npm:isarray@1.0.0": {},
   "npm:base64-js@0.0.8": {},
   "github:jspm/nodelibs-child_process@0.1.0": {},
-  "npm:jquery@3.1.0": {
-    "process": "github:jspm/nodelibs-process@^0.1.0"
-  },
+  "npm:jquery@3.1.0": {},
   "npm:moment@2.14.1": {},
   "npm:riot-route@2.5.0": {
     "riot-observable": "npm:riot-observable@^2.5.0"
