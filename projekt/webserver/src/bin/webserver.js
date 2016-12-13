@@ -1,5 +1,5 @@
 /*jshint -W034*/
-/*global require, global console, process*/
+/*global require, process*/
 
 (function () {
   'use strict';

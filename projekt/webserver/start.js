@@ -1,21 +1,15 @@
-function scheme(server, options) {
-	return {
-		authenticate: function authenticate(request, reply) {
-			if(!req.headers.authorization) {
-				return reply{
-					error: true,
-					message: 'Unauthorized'
-				};
-			}
-			else {
-				//do something with req.headers.authorization
-				return reply.continue('success');
-			}
-		},
-		payload: '',
-		response: ''
-}
-server.auth.scheme('name', scheme)
+/*global console, require*/
+const System = require('jspm').Loader();
+
+const log = function log(info) {
+	console.log(info);
+};
+
+System.import('./test/HapiAuth/index').then((hapiAuth) => {
+	hapiAuth = new hapiAuth.default();
+	hapiAuth.start();
+}, log).catch(log);
+
 
 /*let path = './src/lib/Crypto/methods/index.js';
 //let start = require(path);

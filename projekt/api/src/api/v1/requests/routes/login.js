@@ -1,3 +1,4 @@
+/*global console*/
 import jwt from 'jsonwebtoken';
 import global from './Global';
 
@@ -14,7 +15,6 @@ let expiry = 3600;
 export default {
   method: 'POST',
   path: '/api/v1/login',
-  config: {auth:false},
   handler: function(request, reply) {
     if(!request.payload || !request.payload.email || !request.payload.password) {
       reject('login failed: no email or password given');
@@ -31,9 +31,11 @@ export default {
         //return reply.redirect('/chat').code(302);
         //return reply.redirect('/chat').send();
         //request.setUrl('http://localhost:3000/chat');
-        log('retrieving token');
-        let token = jwt.sign({userID: user.userID}, request.server.app.jwt_secret, {algorithm: 'HS256', expiresIn: expiry});
-        log('token retrieved');
+        let token = jwt.sign({
+          userID: user.userID
+        }, request.server.app.jwt_secret, {
+          algorithm: 'HS256', expiresIn: expiry
+        });
         return reply({
           data: '/chat'
         })

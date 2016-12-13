@@ -79,7 +79,7 @@ $(document).ready(function() {
         else {
           $status.empty();
           $status.append('<p>' + 'successfully logged in!' + '</p>');
-          //@TODO: create a cookie or seission id/token for the user and send it
+          //@TODO: create a cookie or session id/token for the user and send it
           window.location.replace(window.location.origin + response.responseJSON.data);
         }
       })

@@ -1,6 +1,8 @@
-import verifyToken from './verifyToken';
 import login from './login';
-export default [verifyToken, login];
+import ping from './ping';
+import register from './register';
+import verifyToken from './verifyToken';
+export default [login, ping, register, verifyToken];
 /*import login from './login';
 import ping from './ping';
 import register from './register';

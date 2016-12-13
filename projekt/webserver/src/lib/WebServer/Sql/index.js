@@ -1,8 +1,9 @@
+/*global console*/
 /*jshint -W061*/
 import sequelizeOptions from './config/options.json!';
 import User from './User';
 
-function reject(err) {
+function log(err) {
   console.log(err);
 }
 
@@ -93,12 +94,12 @@ export default class Sql {
 
   testSequelize() {
     this.sequelize.authenticate().then(() => {
-      console.log('sequelize OK');
+      log('sequelize OK');
       this.sequelize.sync().then(() => {
-        console.log('sync was good');
+        log('sync was good');
       }, () => {});
     }, (err) => {
-      console.log(err);
+      log(err);
     });
   }
 }

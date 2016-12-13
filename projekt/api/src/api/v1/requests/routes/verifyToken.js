@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+/*global console*/
 
 function log(info) {
   console.log(info);
@@ -7,10 +7,9 @@ function log(info) {
 export default {
   method: 'POST',
   path: '/api/v1/verifyToken',
-  config: {auth: false},
+  config: {auth: 'jwt'},
   handler: function(request, reply) {
-    log(request.headers);
-    if(!request.headers.authorization) {
+    if(!request.auth) {
       reply({
         error: 'true',
         message: 'Bad Request'
@@ -18,15 +17,9 @@ export default {
       .code(400);
     }
     else{
-      try {
-        let decoded = jwt.verify(request.headers.authorization, request.server.app.jwt_secret);
-        reply(decoded)
-        .code(200);
-      }
-      catch(error) {
-        reply()
-        .code(401);
-      }
+      log('request by user number ' + request.auth.userID);
+      reply(request.auth.userID)
+      .code(200);
     }
   }
 };

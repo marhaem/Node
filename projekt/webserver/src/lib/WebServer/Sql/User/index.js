@@ -2,7 +2,7 @@ import model from './TableDefinitions/model.json!';
 import register from './register';
 import login from './login';
 import global from '../../../Global';
-import Crypto from '../../../Crypto';
+import Crypto from '../../Crypto';
 
 /**
  */
