@@ -17,8 +17,7 @@ export default {
       .code(400);
     }
     else{
-      log('request by user number ' + request.auth.userID);
-      reply(request.auth.userID)
+      reply({userID: request.auth.userID})
       .code(200);
     }
   }

@@ -11,3 +11,5 @@ projekt/webapp/node_modules
 projekt/webapp/jspm_packages
 projekt/api/node_modules
 projekt/api/jspm_packages
+test/
+test2/

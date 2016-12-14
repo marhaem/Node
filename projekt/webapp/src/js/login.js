@@ -2,6 +2,8 @@
 
 import $ from 'jquery';
 
+//@TODO: find a better way to route the client. readout Authenticate-cookie to authenticate on /chat
+
 function objectKeysToString(obj) {
   let ret;
   if(!obj) {

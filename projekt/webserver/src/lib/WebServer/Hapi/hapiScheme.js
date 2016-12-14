@@ -25,7 +25,8 @@ export default function scheme(server, options) {
                 return reply(new Error('Unauthorized')).code(401);
               }
               else {
-                return reply.continue({credentials: {userID: id}});
+                log(id);
+                return reply.continue({userID: id});
               }
             });
           }

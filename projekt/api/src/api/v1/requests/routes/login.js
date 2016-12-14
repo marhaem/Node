@@ -10,7 +10,7 @@ let reject = function reject(error) {
   global.logger.error(error);
 };
 
-let expiry = 3600;
+let expiry = 3600; // in seconds, so session is valid for one hour
 
 export default {
   method: 'POST',
@@ -31,6 +31,15 @@ export default {
         //return reply.redirect('/chat').code(302);
         //return reply.redirect('/chat').send();
         //request.setUrl('http://localhost:3000/chat');
+
+        // session token contains the userID
+        /*@TODO: Method 1: is the user id enough? wouldn't it be better, to have an
+        session-storage or database(idea) which maps hashes to the userID and settings, etc.
+        this method saves bandwith and encryption-workload, but data needs to be locally stored*/
+        /*@TODO: Method 2: store a little more data about the user, encrypted and signed.
+        This method uses more bandwidth, also encryption can fail*/
+        /*@TODO: we need an authorization scope, e.g. settings-object*/
+        /*@TODO: who reissues tokens, once they get outdated???*/
         let token = jwt.sign({
           userID: user.userID
         }, request.server.app.jwt_secret, {
