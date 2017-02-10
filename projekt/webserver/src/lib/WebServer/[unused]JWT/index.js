@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import Crypto from '../../Crypto';
 import global from '../../Global';
 
-//@TODO: retrieve secret from Process.env, Crypto or create another one
+//@TODO:180 retrieve secret from Process.env, Crypto or create another one
 
 let log = function log(info) {
   global.logger.info(info);

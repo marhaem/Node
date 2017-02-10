@@ -4,7 +4,7 @@ import global from '../../Global';
 /**
  *
  */
-//@TODO: Why the fuck isn't this.global defined??? It works with Requests.login though -_-
+//@TODO:40 Why the fuck isn't this.global defined??? It works with Requests.login though -_-
 /*let log = function log(info) {
   this.global.logger.info(info);
 };*/
@@ -20,7 +20,7 @@ function reject(error) {
 export default function initialize(cb) {
     if(!cb) {
     try {
-      //@TODO: use helper methods to catch errors
+      //@TODO:210 use helper methods to catch errors
       this.secret = fs.readFileSync(this.file, {encoding: this.ENCODING});
     }
     catch(error) {
@@ -31,7 +31,7 @@ export default function initialize(cb) {
       catch(error) {
         reject(error);
         throw new Error(error);
-        //@TODO throw error, would be necessary, server is not able to perform properly
+        //@TODO:190 throw error, would be necessary, server is not able to perform properly
       }
       try {
         this.secret = this.generateSecret();
@@ -42,7 +42,7 @@ export default function initialize(cb) {
       catch(error) {
         reject('saving secret to file failed: ' + error);
         throw new Error(error);
-        //@TODO throw error, would be necessary, server is not able to perform properly
+        //@TODO:200 throw error, would be necessary, server is not able to perform properly
       }
     }
   }

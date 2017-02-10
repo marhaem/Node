@@ -21,19 +21,36 @@ export default [{
 }, {
   method: 'GET',
   path: '/login',
-  handler: function(request, reply) {
-    return reply.view('login.htm');
-  }
-}, {
-  method: 'GET',
   config: {auth: 'jwt'},
-  path: '/chat',
   handler: function(request, reply) {
-    return reply.view('chat.htm');
+    //console.log(request.state);
+    /*credentials is accessible via request.auth.credentials*/
+    if(request.auth.credentials === 'unauthorized') {
+      return reply.view('login.htm');
+    }
+    else {
+      return reply.redirect('/chat');
+    }
   }
 }, {
   method: 'GET',
-  //@TODO: implement auto-authorization via API-key
+  path: '/chat',
+  config: {auth: 'jwt'}, // 'jwt' is a reference to the authentication-strategy we registered in ../index.js
+  handler: function(request, reply) {
+    /*credentials is accessible via request.auth.credentials*/
+    if(request.auth.credentials === 'unauthorized') {
+      return reply.redirect('/login');
+    }
+    else if(request.auth.credentials === 'expired') {
+      return reply().unstate('authentication').redirect('/login');
+    }
+    else {
+      return reply.view('chat.htm');
+    }
+  }
+}, {
+  method: 'GET',
+  //@TODO:130 implement auto-authorization via API-key
   path: '/{param*}',
   handler: {
     directory: {

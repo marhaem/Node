@@ -17,7 +17,7 @@ import {Root} from './routes/root';
 let content = null;
 
 export let Routes = {
-  init: function init(node) {
+  init: function init(node) { // node = document.body
     if (content === null) {
       content = riot.mount(node, Root.tagName, {});
       content = content ? content[0] : null;

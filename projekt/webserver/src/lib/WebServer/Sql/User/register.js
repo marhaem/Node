@@ -23,7 +23,7 @@ export default function register(userData) {
               "passwordHash": hash,
               "passwordSalt": salt
             };
-            //@TODO: Catch validation error isEmail: function(){throw new Error('is not a valid email address')}
+            //@TODO:0 Catch validation error isEmail: function(){throw new Error('is not a valid email address')}
 
             this.sqlTable.create(this.userData)
             .then((user) => {

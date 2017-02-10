@@ -1,5 +1,5 @@
 {
-  "name": "User",
+  "name": "Users",
   "columns": {
     "userID": {
       "type": "INTEGER",

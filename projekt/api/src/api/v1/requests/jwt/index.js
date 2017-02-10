@@ -13,7 +13,7 @@ function log(info) {
 export default class JWT {
   constructor() {
     this.expiry = 3600; //seconds
-    //@TODO: create secret and define getter method bc its needed in WebServer/index too
+    //@TODO:70 create secret and define getter method bc its needed in WebServer/index too
     let crypto = new Crypto('./jwt_secret.js');
     crypto.initialize((error, secret) => {
       if(error) {

@@ -10,7 +10,7 @@ import hapiViews from './Hapi/hapiViews';
 import validate from './Hapi/validate';
 
 let log = function log(info) {
-  global.logger.info(info);
+  console.log(info);
 };
 
 let reject = function reject(error) {
@@ -19,7 +19,7 @@ let reject = function reject(error) {
 
 export default class {
   constructor() {
-    this.PATH_WEBAPP = '../webapp';
+    //
   }
 
   start() {
@@ -29,7 +29,7 @@ export default class {
     Array.prototype.push.apply(hapiRoutes, webAppRoutes);
     Array.prototype.push.apply(hapiRoutes, api.routes());
 
-    console.log('webserver starting...');
+    log('webserver starting...');
     const server = new Hapi.Server();
     server.connection({ port: 3000 });
 
@@ -52,21 +52,33 @@ export default class {
         });
 
         server.auth.scheme('customjwt', scheme);
-
+        /*
+        @TODO:90 draw something, to explain how authentication with hapi and jwt works!
+        server.auth.strategy(strategy-name, scheme-name, {options})
+        registers a strategy using a scheme.
+        strategy-name is the reference we can use to apply the strategy to a certain route.
+        scheme-name is refering to the scheme we registered before.
+        options is an object, which provides a function to validate the token.
+        */
         server.auth.strategy('jwt', 'customjwt', {
           validateFunc: validate
         });
 
         server.route(hapiRoutes);
 
-        server.state('Authorization');
+        server.state('authentication', {
+          path: '/',
+          isSecure: false,
+          isHttpOnly: false,
+          isSameSite: false
+        }); //so we can set a cookie via the request-handler
 
         server.start((err) => {
         	if(err) {
         		throw err;
         	}
           else {
-            console.log('Server running at:', server.info.uri);
+            log('Server running at:', server.info.uri);
           }
         });
         //server.auth.scheme('jwt', scheme);

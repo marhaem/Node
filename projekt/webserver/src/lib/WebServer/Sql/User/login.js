@@ -1,8 +1,8 @@
 import moment from 'moment';
 
-//@TODO: design login so that it will return the credentials which can then be used by Hawk to authenticate
-//@TODO: implement a consistent error interface like reject({ error: boolean data: string}). also implement error-codes
-//@TODO: on each siteload check for valid JWT
+//@TODO:80 design login so that it will return the credentials which can then be used by Hawk to authenticate
+//@TODO:120 implement a consistent error interface like reject({ error: boolean data: string}). also implement error-codes
+//@TODO:160 on each siteload check for valid JWT
 export default function login(userData) {
   return new Promise((resolve, reject) => {
     console.log('searching for user: ' + userData.email);
@@ -25,7 +25,7 @@ export default function login(userData) {
           }
           else if(isEqual) {
             this.sqlTable.update({
-              "lastLogin":  moment().toISOString(),
+              "lastLogin": moment().toISOString(),
               "failedLoginAttempts": 0
             }, {
               where: {userID: user.userID}

@@ -1,6 +1,8 @@
+/*global console*/
 import model from './TableDefinitions/model.json!';
-import register from './register';
 import login from './login';
+import register from './register';
+import unlockUser from './unlockUser';
 import global from '../../../Global';
 import Crypto from '../../Crypto';
 
@@ -33,12 +35,13 @@ export default class User {
         throw error;
       }
       else {
-        global.logger.info('successfully retrieved secret to sign user passwords');
+        console.log('successfully retrieved secret to sign user passwords');
       }
     });
 
   // class methods
     this.register = register;
     this.login = login;
+    this.unlockUser = unlockUser;
   }
 }

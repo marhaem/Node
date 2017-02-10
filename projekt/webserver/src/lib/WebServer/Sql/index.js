@@ -2,6 +2,7 @@
 /*jshint -W061*/
 import sequelizeOptions from './config/options.json!';
 import User from './User';
+import Messages from './Messages';
 
 function log(err) {
   console.log(err);
@@ -18,6 +19,9 @@ function fixDatatypes(Sequelize, model) {
     if (columns.hasOwnProperty(key)) {
       column = columns[key];
       column.type = eval('Sequelize.' + column.type);
+      if(column.references) { // resolve foreign key references
+        column.references.model = eval('this.' + column.references.model);
+      }
       i++;
     }
   }
@@ -44,7 +48,13 @@ export default class Sql {
    * Connection might be closed / opened per sql command.
    */
   connect(options) {
-    return this.sequelize.sync(options);
+    this.sequelize.sync(options).then(/*resolve*/(model) => {
+      //log(model);
+      return model;
+    }, /*reject*/(err) => {
+      log('an error occured: ' + err.message);
+      return err;
+    }); // sync all defined models to the DB  (nothing was defined though)
   }
 
   /**
@@ -53,13 +63,17 @@ export default class Sql {
   initModels() {
 
     //let userModel = sequelize.import(path.join(process.cwd(), './src/lib/sql/Chat/User')); //oder ohne path.js: __dirname + './src/lib/sql/User'
-    let userModel = fixDatatypes(this.Sequelize, User.model);
+    let user_TableDefinition = fixDatatypes(this.Sequelize, User.model);
+    this.user = new User(this.sequelize.define(user_TableDefinition.name, user_TableDefinition.columns, user_TableDefinition.options || {}));
+    let messages_TableDefinition = fixDatatypes(this.Sequelize, Messages.model);// needs this.user to be instantiated before
+    this.messages = new Messages(this.sequelize.define(messages_TableDefinition.name, messages_TableDefinition.columns, messages_TableDefinition.options || {}));
     /**
      * returns a model
      */
     return {
-      User: new User(this.sequelize.define(userModel.name, userModel.columns, userModel.options || {}))
-      //@TODO: add models
+      //retrieves the object with which the queries can be made
+      User: this.user,
+      Messages: this.messages
       /*User: new User(this.sequelize.define(userModel.name, {
         "userID": {
           "type": Sequelize.INTEGER,
@@ -116,9 +130,9 @@ export default class Sql {
 
   let userModel = sequelize.import(path.join(process.cwd(), './src/lib/sql/Chat/User')); //oder ohne path.js: __dirname + './src/lib/sql/User'
 */
-//@TODO:0 DB-Credentials in Dateien auslagern
+//@TODO:20 DB-Credentials in Dateien auslagern
 //console.log(path.join(process.cwd(), './src/lib/sql/User'));
-//@TODO:10 das mit den relativen pfaden check ich nicht. woher weiss man welcher relative pfad richtig ist??
+//@TODO:250 das mit den relativen pfaden check ich nicht. woher weiss man welcher relative pfad richtig ist??
 
 //sequelize.import(path.join(process.cwd(), './src/lib/sql/Chat/User')); //oder ohne path.js: __dirname + './src/lib/sql/User'
 //return reply('user ' + request.payload.email).code(200);

@@ -1,0 +1,23 @@
+{
+  "name": "Chats",
+  "columns": {
+    "userID": {
+      "type": "INTEGER",
+      "allowNull": false,
+      "references": {
+        "model": "user.model",
+        "key": "userID"
+      },
+      "unique": "compositeIndex"
+    },
+    "chatID": {
+      "type": "INTEGER",
+      "allowNull": false,
+      "unique": "compositeIndex"
+    }
+  },
+  "options": {
+    "charset": "utf8",
+    "collate": "utf8_unicode_ci"
+  }
+}

@@ -13,6 +13,7 @@ export default {
   config: {auth: false},
   path: '/api/v1/register',
   handler: function(request, reply) {
+    log(request.payload.email);
     if(!request.payload || !request.payload.email || !request.payload.password) {
       log('registering failed: no email or password given');
       return reply({
@@ -34,9 +35,9 @@ export default {
         })
         .code(200);
       }, (error) => {
-        reject(error);
+        reject(error.message);
         reply({
-          data: error
+          data: error.message
         })
         .code(400);
       });

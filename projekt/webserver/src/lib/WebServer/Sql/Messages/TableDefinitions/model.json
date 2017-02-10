@@ -1,0 +1,29 @@
+{
+  "name": "Messages",
+  "columns": {
+    "msgID": {
+      "type": "INTEGER",
+      "primaryKey": true,
+      "autoIncrement": true
+    },
+    "chatID": {
+      "type": "INTEGER",
+      "allowNull": false
+    },
+    "sentFromUserID": {
+      "type": "INTEGER",
+      "allowNull": false
+    },
+    "message": {
+      "type": "TEXT",
+      "allowNull": false
+    },
+    "timestamp": {
+      "type": "DATE"
+    }
+  },
+  "options": {
+    "charset": "utf8",
+    "collate": "utf8_unicode_ci"
+  }
+}

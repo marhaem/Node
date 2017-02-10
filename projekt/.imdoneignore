@@ -1,0 +1,33 @@
+# ignore everything except the src-directories
+# ignore everything, but look what's inside (* neccessary)
+/*
+# unignore api
+!/api
+# ignore api, but look what's inside
+/api/*
+# unignore ./src
+!/api/src
+
+!/webapp
+/webapp/*
+!/webapp/src
+
+!/webserver
+/webserver/*
+!/webserver/src
+
+jspm_packages/*
+node_modules/*
+test/*
+readme/*
+scripts/*
+*.bat
+*.log
+*.log.*
+*.txt
+.babelrc
+.jshintrc
+.nvmrc
+.remarkrc
+.sass-lint.yml
+*.json

@@ -37,12 +37,9 @@
     System.import('./src/lib/WebServer/Sql.js').then((Sql) => {
       Sql = Sql.default;
       global.sql = new Sql(Sequelize); // Sequelize is passed down all the way
+      //global.sql.testSequelize();
       global.sql.connect();
       global.models = global.sql.initModels();
-      /*global.sql.connect().then((result) => { // {force: true}
-        logger.info('successfully connected to database: ' + result);
-      }, reject); // sequelize.sync();
-      global.models = global.sql.initModels();*/
     }, reject).catch(reject);
 
       /*

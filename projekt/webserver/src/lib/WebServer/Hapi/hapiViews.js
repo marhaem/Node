@@ -1,5 +1,5 @@
 import handlebars from 'handlebars';
-const PATH_WEBAPP = '../webApp';
+const PATH_WEBAPP = '../webApp'; //@TODO: why isn't this path relative to the modules location
 
 export default {
   engines: {
